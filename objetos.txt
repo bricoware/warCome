@@ -1,0 +1,47 @@
+-------------------------------ARMAS --------------------------------------------------------------
+		ARMAS                                         ESTADISTICAS
+
+1.- MAZA DE DOS MANOS							FUERZA +10
+2.- MAZA Y ESCUDO								CONSTITUCION +10
+3.- ESPADON										DESTREZA +10
+4.- BASTON MAGICO								INTELIGENCIA +15
+5.-	MANGUAL										FUERZA +5, DESTREZA +5
+6.- GRAN HACHA									FUERZA +15
+7.- ARCO LARGO									DESTREZA +15
+8.- GRAN BALLESTA								FUERZA +30 , DESTREZA -5
+9.- DAGA MAGICA									INTELIGENCIA +10
+10.-GRAN VARITA									INTELIGENCIA +30 , CONSTITUCION -5
+11. GRAN ESCUDO									FUERZA -5,CONSTITUCION +30
+
+-----------------------------ARMADURAS-------------------------------------------------------------
+
+			ARMADURAS									ESTADISTICAS
+
+1.-	LIGERA										DESTREZA +2 , FUERZA +2
+2.-	TELA										INTELIGENCIA +10 , DESTREZA +5
+3.- CUERO										DESTREZA +5 ,INTELIGENCIA +5
+4.-	MALLAS										FUERZA +10 ,DESTREZA +10
+5.- LAMINAS										FUERZA +10 , DESTREZA +15
+6.-	PLACAS										FUERZA +15 , CONSTITUCION +10
+7.- CORAZA										CONSTITUCION +30 , FUERZA +10
+
+
+----------------------------POCIONES---------------------------------------------------------------
+
+		POCIONES										ESTADISTICA
+
+1.- POCION PEQUEÑA 											+5 	VIDA
+2.- POCION NORMAL											+10 VIDA	
+3.-	POCION GRANDE											+15 VIDA
+4.-	SUPERPOCION												+25 VIDA
+5.- POCION MAXIMA											+40 VIDA
+
+
+----------------------------MISCELANEA--------------------------------------------------------------
+
+		MISCELANEA										ESTADISTICA
+
+1.- SORTIJA MAGICA										INTELIGENCIA +10
+2.-	COLLAR OSCURO										FUERZA +10
+3.-	PENDIENTE ELFICO									INTELIGENCIA +5 , DESTREZA +5
+4.-	CALAVERA BRILLANTE									INTELIGENCIA +15 , FUERZA -5
