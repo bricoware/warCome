@@ -1,0 +1,16 @@
+RAZAS
+
+Humano: +1 fuerza +1 inteligencia
+Enano: +2 fuerxa, +2 constitucion, -2 inteligencia
+Elfo Lunar: +2 destreza, -1 constitucion, +1 inteligencia
+Semielfo: +2 inteligencia, -2 constitucion
+Orco: +2 fuerza, -2 inteligecia
+
+-------------------------------------------------------------------------------
+CLASES
+
+Guerrero: +2 fuerza, -2 inteligencia
+Sacerdote: +2 inteligencia, -1 constitucion
+Mago: +2 inteligencia , -2 fuerza
+Nigromante: +1 inteligencia, +1 fuerza
+Cazador: +2 destreza, -1 constitucion
