@@ -7,7 +7,7 @@ Semielfo: +2 inteligencia, -2 constitucion
 Orco: +2 fuerza, -2 inteligecia
 
 -------------------------------------------------------------------------------
-CLASES
+CLASESeeee
 
 Guerrero: +2 fuerza, -2 inteligencia
 Sacerdote: +2 inteligencia, -1 constitucion
