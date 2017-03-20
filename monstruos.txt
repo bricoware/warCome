@@ -1,0 +1,27 @@
+-----------------------------------MONSTRUOS--------------------------------------------------------------------------
+
+		NOMBRE						ATAQUE					ARMADURA				VIDA					TIPO
+
+1.-		KOBOLD						 DADO 4					CUERO					 30						TIERRA
+2.-		GNOLL						 DADO 6                 MALLA					 35						TIERRA
+3.-		TROLL						 DADO 8				    LAMINAS				     45						TIERRA
+4.-		GIGANTE DE LA MONTAÑA		 DADO 10 				CORAZA					 100					TIERRA
+
+5.-		FELHOUND(PERRO FUEGO)		 DADO 4					LIGERA					 25						FUEGO
+6.-		GOLEM LAVA					 DADO 6					MALLA					 35						FUEGO
+7.-   	ELEMENTAL DE FUEGO			 DADO 8 				LAMINAS					 55						FUEGO	
+8.-		HIDRA DE FUEGO				 DADO 10 				PLACAS					 75						FUEGO					
+9.-		WITCH(BRUJA GRITONA)		 DADO 4                 LIGERA					 25						ESPECTRAL
+10.-	BANSHEE(FANTASMA)			 DADO 6   				CUERO					 35						ESPECTRAL
+11.-	JINETE FANTASMA				 DADO 8 				PLACAS					 60						ESPECTRAL	
+12.-	NAZGUL						 DADO 10				CORAZA					 80						ESPECTRAL
+
+13.-  	PIRAÑA GIGANTE				 DADO 4 				LIGERA					 25						AGUA
+14.-	SERPIENTE PANTANO			 DADO 6 				CUERO					 35						AGUA
+15.-	TIBURON BLANCO				 DADO 8 				MALLA					 45						AGUA
+16.-	KRAKEN						 DADO 10				CORAZA					 80						AGUA			
+
+17.-	DRAGON FAERICO				 DADO 4                 CUERO					 30						AIRE
+18.-	MURCIELAGO GIGANTE			 DADO 6 				MALLA					 40						AIRE
+19.-	QUIMERA						 DADO 8                 PLACAS					 60						AIRE
+20.-	WYRM						 DADO 10   				CORAZA					 100					AIRE			 	 				   							
