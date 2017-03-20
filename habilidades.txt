@@ -1,0 +1,34 @@
+Guerrero:
+
+-Colleja infernal
+-Patada sencillita
+-Golpe de trasero metalizado
+-Giro con doble tirabuzon hacia atras (ataque básico x2)
+
+Sacerdote:
+
+-Recitar trozo de biblia
+-Cancion de cuna
+-Cruz malintencionada
+-Enseñar patita por debajo de la falda (ataque básico x2)
+
+Mago:
+
+-Churrasco
+-Congelamiento nivel 2
+-Convertir en chocapic
+-Al microondas (ataque básico x2)
+
+Nigromante:
+
+-Mordisco a lo walking dead
+-Lapidazo
+-Bola sombra de suricato satanico
+-Extraer alma a ostias (ataque básico x2)
+
+Cazador:
+
+-Golpe a los huevos
+-Corbata colombiana
+-Trampa para ratones
+-Locura transitoria (ataque bascio x2)
