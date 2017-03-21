@@ -6,8 +6,6 @@
   $aventura = new aventura();
   $aventuras = $aventura->getAventuras();
 
-  var_dump($aventuras);
-
   $dificultad1 = [];
   $dificultad2 = [];
   $dificultad3 = [];
@@ -28,10 +26,6 @@
   $claves_aleatorias2 = array_rand($dificultad2, 2);
   $claves_aleatorias3 = array_rand($dificultad3, 2);
 
-  var_dump($claves_aleatorias1);
-  var_dump($claves_aleatorias2);
-  var_dump($claves_aleatorias3);
-
   $definitivo = "";
 
   for($i=0;$i<count($claves_aleatorias1);$i++){
@@ -50,11 +44,11 @@
   }
 
   $definitivo = substr ($definitivo, 0, strlen($definitivo) - 1);
-
   echo $definitivo;
 
-  $nuevo_recorrido = new mapa($_GET['idPersonaje'],$definitivo);
-  echo $nuevo_recorrido->setMapa();
+  $nuevo_recorrido = new mapa($definitivo);
+  $final = $nuevo_recorrido->setMapa();
+  var_dump($nuevo_recorrido->setMapa());
 
 
 
