@@ -18,9 +18,7 @@ CREATE TABLE IF NOT EXISTS `avatar` (
   `idAvatar` int(11) NOT NULL,
   `avatar` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`idAvatar`),
-  UNIQUE (`avatar`),
-  KEY `avatar_personajeAvatar_FK` (`idAvatar`),
-  KEY `avatar_monstruoAvatar_FK` (`idAvatar`)
+  UNIQUE (`avatar`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -43,9 +41,7 @@ CREATE TABLE IF NOT EXISTS `aventura` (
   `idDificultad` tinyint(1) NOT NULL,
   `idTexto` int(11) NOT NULL,
   `idZona` int(11) NOT NULL,
-  PRIMARY KEY (`idAventura`),
-  INDEX (`idTexto`),
-  KEY `aventura_mapa_FK` (`idAventura`)
+  PRIMARY KEY (`idAventura`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -67,8 +63,7 @@ CREATE TABLE IF NOT EXISTS `clase` (
   `idClase` int(11) NOT NULL,
   `clase` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`idClase`),
-  UNIQUE (`clase`),
-  KEY `clase_personajeClase_FK` (`idClase`)
+  UNIQUE (`clase`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -92,8 +87,7 @@ CREATE TABLE IF NOT EXISTS `habilidad` (
   `descripcionHabilidad` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
   `danho` varchar(5) CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
   PRIMARY KEY (`idHabilidad`),
-  UNIQUE (`nombreHabilidad`),
-  KEY `habilidad_personaje_FK` (`idHabilidad`)
+  UNIQUE (`nombreHabilidad`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -115,8 +109,7 @@ CREATE TABLE IF NOT EXISTS `habilidadPersonaje` (
   `idHabilidadPersonaje` int(11) NOT NULL,
   `idPersonaje` int(11) NOT NULL,
   `idHabilidad` int(11) NOT NULL,
-  PRIMARY KEY (`idHabilidadPersonaje`),
-  INDEX (`idHabilidad`)
+  PRIMARY KEY (`idHabilidadPersonaje`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -139,9 +132,7 @@ CREATE TABLE IF NOT EXISTS `inventarioPersonaje` (
   `idPersonaje` int(11) NOT NULL,
   `armaEquipada` int(11) NULL,
   `armaduraEquipada` int(11) NULL,
-  PRIMARY KEY (`idInventarioPersonaje`),
-  INDEX (`armaEquipada`),
-  INDEX (`armaduraEquipada`)
+  PRIMARY KEY (`idInventarioPersonaje`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -155,9 +146,7 @@ CREATE TABLE IF NOT EXISTS `mapa` (
   `idMapa` int(11) NOT NULL AUTO_INCREMENT,
   `posicion` int(11) NOT NULL,
   `idAventura` int(11) NOT NULL,
-  PRIMARY KEY (`idMapa`),
-  INDEX (`idAventura`),
-  KEY `mapa_partida_FK` (`idMapa`)
+  PRIMARY KEY (`idMapa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -175,8 +164,7 @@ CREATE TABLE IF NOT EXISTS `monstruo` (
   `vidaMonstruo` int(11) NOT NULL,
   `xpOtorgada` int(11) NOT NULL COMMENT 'Puntos de experiencia otorgados por el monstruo',
   PRIMARY KEY (`idMonstruo`),
-  UNIQUE (`nombreMonstruo`),
-  KEY `monstruo_avatar_FK` (`idMonstruo`)
+  UNIQUE (`nombreMonstruo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -198,8 +186,7 @@ CREATE TABLE IF NOT EXISTS `monstruoAvatar` (
   `idMonstruoAvatar` int(11) NOT NULL AUTO_INCREMENT,
   `idMonstruo` int(11) NOT NULL,
   `idAvatar` int(11) NOT NULL,
-  PRIMARY KEY (`idMonstruoAvatar`),
-  INDEX (`idMonstruo`)
+  PRIMARY KEY (`idMonstruoAvatar`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -218,11 +205,7 @@ CREATE TABLE IF NOT EXISTS `objeto` (
   `estadistica2` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
   `valor2` int(11) NULL,
   PRIMARY KEY (`idObjeto`),
-  UNIQUE (`nombreObjeto`),
-  KEY `objeto_pocion_FK` (`idObjeto`),
-  KEY `objeto_inventarioPersonaje_armaEquipada_FK` (`idObjeto`),
-  KEY `objeto_inventarioPersonaje_armaduraEquipada_FK` (`idObjeto`),
-  KEY `objeto_objetoTipo_FK` (`idObjeto`)
+  UNIQUE (`nombreObjeto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -244,8 +227,7 @@ CREATE TABLE IF NOT EXISTS `objetoTipo` (
   `idObjetoTipo` int(11) NOT NULL AUTO_INCREMENT,
   `idObjeto` int(11) NOT NULL,
   `idTipo` int(11) NOT NULL,
-  PRIMARY KEY (`idObjetoTipo`),
-  INDEX (`idObjeto`)
+  PRIMARY KEY (`idObjetoTipo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -260,9 +242,7 @@ CREATE TABLE IF NOT EXISTS `partida` (
   `idPersonaje` int(11) NOT NULL,
   `orden` int(11) NOT NULL,
   `idMapa` int(11) NOT NULL,
-  PRIMARY KEY (`idPartida`),
-  INDEX (`idPersonaje`),
-  INDEX (`idMapa`)
+  PRIMARY KEY (`idPartida`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -285,14 +265,7 @@ CREATE TABLE IF NOT EXISTS `personaje` (
   `nivel` int(11) NOT NULL DEFAULT 1,
   `acPersonaje` int(11) DEFAULT NULL COMMENT 'Clase de armadura',
   `oro` int(11) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`idPersonaje`),
-  KEY `personaje_habilidades_FK` (`idPersonaje`),
-  KEY `personaje_usuario_FK` (`idPersonaje`),
-  KEY `personaje_pocion_FK` (`idPersonaje`),
-  KEY `personaje_partida_FK` (`idPersonaje`),
-  KEY `personaje_raza_FK` (`idPersonaje`),
-  KEY `personaje_clase_FK` (`idPersonaje`),
-  KEY `personaje_avatar_FK` (`idPersonaje`)
+  PRIMARY KEY (`idPersonaje`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -306,9 +279,7 @@ CREATE TABLE IF NOT EXISTS `personajeAvatar` (
   `idPersonajeAvatar` int(11) NOT NULL AUTO_INCREMENT,
   `idPersonaje` int(11) NOT NULL,
   `idAvatar` int(11) NOT NULL,
-  PRIMARY KEY (`idPersonajeAvatar`),
-  INDEX (`idPersonaje`),
-  INDEX (`idAvatar`)
+  PRIMARY KEY (`idPersonajeAvatar`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -322,9 +293,7 @@ CREATE TABLE IF NOT EXISTS `personajeClase` (
   `idPersonajeClase` int(11) NOT NULL AUTO_INCREMENT,
   `idPersonaje` int(11) NOT NULL,
   `idClase` int(11) NOT NULL,
-  PRIMARY KEY (`idPersonajeClase`),
-  INDEX (`idPersonaje`),
-  INDEX (`idClase`)
+  PRIMARY KEY (`idPersonajeClase`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -338,9 +307,7 @@ CREATE TABLE IF NOT EXISTS `personajeRaza` (
   `idPersonajeRaza` int(11) NOT NULL AUTO_INCREMENT,
   `idPersonaje` int(11) NOT NULL,
   `idRaza` int(11) NOT NULL,
-  PRIMARY KEY (`idPersonajeRaza`),
-  INDEX (`idPersonaje`),
-  INDEX (`idRaza`)
+  PRIMARY KEY (`idPersonajeRaza`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -354,10 +321,7 @@ CREATE TABLE IF NOT EXISTS `pocion` (
   `idPocion` int(11) NOT NULL AUTO_INCREMENT,
   `idPersonaje` int(11) NOT NULL,
   `idObjeto` int(11) NOT NULL,
-  PRIMARY KEY (`idPocion`),
-  INDEX (`idPersonaje`),
-  INDEX (`idObjeto`),
-  KEY `pocion_pocionCantidad_FK` (`idPocion`)
+  PRIMARY KEY (`idPocion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -371,8 +335,7 @@ CREATE TABLE IF NOT EXISTS `pocionCantidad` (
   `idPocionCantidad` int(11) NOT NULL AUTO_INCREMENT,
   `idPocion` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`idPocionCantidad`),
-  INDEX (`idPocion`)
+  PRIMARY KEY (`idPocionCantidad`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -386,8 +349,7 @@ CREATE TABLE IF NOT EXISTS `raza` (
   `idRaza` int(11) NOT NULL,
   `raza` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`idRaza`),
-  UNIQUE (`raza`),
-  KEY `raza_personajeRaza_FK` (`idRaza`)
+  UNIQUE (`raza`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -410,8 +372,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `nombre` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`idUsuario`),
-  UNIQUE (`nombre`),
-  KEY `usuario_personaje_FK` (`idUsuario`)
+  UNIQUE (`nombre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -425,8 +386,7 @@ CREATE TABLE IF NOT EXISTS `usuarioPersonaje` (
   `idUsuarioPersonaje` int(11) NOT NULL AUTO_INCREMENT,
   `idPersonaje` int(11) NOT NULL,
   `idUsuario` int(11) NOT NULL,
-  PRIMARY KEY (`idUsuarioPersonaje`),
-  INDEX (`idUsuario`)
+  PRIMARY KEY (`idUsuarioPersonaje`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -439,8 +399,7 @@ DROP TABLE IF EXISTS `texto`;
 CREATE TABLE IF NOT EXISTS `texto` (
   `idTexto` int(11) NOT NULL,
   `texto` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`idTexto`),
-  KEY `texto_aventura_FK` (`idTexto`)
+  PRIMARY KEY (`idTexto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -462,8 +421,7 @@ CREATE TABLE IF NOT EXISTS `tipo` (
   `idTipo` int(11) NOT NULL,
   `tipo` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`idTipo`),
-  UNIQUE (`tipo`),
-  KEY `tipo_objetoTipo_FK` (`idTipo`)
+  UNIQUE (`tipo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -483,109 +441,109 @@ CREATE TABLE IF NOT EXISTS `tipo` (
 --
 
 --
--- Filtros para la tabla `avatar`
---
-ALTER TABLE `avatar`
-  ADD CONSTRAINT `avatar_personajeAvatar_FK` FOREIGN KEY (`idAvatar`) REFERENCES `personajeAvatar` (`idAvatar`);
-
-ALTER TABLE `avatar`
-  ADD CONSTRAINT `avatar_monstruoAvatar_FK` FOREIGN KEY (`idAvatar`) REFERENCES `monstruoAvatar` (`idAvatar`);
-
---
 -- Filtros para la tabla `aventura`
 --
 ALTER TABLE `aventura`
-  ADD CONSTRAINT `aventura_mapa_FK` FOREIGN KEY (`idAventura`) REFERENCES `mapa` (`idAventura`);
+  ADD CONSTRAINT `texto_aventura_FK` FOREIGN KEY (`idTexto`) REFERENCES `texto` (`idTexto`);
 
 --
--- Filtros para la tabla `clase`
+-- Filtros para la tabla `habilidadPersonaje`
 --
-ALTER TABLE `clase`
-  ADD CONSTRAINT `clase_personajeClase_FK` FOREIGN KEY (`idClase`) REFERENCES `personajeClase` (`idClase`);
+ALTER TABLE `habilidadPersonaje`
+  ADD CONSTRAINT `personaje_habilidadPersonaje_FK` FOREIGN KEY (`idPersonaje`) REFERENCES `personaje` (`idPersonaje`);
+
+ALTER TABLE `habilidadPersonaje`
+  ADD CONSTRAINT `habilidad_habilidadPersonaje_FK` FOREIGN KEY (`idHabilidad`) REFERENCES `habilidad` (`idHabilidad`);
 
 --
--- Filtros para la tabla `habilidad`
+-- Filtros para la tabla `inventarioPersonaje`
 --
-ALTER TABLE `habilidad`
-  ADD CONSTRAINT `habilidad_personaje_FK` FOREIGN KEY (`idHabilidad`) REFERENCES `habilidadPersonaje` (`idHabilidad`);
+ALTER TABLE `inventarioPersonaje`
+  ADD CONSTRAINT `objeto_inventarioPersonaje_armaEquipada_FK` FOREIGN KEY (`armaEquipada`) REFERENCES `objeto` (`idObjeto`);
+
+ALTER TABLE `inventarioPersonaje`
+  ADD CONSTRAINT `objeto_inventarioPersonaje_armaduraEquipada_FK` FOREIGN KEY (`armaduraEquipada`) REFERENCES `objeto` (`idObjeto`);
 
 --
 -- Filtros para la tabla `mapa`
 --
 ALTER TABLE `mapa`
-  ADD CONSTRAINT `mapa_partida_FK` FOREIGN KEY (`idMapa`) REFERENCES `partida` (`idMapa`);
+  ADD CONSTRAINT `aventura_mapa_FK` FOREIGN KEY (`idAventura`) REFERENCES `aventura` (`idAventura`);
 
 --
--- Filtros para la tabla `monstruo`
+-- Filtros para la tabla `monstruoAvatar`
 --
-ALTER TABLE `monstruo`
-  ADD CONSTRAINT `monstruo_avatar_FK` FOREIGN KEY (`idMonstruo`) REFERENCES `monstruoAvatar` (`idMonstruo`);
+ALTER TABLE `monstruoAvatar`
+  ADD CONSTRAINT `personaje_monstruoAvatar_FK` FOREIGN KEY (`idMonstruo`) REFERENCES `monstruo` (`idMonstruo`);
 
---
--- Filtros para la tabla `objeto`
---
-ALTER TABLE `objeto`
-  ADD CONSTRAINT `objeto_pocion_FK` FOREIGN KEY (`idObjeto`) REFERENCES `pocion` (`idObjeto`);
-
-ALTER TABLE `objeto`
-  ADD CONSTRAINT `objeto_inventarioPersonaje_armaEquipada_FK` FOREIGN KEY (`idObjeto`) REFERENCES `inventarioPersonaje` (`idObjeto`);
-
-ALTER TABLE `objeto`
-  ADD CONSTRAINT `objeto_inventarioPersonaje_armaduraEquipada_FK` FOREIGN KEY (`idObjeto`) REFERENCES `inventarioPersonaje` (`idObjeto`);
-
-ALTER TABLE `objeto`
-  ADD CONSTRAINT `objeto_objetoTipo_FK` FOREIGN KEY (`idObjeto`) REFERENCES `objetoTipo` (`idObjeto`);
+ALTER TABLE `monstruoAvatar`
+  ADD CONSTRAINT `avatar_monstruoAvatar_FK` FOREIGN KEY (`idAvatar`) REFERENCES `avatar` (`idAvatar`);
 
 --
--- Filtros para la tabla `personaje`
+-- Filtros para la tabla `objetoTipo`
 --
-ALTER TABLE `personaje`
-  ADD CONSTRAINT `personaje_habilidades_FK` FOREIGN KEY (`idPersonaje`) REFERENCES `habilidadPersonaje` (`idPersonaje`);
+ALTER TABLE `objetoTipo`
+  ADD CONSTRAINT `objeto_objetoTipo_FK` FOREIGN KEY (`idObjeto`) REFERENCES `objeto` (`idObjeto`);
 
-ALTER TABLE `personaje`
-  ADD CONSTRAINT `personaje_usuario_FK` FOREIGN KEY (`idPersonaje`) REFERENCES `usuarioPersonaje` (`idPersonaje`);
+ALTER TABLE `objetoTipo`
+  ADD CONSTRAINT `tipo_objetoTipo_FK` FOREIGN KEY (`idTipo`) REFERENCES `tipo` (`idTipo`);
 
-ALTER TABLE `personaje`
-  ADD CONSTRAINT `personaje_pocion_FK` FOREIGN KEY (`idPersonaje`) REFERENCES `pocion` (`idPersonaje`);
+--
+-- Filtros para la tabla `partida`
+--
+ALTER TABLE `partida`
+  ADD CONSTRAINT `personaje_partida_FK` FOREIGN KEY (`idPersonaje`) REFERENCES `personaje` (`idPersonaje`);
 
-ALTER TABLE `personaje`
-  ADD CONSTRAINT `personaje_partida_FK` FOREIGN KEY (`idPersonaje`) REFERENCES `partida` (`idPersonaje`);
+ALTER TABLE `partida`
+  ADD CONSTRAINT `mapa_partida_FK` FOREIGN KEY (`idMapa`) REFERENCES `mapa` (`idMapa`);
 
-ALTER TABLE `personaje`
-  ADD CONSTRAINT `personaje_raza_FK` FOREIGN KEY (`idPersonaje`) REFERENCES `personajeRaza` (`idPersonaje`);
+--
+-- Filtros para la tabla `personajeAvatar`
+--
+ALTER TABLE `personajeAvatar`
+  ADD CONSTRAINT `personaje_personajeAvatar_FK` FOREIGN KEY (`idPersonaje`) REFERENCES `personaje` (`idPersonaje`);
 
-ALTER TABLE `personaje`
-  ADD CONSTRAINT `personaje_clase_FK` FOREIGN KEY (`idPersonaje`) REFERENCES `hpersonajeClase` (`idPersonaje`);
+ALTER TABLE `personajeAvatar`
+  ADD CONSTRAINT `avatar_personajeAvatar_FK` FOREIGN KEY (`idAvatar`) REFERENCES `avatar` (`idAvatar`);
 
-ALTER TABLE `personaje`
-  ADD CONSTRAINT `personaje_avatar_FK` FOREIGN KEY (`idPersonaje`) REFERENCES `personajeAvatar` (`idPersonaje`);
+--
+-- Filtros para la tabla `personajeClase`
+--
+ALTER TABLE `personajeClase`
+  ADD CONSTRAINT `personaje_personajeClase_FK` FOREIGN KEY (`idPersonaje`) REFERENCES `personaje` (`idPersonaje`);
+
+ALTER TABLE `personajeClase`
+  ADD CONSTRAINT `clase_personajeClase_FK` FOREIGN KEY (`idClase`) REFERENCES `clase` (`idClase`);
+
+--
+-- Filtros para la tabla `personajeRaza`
+--
+ALTER TABLE `personajeRaza`
+  ADD CONSTRAINT `personaje_personajeRaza_FK` FOREIGN KEY (`idPersonaje`) REFERENCES `personaje` (`idPersonaje`);
+
+ALTER TABLE `personajeRaza`
+  ADD CONSTRAINT `clase_personajeRaza_FK` FOREIGN KEY (`idRaza`) REFERENCES `raza` (`idRaza`);
 
 --
 -- Filtros para la tabla `pocion`
 --
 ALTER TABLE `pocion`
-  ADD CONSTRAINT `pocion_pocionCantidad_FK` FOREIGN KEY (`idPocion`) REFERENCES `pocionCantidad` (`idPocion`);
+  ADD CONSTRAINT `personaje_pocion_FK` FOREIGN KEY (`idPersonaje`) REFERENCES `personaje` (`idPersonaje`);
+
+ALTER TABLE `pocion`
+  ADD CONSTRAINT `objeto_pocion_FK` FOREIGN KEY (`idObjeto`) REFERENCES `objeto` (`idObjeto`);
 
 --
--- Filtros para la tabla `raza`
+-- Filtros para la tabla `pocionCantidad`
 --
-ALTER TABLE `raza`
-  ADD CONSTRAINT `raza_personajeRaza_FK` FOREIGN KEY (`idRaza`) REFERENCES `personajeRaza` (`idRaza`);
+ALTER TABLE `pocionCantidad`
+  ADD CONSTRAINT `pocion_pocionCantidad_FK` FOREIGN KEY (`idPocion`) REFERENCES `pocion` (`idPocion`);
 
 --
--- Filtros para la tabla `usuario`
+-- Filtros para la tabla `usuarioPersonaje`
 --
-ALTER TABLE `usuario`
-  ADD CONSTRAINT `usuario_personaje_FK` FOREIGN KEY (`idUsuario`) REFERENCES `usuarioPersonaje` (`idUsuario`);
+ALTER TABLE `usuarioPersonaje`
+  ADD CONSTRAINT `personaje_usuarioPersonaje_FK` FOREIGN KEY (`idPersonaje`) REFERENCES `personaje` (`idPersonaje`);
 
---
--- Filtros para la tabla `texto`
---
-ALTER TABLE `texto`
-  ADD CONSTRAINT `texto_aventura_FK` FOREIGN KEY (`idTexto`) REFERENCES `aventura` (`idTexto`);
-
---
--- Filtros para la tabla `tipo`
---
-ALTER TABLE `tipo`
-  ADD CONSTRAINT `tipo_objetoTipo_FK` FOREIGN KEY (`idTipo`) REFERENCES `objetoTipo` (`idTipo`);
+ALTER TABLE `usuarioPersonaje`
+  ADD CONSTRAINT `usuario_usuarioPersonaje_FK` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`);
