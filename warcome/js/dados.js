@@ -6,6 +6,8 @@ function dados(tirada){
 	
 	var tipoDado = parseInt(tirada.substring(d+1));			/* Segundo número */
 	
+	var mostrar = document.getElementById('mostrar');
+	
 	//console.log(numeroDados);
 	//console.log(tipoDado);
 	
@@ -19,7 +21,7 @@ function dados(tirada){
 			resultadoTirada += random;
 		}
 	}
-	
-	//console.log(resultadoTirada);
+	// mostrar.innerHTML = resultadoTirada;
+	// console.log(resultadoTirada);
 	return resultadoTirada;
 }

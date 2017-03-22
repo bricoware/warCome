@@ -22,18 +22,21 @@
 					throw new Exception("No se pudo recuperar");
 				}
 				if($resultado->num_rows > 0){
-					echo "Ya existe un usuario con ese nombre";
+					echo "<span class='error'>Ya existe un usuario con ese nombre.</span>";
 				} else if($resultado->num_rows == 0){
-					$consulta2 = "INSERT INTO usuario(nombre, password)
+					if($this->nombre == ""){
+						throw new Exception("<span class='error'>ERROR: El campo para el nombre de usuario no puede estar vacío.</span>");
+					}
+					$consulta2 = "INSERT INTO usuario (nombre, password)
 								VALUES (\"".$this->nombre."\", \"".md5($this->pass)."\");";
 					$resultado2 = $this->acceso->getConector()->query($consulta2);
 					if(!$resultado2){
-						throw new Exception("No se pudo registrar");
+						throw new Exception("<span class='error'>No se pudo registrar.</span>");
 					}
 					echo "Usuario ".$this->nombre." registrado correctamente";
 				}
 			}catch(Exception $error){
-				return $error->getMessage();
+				echo $error->getMessage();
 			}
 		}
 	}

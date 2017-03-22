@@ -7,11 +7,11 @@
 				$nuevoUsuario = new nuevoUsuario($_POST["nombreRegistro"], $_POST["passRegistro"]);
 				$nuevoUsuario->registraUsuario();
 			} else {
-				echo "Las contraseñas no coinciden";
+				echo "<span class='error'>Las contraseñas no coinciden</span>";
 			}
 		}
 	}else{
-		echo "No se puede mostrar el contenido de este módulo";
+		echo "<span class='error'>No se puede mostrar el contenido de este módulo</span>";
 	}
 	
 ?>

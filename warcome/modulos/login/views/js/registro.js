@@ -1,7 +1,7 @@
 function registrarUsuario(){
 	var xhttp = new XMLHttpRequest();
 	
-	var direccion = "../controllers/registroUsuario.php";
+	var direccion = "modulos/login/controllers/registroUsuario.php";
 	xhttp.open("POST", direccion, true);
 	
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

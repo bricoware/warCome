@@ -14,7 +14,7 @@
 	
 	<ul>
 		<li>
-			<a href='http://warcome.local/modulos/formulario/index.php'> <div class="menuPrincipal"> Partida Nueva </div> </a> 
+			<a href='http://warcome.local/crearPersonaje.php'> <div class="menuPrincipal"> Partida Nueva </div> </a> 
 		</li>
 		
 		<li>

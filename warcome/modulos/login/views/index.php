@@ -1,38 +1,27 @@
 <?php
-
 	session_start();
-	require_once(dirname(dirname(__FILE__)).'/controllers/acceso.php');
+	require_once(dirname(dirname(__FILE__)) . "/controllers/acceso.php");
 
 	if(!isset($_SESSION['autentificado'])){
-		
 ?>
-
-<link type="text/css" rel="stylesheet" href="modulos/login/views/css/login.css" />
-
-<div id="logueando">
-	<form id="logueo" action="http://warcome.local/" method="POST">
+<form action="#" method="POST">
+	<div class="contenedor">
 		<div>
-			<label for="nombreUsuario"> Usuario: </label>
-			<input type="text" id="nombreUsuario" name="nombreUsuario" placeholder="Nombre de usuario" />
+			<label for="nombreUsuario">Usuario:</label>
+			<input type="text" id="nombreUsuario" name="nombreUsuario" placeholder="Nombre de usuario" required>
 		</div>
 		<div>
-			<label for="passUsuario"> Contraseña: </label>
-			<input type="password" id="passUsuario" name="passUsuario" />
+			<label for="passUsuario">Contraseña:</label>
+			<input type="password" id="passUsuario" name="passUsuario" placeholder="Contraseña" required>
 		</div>
 		<div>
-			<input type="submit" value="Log In" />
-			&nbsp; &nbsp;
-			<a href="http://warcome.local/modulos/login/views/registro.php"> Registrarse </a>
+			<button type="submit">Acceder</button>
+			<button type="button" class="boton-falso" onclick="location.href='registro.php'">Regístrate aquí.</button>
 		</div>
-	</form>
-</div>
-
-<script type="text/javascript" src="js/login.js"></script>
-
+	</div>
+</form>
 <?php
-
 	} else {
 		require_once('autentificado.php');
 	}
-	
 ?>

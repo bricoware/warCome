@@ -29,3 +29,27 @@
     float: right;
     /* padding-top: .5em; */
 }
+@media only screen and (max-width: 960px){
+	#login form {
+		width: 100%;
+	}
+	#login .contenedor {
+		padding: 0;
+	}
+	#login .contenedor div {
+		display: inline-block;
+		width: 30%;
+	}
+}
+@media only screen and (max-width: 800px){
+	#login .contenedor div {
+		display: inline-block;
+		width: 80%;
+	}
+}
+@media screen and (max-width: 300px) {
+    #login span.cuenta {
+        display: block;
+        float: none;
+    }
+}
