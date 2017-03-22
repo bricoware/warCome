@@ -1,0 +1,99 @@
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 90%;
+    height: 95%;
+	margin: 2.5% 5%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%;
+}
+
+#divImagenPJ, #divImagenMonstruo {
+	float: left;
+	width: 35%;
+	height: 480px;
+	margin: 10px 2.5%;
+}
+
+#divNombrePJ, #divNombreMonstruo {
+	width: 100%;
+	height: 50px;
+}
+
+#divImagenPJ img {
+	width: 100%;
+	height: 350px;
+}
+
+#divImagenMonstruo img {
+	width: 100%;
+	height: 430px;
+}
+
+#divHP {
+	float: left;
+	width: 35%;
+	height: 50px;
+	margin: 5px 2.5%;
+}
+
+#divVs {
+	float: left;
+	width: 20%;
+	height: 200px;
+	margin: 10px 0;
+}
+
+#divVs img {
+	width: 100%;
+	height: 200px;
+	margin-top: 100px;
+}
+
+#divBotones, #divCombatLog {
+	float: left;
+	width: 45%;
+	height: 150px;
+	margin: 5px 2.5%;
+}
+
+#divBotonAtaque, #divBotonObjetos {
+	float: left;
+	width: 50px;
+	height: 50px;
+	margin: 50px auto;
+}
+
+#divListaAtaques, #divListaObjetos {
+	display: none;
+	position: absolute;
+	width: 200px;
+	height: 200px;
+	top: -250px;
+}
+
+#divBotonAtaque:hover #divListaAtaques {
+	display: block;
+}
+
+#divBotonObjetos:hover #divListaObjetos {
+	display: block;
+}
+
+.habilidades, .pociones {
+	width: 100%;
+	border: solid .5px black;
+	box-sizing: border-box;
+}
