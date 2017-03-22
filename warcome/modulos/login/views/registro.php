@@ -23,7 +23,7 @@
 			</div>
 			<div>
 				<button type="button" onclick="Javascript:registrarUsuario();">Registrar</button>
-				<button type="button" class="boton-falso" onclick="location.href='index.php'">Volver </button>
+				<button type="button" class="boton-falso" onclick="location.href='index.php'">Volver</button>
 			</div>
 		</form>
 	</div>

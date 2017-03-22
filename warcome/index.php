@@ -5,6 +5,7 @@
 		<title>The Legend of Warcome</title>
 		<link rel="stylesheet" href="css/estilos.css">
 		<link rel="stylesheet" href="modulos/login/views/css/login.css">
+		<link rel="stylesheet" href="modulos/login/views/css/autentificado.css">
 	</head>
 	<body>
 		<section class="centro" id="login">

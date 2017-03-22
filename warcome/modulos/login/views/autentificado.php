@@ -1,14 +1,11 @@
-
 <div id='autentificado'> 
-	<h2 style='margin-bottom:0' > 
-		<?php 
-			
+	<h2> 
+		<?php
 			if (isset($_SESSION["usuario"])){		/* La condicional es solo para tests */
 				echo "Bienvenido, ".$_SESSION["usuario"];
 			} else {
 				echo "Bienvenido, Yo testeando cosas";
 			}
-		
 		?>
 	</h2>
 	
@@ -18,7 +15,7 @@
 		</li>
 		
 		<li>
-			<a href='#'> <div class="menuPrincipal"> Cargar Partida </div> </a> 
+			<a href='http://warcome.local/modulos/seleccionPersonaje/hojaSeleccion.php'> <div class="menuPrincipal"> Cargar Partida </div> </a> 
 		</li>
 		
 		<li>
@@ -26,5 +23,3 @@
 		</li>		
 	</ul>
 </div>
-
-<link type="text/css" rel="stylesheet" href="modulos/login/views/css/autentificado.css" />

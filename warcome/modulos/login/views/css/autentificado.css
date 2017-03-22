@@ -7,11 +7,12 @@ html, body {
 
 #autentificado {
 	width: 100%;
-	margin: 200px 0 0 25%;
+	/* margin: 200px 0 0 25%; */
 }
 
 #autentificado ul {
 	width: 50%;
+	margin: auto!important;
 }
 
 #autentificado ul, #autentificado ul li {

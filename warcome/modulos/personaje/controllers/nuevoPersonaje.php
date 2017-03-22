@@ -15,7 +15,7 @@
 		$nuevoPersonaje = new nuevoPersonaje($nombrePersonaje, $fuerza, $destreza, $inteligencia, $constitucion, $vidaMax, $vidaActual, $acPersonaje, $oro);
 		$nuevoPersonaje->crearNuevoPersonaje();
 		
-		/* En cuanto tengamos pantalla de selección de personaje hay que cambiar para que redirija ahí. */
-		header("Location: http://warcome.local/");
+		// Redirección a la página de selección de personaje una vez se crea.
+		header("Location: http://warcome.local/modulos/seleccionPersonaje/hojaSeleccion.php");
 	}
 ?>

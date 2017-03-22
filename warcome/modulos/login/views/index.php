@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	require_once(dirname(dirname(__FILE__)) . "/controllers/acceso.php");
-
+	
 	if(!isset($_SESSION['autentificado'])){
 ?>
 <form action="#" method="POST">

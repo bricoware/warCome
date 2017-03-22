@@ -3,7 +3,7 @@ function mostrarDescripcion(){
 	var xhttp = new XMLHttpRequest();
 	
 	var seleccion = document.getElementById("habilidadPersonaje").value;
-	var direccion = "controllers/mostrarDescripcion.php?habilidad="+seleccion;
+	var direccion = "modulos/personaje/controllers/mostrarDescripcion.php?habilidad="+seleccion;
 	
 	xhttp.open("GET", direccion, true);
 	xhttp.send();
