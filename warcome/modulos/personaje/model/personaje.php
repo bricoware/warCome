@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	require_once($_SERVER['DOCUMENT_ROOT']."/core/conector.php");
 	
 	class nuevoPersonaje{
@@ -11,10 +12,13 @@
 		private $vidaMax;
 		private $vidaActual;
 		private $acPersonaje;
+		private $raza;
+		private $clase;
+		private $habilidad;
 		
 		private $acceso;
 		
-		public function __construct($nombrePersonaje, $fuerza, $destreza, $inteligencia, $constitucion, $vidaMax, $vidaActual, $acPersonaje){
+		public function __construct($nombrePersonaje, $fuerza, $destreza, $inteligencia, $constitucion, $vidaMax, $vidaActual, $acPersonaje, $raza, $clase, $habilidad){
 			$this->acceso = new conector();
 			$this->nombrePersonaje = $nombrePersonaje;
 			$this->fuerza = $fuerza;
@@ -24,6 +28,10 @@
 			$this->vidaMax = $vidaMax;
 			$this->vidaActual = $vidaActual;
 			$this->acPersonaje = $acPersonaje;
+			$this->raza = $raza;
+			$this->clase = $clase;
+			$this->habilidad = $habilidad;
+			// $this->avatar = $avatar;
 		}
 		
 		function crearNuevoPersonaje(){
@@ -32,11 +40,32 @@
 						VALUES('".$this->nombrePersonaje."','".$this->fuerza."','".$this->destreza."',
 						'".$this->inteligencia."','".$this->constitucion."','".$this->vidaMax."',
 						'".$this->vidaActual."','".$this->acPersonaje."');";
-				//var_dump($consulta);
 				$resultado = $this->acceso->getConector()->query($consulta);
-				// var_dump($this->acceso);
 				if(!$resultado){
 					throw new Exception("<p>ERROR: No se han podido insertar los valores de la ficha de personaje en la base de datos:</p>" . $this->acceso->getConector()->error);
+				}
+				
+				// Recupero el identificador de personaje de la consulta anterior.
+				$identificadorPersonaje = $this->acceso->getConector()->insert_id;
+				// Recupero el identificador de usuario de la sesión actual.
+				$consultaID = "SELECT idUsuario FROM usuario WHERE usuario.nombre LIKE \"". $_SESSION['usuario'] . "\";";
+				$resultadoUsuario = $this->acceso->getConector()->query($consultaID);
+				$registroID = $resultadoUsuario->fetch_assoc();
+				$identificadorUsuario = $registroID['idUsuario'];
+				
+				// Hago las inserciones en las tablas relacionadas.
+				$consulta2 = "INSERT INTO usuarioPersonaje (idPersonaje, idUsuario) VALUES (\"$identificadorPersonaje\",\"$identificadorUsuario\");";
+				$consulta3 = "INSERT INTO habilidadPersonaje (idPersonaje, idHabilidad) VALUES (\"$identificadorPersonaje\",\"$this->habilidad\");";
+				$consulta4 = "INSERT INTO personajeRaza (idPersonaje, idRaza) VALUES (\"$identificadorPersonaje\",\"$this->raza\");";
+				$consulta5 = "INSERT INTO personajeClase (idPersonaje, idClase) VALUES (\"$identificadorPersonaje\",\"$this->clase\");";
+				// $consulta6 = "INSERT INTO usuarioAvatar (idPersonaje, idAvatar) VALUES (\"$identificadorPersonaje\",\"$avatar\");";
+				$resultado2 = $this->acceso->getConector()->query($consulta2);
+				$resultado3 = $this->acceso->getConector()->query($consulta3);
+				$resultado4 = $this->acceso->getConector()->query($consulta4);
+				$resultado5 = $this->acceso->getConector()->query($consulta5);
+				// $resultado6 = $this->acceso->getConector()->query($consulta6);
+				if(!$resultado2 || !$resultado3 || !$resultado4 || !$resultado5){
+					throw new Exception("<p>ERROR: No se han podido insertar los valores en alguna de las tablas relacionadas con la ficha de personaje.</p>" . $this->acceso->getConector()->error);
 				}
 			} catch(Exception $error){
 				echo $error->getMessage();

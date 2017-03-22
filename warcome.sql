@@ -500,7 +500,11 @@ ALTER TABLE `usuariopersonaje`
 -- AUTO_INCREMENT de la tabla `aventura`
 --
 ALTER TABLE `aventura`
-  MODIFY `idAventura` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idAventura` int(11) NOT NULL AUTO_INCREMENT;--
+-- AUTO_INCREMENT de la tabla `habilidadpersonaje`
+--
+ALTER TABLE `habilidadpersonaje`
+  MODIFY `idHabilidadPersonaje` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `inventariopersonaje`
 --

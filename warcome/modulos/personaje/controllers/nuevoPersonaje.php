@@ -10,8 +10,12 @@
 		$vidaMax = ($constitucion*3);
 		$vidaActual = $vidaMax;
 		$acPersonaje = (10 + $destreza);
+		$raza = $_POST['razaPersonaje'];
+		$clase = $_POST['clasePersonaje'];
+		$habilidad = $_POST['habilidadPersonaje'];
+		// $avatar = $_POST['avatar'];
 		
-		$nuevoPersonaje = new nuevoPersonaje($nombrePersonaje, $fuerza, $destreza, $inteligencia, $constitucion, $vidaMax, $vidaActual, $acPersonaje);
+		$nuevoPersonaje = new nuevoPersonaje($nombrePersonaje, $fuerza, $destreza, $inteligencia, $constitucion, $vidaMax, $vidaActual, $acPersonaje, $raza, $clase, $habilidad);
 		$nuevoPersonaje->crearNuevoPersonaje();
 		
 		// Redirección a la página de selección de personaje una vez se crea.

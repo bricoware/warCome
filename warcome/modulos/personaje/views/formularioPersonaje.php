@@ -63,9 +63,7 @@
 				<select name="habilidadPersonaje" id="habilidadPersonaje" onchange="mostrarDescripcion()" required>
 					<option name="habilidadPersonaje" value="0" selected disabled>- selecciona una habilidad -</option>
 					<?php
-						$descripciones = array();
 						while($registroHabilidad = $resultadoHabilidad->fetch_assoc()){
-							array_push($descripciones, array($registroHabilidad['idHabilidad'] => array($registroHabilidad['descripcionHabilidad'], $registroHabilidad['danho'])));
 							echo '<option name="habilidadPersonaje" value="' . $registroHabilidad['idHabilidad'] . '">' . $registroHabilidad['nombreHabilidad'] . '</option>';
 						}
 					?>
