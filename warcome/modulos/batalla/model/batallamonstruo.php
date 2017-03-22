@@ -16,7 +16,7 @@
 		function obtenerDatosMonstruo(){
 			try{
 				$consulta = "SELECT monstruo.nombreMonstruo, monstruo.ataqueMonstruo, monstruo.acMonstruo, monstruo.vidaMonstruo, 
-							monstruo.xpOtorgada, avatar.avatar
+							monstruo.xpOtorgada, avatar.avatar, monstruo.posibilidadGolpear
 							FROM monstruo
 							INNER JOIN monstruoavatar
 							ON monstruo.idMonstruo = monstruoavatar.idMonstruo

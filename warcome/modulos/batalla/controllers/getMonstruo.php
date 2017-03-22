@@ -22,6 +22,7 @@
 				$xml .= "<vidaMonstruo>".$registroMonstruo->vidaMonstruo.".</vidaMonstruo>";
 				$xml .= "<xpOtorgada>".$registroMonstruo->xpOtorgada.".</xpOtorgada>";
 				$xml .= "<avatar>".$registroMonstruo->avatar.".</avatar>";
+				$xml .= "<posibilidadGolpear>".$registroMonstruo->posibilidadGolpear.".</posibilidadGolpear>";
 				
 			$xml .= "</monstruo>"; 
 		}

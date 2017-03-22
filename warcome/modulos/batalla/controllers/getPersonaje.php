@@ -49,6 +49,7 @@
 						$xml .= "<estadistica1>".$registroPociones->estadistica1.".</estadistica1>";
 						$xml .= "<valor1>".$registroPociones->valor1.".</valor1>";
 						$xml .= "<cantidad>".$registroPociones->cantidad.".</cantidad>";
+						$xml .= "<idObjeto>".$registroPociones->idObjeto.".</idObjeto>";
 					$xml .= "</pocion>";
 				}
 			$xml .= "</pociones>";
@@ -58,9 +59,12 @@
 						$xml .= "<nombreHabilidad>".$registroHabilidades->nombreHabilidad.".</nombreHabilidad>";
 						$xml .= "<descripcionHabilidad>".$registroHabilidades->descripcionHabilidad.".</descripcionHabilidad>";
 						$xml .= "<danho>".$registroHabilidades->danho.".</danho>";
+						$xml .= "<idHabilidad>".$registroHabilidades->idHabilidad.".</idHabilidad>";
+						$xml .= "<estadisticaHabilidad>".$registroHabilidades->estadisticaHabilidad.".</estadisticaHabilidad>";
 					$xml .= "</habilidad>";
 				}
 			$xml .= "</habilidades>";
+			$xml .= "<nivel>".$registroPersonaje->nivel.".</nivel>";
 			
 		$xml .= "</personaje>";
 	}

@@ -17,7 +17,7 @@
 			try{
 				$consultaPersonaje = "SELECT personaje.nombrePersonaje, personaje.fuerza, personaje.destreza, personaje.inteligencia, 
 							personaje.constitucion, personaje.vidaMax, personaje.vidaActual, personaje.acPersonaje, 
-							personaje.oro, avatar.avatar
+							personaje.oro, avatar.avatar, personaje.nivel
 							FROM personaje
 							INNER JOIN personajeavatar
 							ON personaje.idPersonaje = personajeavatar.idPersonaje
@@ -63,7 +63,7 @@
 					throw new Exception("<div id='error'> No se encontró ese objeto </div>");
 				}
 				
-				$consultaPociones = "SELECT objeto.nombreObjeto, objeto.descripcion, objeto.estadistica1, objeto.valor1, pocionCantidad.cantidad
+				$consultaPociones = "SELECT objeto.nombreObjeto, objeto.descripcion, objeto.estadistica1, objeto.valor1, pocionCantidad.cantidad, objeto.idObjeto
 							FROM objeto
 							INNER JOIN pocion
 							ON objeto.idObjeto = pocion.idObjeto
@@ -82,7 +82,8 @@
 					throw new Exception("<div id='error'> No se encontró ese personaje </div>");
 				}
 				
-				$consultaHabilidades = "SELECT habilidad.nombreHabilidad, habilidad.descripcionHabilidad, habilidad.danho
+				$consultaHabilidades = "SELECT habilidad.nombreHabilidad, habilidad.descripcionHabilidad, habilidad.danho, 
+										habilidad.idHabilidad, habilidad.estadisticaHabilidad
 										FROM habilidad
 										WHERE habilidad.idHabilidad = (
 											SELECT habilidadpersonaje.idHabilidad FROM habilidadpersonaje 
