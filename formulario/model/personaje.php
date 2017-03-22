@@ -1,6 +1,5 @@
 <?php
-	
-	require_once(dirname(dirname(dirname(dirname(__FILE__))))."/core/conector.php");
+	require_once($_SERVER['DOCUMENT_ROOT']."/core/conector.php");
 	
 	class nuevoPersonaje{
 		
@@ -28,23 +27,23 @@
 			$this->acPersonaje = $acPersonaje;
 			$this->oro = $oro;
 		}
-
+		
 		function crearNuevoPersonaje(){
-			try{
+			try {
 				$consulta = "INSERT INTO personaje (nombrePersonaje, fuerza, destreza, inteligencia, constitucion, vidaMax, vidaActual, acPersonaje, oro) 
 						VALUES('".$this->nombrePersonaje."','".$this->fuerza."','".$this->destreza."',
 						'".$this->inteligencia."','".$this->constitucion."','".$this->vidaMax."',
 						'".$this->vidaActual."','".$this->acPersonaje."','".$this->oro."');";
 				//var_dump($consulta);
 				$resultado = $this->acceso->getConector()->query($consulta);
+				// var_dump($this->acceso);
 				if(!$resultado){
-					throw new Exception("No se pudo insertar");
+					throw new Exception("<p>ERROR: No se han podido insertar los valores de la ficha de personaje en la base de datos:</p>" . $this->acceso->getConector()->error);
 				}
-
-			}catch(Exception $error){
-				return $error->getMessage();
+			} catch(Exception $error){
+				echo $error->getMessage();
+				die;
 			}
 		}
 	}
-	
 ?>

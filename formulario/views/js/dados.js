@@ -21,7 +21,7 @@ function dados(tirada){
 			resultadoTirada += random;
 		}
 	}
-	mostrar.innerHTML = resultadoTirada;
-	console.log(resultadoTirada);
+	// mostrar.innerHTML = resultadoTirada;
+	// console.log(resultadoTirada);
 	return resultadoTirada;
 }

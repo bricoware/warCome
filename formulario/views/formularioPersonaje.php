@@ -1,40 +1,81 @@
-<h1>Formulario de registro</h1>
-<div class="contenedor">
-<table class="tabla"><form action="controllers/nuevoPersonaje.php" method="Post">
-	<tr>
-		<td><label for="nombrePersonaje">Nombre del Personaje:</label></td>
-		<td><input type="text" id="nombrePersonaje" name="nombrePersonaje"/></td>
-	</tr>
-	<tr>
-		<td><label for="fuerza">Fuerza:</label></td>
-		<td><input type="number" id="fuerza" name="fuerza" /></td>
-		<td><input type="button" onclick="javascript:dados('1d6');" value="Dado"/></td>
-	</tr>
-	<tr>
-		<td><label for="destreza">Destreza:</label></td>
-		<td><input type="number" id="destreza" name="destreza"/></td>
-		<td><input type="button" onclick="javascript:dados('1d6');" value="Dado"/></td>
-	</tr>
-	<tr>
-		<td><label for="inteligencia">Inteligencia:</label></td>
-		<td><input type="number" id="inteligencia" name="inteligencia"/></td>
-		<td><input type="button" onclick="javascript:dados('1d6');" value="Dado"/></td>
-	</tr>
-	<tr>
-		<td><label for="constitucion">Constitucion:</label></td>
-		<td><input type="number" id="constitucion" name="constitucion"/></td>
-		<td><input type="button" onclick="javascript:dados('1d6');" value="Dado"/></td>
-	</tr>
-	<tr>
-		<td><label for="oro">Oro:</label></td>
-		<td><input type="number" id="oro" name="oro"/></td>
-		<td><input type="button" onclick="javascript:dados('1d6');" value="Dado"/></td>
-	</tr>
-	<tr>
-		<td><input type="submit" value="Enviar"/></td>
-	</tr>
-</form></table></div>
-<div id="mostrar"></div>
-
-<link rel="stylesheet" type="text/css" href="views/css/estilo.css"/>
-<script type="text/javascript" src="views/js/dados.js"></script>
+<?php
+	require_once(dirname(dirname(__FILE__)) . "/model/infoPersonajes.php");
+	require_once(dirname(dirname(__FILE__)) . "/controllers/mostrarDescripcion.php");
+?>
+<section class="centro">
+	<div id="contenedor">
+		<h1>Nuevo personaje</h1>
+		<div id="dados">
+		</div>
+		<form action="controllers/nuevoPersonaje.php" method="post">
+			<div>
+				<label for="nombrePersonaje">Nombre del personaje:</label>
+				<input type="text" id="nombrePersonaje" name="nombrePersonaje" required>
+			</div>
+			<div>
+				<p><em>Tira los dados para asignar estadísticas a tu personaje.</em></p>
+				<button type="button" onclick="javascript:crearFicha();" id="botonTirada">Tirar los dados</button>
+			</div>
+			<div class="habilidades">
+				<label for="fuerza">Fuerza:</label>
+				<div class="distribucion"><p class="oculto">&nbsp;</p></div>
+				<input type="hidden" id="fuerza" name="fuerza" required>
+			</div>
+			<div class="habilidades">
+				<label for="destreza">Destreza:</label>
+				<div class="distribucion"><p class="oculto">&nbsp;</p></div>
+				<input type="hidden" id="destreza" name="destreza" required>
+			</div>
+			<div class="habilidades">
+				<label for="inteligencia">Inteligencia:</label>
+				<div class="distribucion"><p class="oculto">&nbsp;</p></div>
+				<input type="hidden" id="inteligencia" name="inteligencia" required>
+			</div>
+			<div class="habilidades">
+				<label for="constitucion">Constitución:</label>
+				<div class="distribucion"><p class="oculto">&nbsp;</p></div>
+				<input type="hidden" id="constitucion" name="constitucion" required>
+			</div>
+			<div>
+				<label for="razaPersonaje">Raza:</label>
+				<select name="razaPersonaje" id="razaPersonaje" required>
+					<option name="razaPersonaje" value="0" selected disabled>- selecciona una raza -</option>
+					<?php
+						while($registroRaza = $resultadoRaza->fetch_assoc()){
+							echo '<option name="razaPersonaje" value="' . $registroRaza['idRaza'] . '">' . $registroRaza['raza'] . '</option>';
+						}
+					?>
+				</select>
+			</div>
+			<div>
+				<label for="clasePersonaje">Clase:</label>
+				<select name="clasePersonaje" id="clasePersonaje" required>
+					<option name="clasePersonaje" value="0" selected disabled>- selecciona una clase -</option>
+					<?php
+						while($registroClase = $resultadoClase->fetch_assoc()){
+							echo '<option name="clasePersonaje" value="' . $registroClase['idClase'] . '">' . $registroClase['clase'] . '</option>';
+						}
+					?>
+				</select>
+			</div>
+			<div>
+				<label for="habilidadPersonaje">Habilidad:</label>
+				<select name="habilidadPersonaje" id="habilidadPersonaje" onchange="mostrarDescripcion()" required>
+					<option name="habilidadPersonaje" value="0" selected disabled>- selecciona una habilidad -</option>
+					<?php
+						$descripciones = array();
+						while($registroHabilidad = $resultadoHabilidad->fetch_assoc()){
+							array_push($descripciones, array($registroHabilidad['idHabilidad'] => array($registroHabilidad['descripcionHabilidad'], $registroHabilidad['danho'])));
+							echo '<option name="habilidadPersonaje" value="' . $registroHabilidad['idHabilidad'] . '">' . $registroHabilidad['nombreHabilidad'] . '</option>';
+						}
+					?>
+				</select>
+				<div id="descripcion">
+				</div>
+			</div>
+			<div class="centro">
+				<input type="submit" value="Crear el personaje">
+			</div>
+		</form>
+	</div>
+</section>

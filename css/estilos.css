@@ -1,0 +1,112 @@
+body {
+	font-size: 12pt;
+	font-family: sans-serif;
+	margin: 0 auto;
+	background-color: #eceff1;
+}
+a {
+	color: inherit;
+	/* text-decoration: none; */
+}
+header {
+	font-size: 1.75em;
+	text-align: center;
+	background-color: #d0cc7c;
+	cursor: pointer;
+}
+header > *, header section > * {
+	vertical-align: middle;
+}
+header section {
+	width: 50%;
+	margin: 0;
+	box-sizing: border-box;
+	display: inline-block;
+}
+header h1 {
+	margin: 0;
+	display: inline-block;
+}
+header img {
+	max-height: 150px;
+	min-height: 100px;
+	margin: 10px 10px 10px 0;
+}
+header form {
+	vertical-align: bottom;
+}
+div#contenedor {
+	max-width: 1200px;
+	margin: 50px auto;
+	padding: 0 .5em;
+}
+footer {
+	font-size: 1.25em;
+	background-color: #555;
+	color: #FFF;
+	padding: 1.5em 3.75em;
+}
+form {
+	display: inline-block;
+	margin: 5px 0;
+	width: 50%;
+}
+form > * {
+	text-align: right;
+}
+input[type=text], input[type=password], input[type=email], input[type=number], input[type=tel], input[type=submit], select {
+    width: 70%;
+    padding: .5em;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+input[type=submit]{
+	color: white;
+	background-color: #5900b3;
+}
+input[type=submit]:hover {
+	background-color: #8000ff;
+}
+button {
+    background-color: #5900b3;
+    color: white;
+    padding: .5em;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 45%;
+}
+button:disabled, button:disabled:hover {
+	cursor: initial;
+	background-color: #CCC;
+	color: graytext;
+}
+button:hover {
+	background-color: #8000ff;
+}
+button.boton-falso {
+	background-color: transparent;
+	color: black;
+}
+button.rojo {
+	background-color: #AF4C50;
+}
+button.rojo:hover {
+	background-color: #CF5D61;
+}
+.izquierda {
+	text-align: left;
+}
+.derecha {
+	text-align: right;
+}
+.centro {
+	text-align: center;
+}
+.error {
+	display: block;
+	font-weight: bold;
+	color: #F32;
+}
