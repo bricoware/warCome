@@ -9,19 +9,44 @@
 
 5.-		FELHOUND(PERRO FUEGO)		 1d4					LIGERA					 25						FUEGO
 6.-		GOLEM LAVA					 1d6					MALLA					 35						FUEGO
-7.-   	ELEMENTAL DE FUEGO			 1d8 				LAMINAS					 55						FUEGO	
-8.-		HIDRA DE FUEGO				 1d10 				PLACAS					 75						FUEGO					
+7.-   	ELEMENTAL DE FUEGO			 1d8 				LAMINAS					 55						FUEGO
+8.-		HIDRA DE FUEGO				 1d10 				PLACAS					 75						FUEGO
 9.-		WITCH(BRUJA GRITONA)		 1d4                 LIGERA					 25						ESPECTRAL
 10.-	BANSHEE(FANTASMA)			 1d6   				CUERO					 35						ESPECTRAL
-11.-	JINETE FANTASMA				 1d8 				PLACAS					 60						ESPECTRAL	
+11.-	JINETE FANTASMA				 1d8 				PLACAS					 60						ESPECTRAL
 12.-	NAZGUL						 1d10				CORAZA					 80						ESPECTRAL
 
 13.-  	PIRAÑA GIGANTE				 1d4 				LIGERA					 25						AGUA
 14.-	SERPIENTE PANTANO			 1d6 				CUERO					 35						AGUA
 15.-	TIBURON BLANCO				 1d8 				MALLA					 45						AGUA
-16.-	KRAKEN						 1d10				CORAZA					 80						AGUA			
+16.-	KRAKEN						 1d10				CORAZA					 80						AGUA
 
 17.-	DRAGON FAERICO				 1d4                 CUERO					 30						AIRE
 18.-	MURCIELAGO GIGANTE			 1d6 				MALLA					 40						AIRE
 19.-	QUIMERA						 1d8                 PLACAS					 60						AIRE
-20.-	WYRM						 1d10   				CORAZA					 100					AIRE			 	 				   							
+20.-	WYRM						 1d10   				CORAZA					 100					AIRE
+
+insert into monstruo(nombreMonstruo,ataqueMonstruo,acMonstruo,vidaMonstruo,xpOtorgada) values ("KOBOLD",1d4,1,30,10);
+insert into monstruo(nombreMonstruo,ataqueMonstruo,acMonstruo,vidaMonstruo,xpOtorgada) values ("GNOLL",1d6,2,35,20);
+insert into monstruo(nombreMonstruo,ataqueMonstruo,acMonstruo,vidaMonstruo,xpOtorgada) values ("TROLL",1d8,3,45,30);
+insert into monstruo(nombreMonstruo,ataqueMonstruo,acMonstruo,vidaMonstruo,xpOtorgada) values ("GIGANTE DE LA MONTAÑA",1d10,4,100,60);
+
+insert into monstruo(nombreMonstruo,ataqueMonstruo,acMonstruo,vidaMonstruo,xpOtorgada) values ("FELHOUND(PERRO FUEGO)",1d4,1,25,10);
+insert into monstruo(nombreMonstruo,ataqueMonstruo,acMonstruo,vidaMonstruo,xpOtorgada) values ("GOLEM LAVA",1d6,2,35,20);
+insert into monstruo(nombreMonstruo,ataqueMonstruo,acMonstruo,vidaMonstruo,xpOtorgada) values ("ELEMENTAL DE FUEGO",1d8,3,55,35);
+insert into monstruo(nombreMonstruo,ataqueMonstruo,acMonstruo,vidaMonstruo,xpOtorgada) values ("HIDRA DE FUEGO",1d10,4,75,50);
+
+insert into monstruo(nombreMonstruo,ataqueMonstruo,acMonstruo,vidaMonstruo,xpOtorgada) values ("WITCH(BRUJA GRITONA)",1d4,1,25,20);
+insert into monstruo(nombreMonstruo,ataqueMonstruo,acMonstruo,vidaMonstruo,xpOtorgada) values ("BANSHEE(FANTASMA)",1d6,2,35,30);
+insert into monstruo(nombreMonstruo,ataqueMonstruo,acMonstruo,vidaMonstruo,xpOtorgada) values ("JINETE FANTASMA",1d8,3,60,40);
+insert into monstruo(nombreMonstruo,ataqueMonstruo,acMonstruo,vidaMonstruo,xpOtorgada) values ("NAZGUL",1d10,4,80,50);
+
+insert into monstruo(nombreMonstruo,ataqueMonstruo,acMonstruo,vidaMonstruo,xpOtorgada) values ("PIRAÑA GIGANTE",1d4,1,25,15);
+insert into monstruo(nombreMonstruo,ataqueMonstruo,acMonstruo,vidaMonstruo,xpOtorgada) values ("SERPIENTE PANTANO",1d6,2,35,25);
+insert into monstruo(nombreMonstruo,ataqueMonstruo,acMonstruo,vidaMonstruo,xpOtorgada) values ("TIBURON BLANCO",1d8,3,60,50);
+insert into monstruo(nombreMonstruo,ataqueMonstruo,acMonstruo,vidaMonstruo,xpOtorgada) values ("KRAKEN",1d10,4,80,70);
+
+insert into monstruo(nombreMonstruo,ataqueMonstruo,acMonstruo,vidaMonstruo,xpOtorgada) values ("DRAGON FAERICO",1d4,1,30,20);
+insert into monstruo(nombreMonstruo,ataqueMonstruo,acMonstruo,vidaMonstruo,xpOtorgada) values ("MURCIELAGO GIGANTE",1d6,2,40,30);
+insert into monstruo(nombreMonstruo,ataqueMonstruo,acMonstruo,vidaMonstruo,xpOtorgada) values ("QUIMERA",1d8,3,60,60);
+insert into monstruo(nombreMonstruo,ataqueMonstruo,acMonstruo,vidaMonstruo,xpOtorgada) values ("WYRM",1d10,4,100,80);					   							
