@@ -11,11 +11,10 @@
 		private $vidaMax;
 		private $vidaActual;
 		private $acPersonaje;
-		private $oro;
 		
 		private $acceso;
 		
-		public function __construct($nombrePersonaje, $fuerza, $destreza, $inteligencia, $constitucion, $vidaMax, $vidaActual, $acPersonaje, $oro){
+		public function __construct($nombrePersonaje, $fuerza, $destreza, $inteligencia, $constitucion, $vidaMax, $vidaActual, $acPersonaje){
 			$this->acceso = new conector();
 			$this->nombrePersonaje = $nombrePersonaje;
 			$this->fuerza = $fuerza;
@@ -25,15 +24,14 @@
 			$this->vidaMax = $vidaMax;
 			$this->vidaActual = $vidaActual;
 			$this->acPersonaje = $acPersonaje;
-			$this->oro = $oro;
 		}
 		
 		function crearNuevoPersonaje(){
 			try {
-				$consulta = "INSERT INTO personaje (nombrePersonaje, fuerza, destreza, inteligencia, constitucion, vidaMax, vidaActual, acPersonaje, oro) 
+				$consulta = "INSERT INTO personaje (nombrePersonaje, fuerza, destreza, inteligencia, constitucion, vidaMax, vidaActual, acPersonaje) 
 						VALUES('".$this->nombrePersonaje."','".$this->fuerza."','".$this->destreza."',
 						'".$this->inteligencia."','".$this->constitucion."','".$this->vidaMax."',
-						'".$this->vidaActual."','".$this->acPersonaje."','".$this->oro."');";
+						'".$this->vidaActual."','".$this->acPersonaje."');";
 				//var_dump($consulta);
 				$resultado = $this->acceso->getConector()->query($consulta);
 				// var_dump($this->acceso);

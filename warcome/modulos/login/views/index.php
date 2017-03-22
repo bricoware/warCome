@@ -16,7 +16,7 @@
 		</div>
 		<div>
 			<button type="submit">Acceder</button>
-			<button type="button" class="boton-falso" onclick="location.href='registro.php'">Regístrate aquí.</button>
+			<button type="button" class="boton-falso" onclick="location.href='registro.php'">Regístrate</button>
 		</div>
 	</div>
 </form>

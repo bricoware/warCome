@@ -45,7 +45,8 @@ CREATE TABLE `aventura` (
   `idAventura` int(11) NOT NULL,
   `idDificultad` tinyint(1) NOT NULL,
   `idTexto` int(11) NOT NULL,
-  `idZona` int(11) NOT NULL
+  `idZona` int(11) NOT NULL,
+  `imagenAventura` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -56,7 +57,8 @@ CREATE TABLE `aventura` (
 
 CREATE TABLE `clase` (
   `idClase` int(11) NOT NULL,
-  `clase` varchar(25) NOT NULL
+  `clase` varchar(25) NOT NULL,
+  `dadoVida` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -69,7 +71,8 @@ CREATE TABLE `habilidad` (
   `idHabilidad` int(11) NOT NULL,
   `nombreHabilidad` varchar(50) NOT NULL,
   `descripcionHabilidad` text,
-  `danho` varchar(5) DEFAULT NULL
+  `danho` varchar(5) DEFAULT NULL,
+  `estadisticaHabilidad` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -94,7 +97,8 @@ CREATE TABLE `inventariopersonaje` (
   `idInventarioPersonaje` int(11) NOT NULL,
   `idPersonaje` int(11) NOT NULL,
   `armaEquipada` int(11) DEFAULT NULL,
-  `armaduraEquipada` int(11) DEFAULT NULL
+  `armaduraEquipada` int(11) DEFAULT NULL,
+  `objetosInventario` varchar(255) DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -120,7 +124,8 @@ CREATE TABLE `monstruo` (
   `ataqueMonstruo` varchar(30) NOT NULL,
   `acMonstruo` int(11) NOT NULL COMMENT 'Clase de armadura',
   `vidaMonstruo` int(11) NOT NULL,
-  `xpOtorgada` int(11) NOT NULL COMMENT 'Puntos de experiencia otorgados por el monstruo'
+  `xpOtorgada` int(11) NOT NULL COMMENT 'Puntos de experiencia otorgados por el monstruo',
+  `posibilidadGolpear` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -194,7 +199,7 @@ CREATE TABLE `personaje` (
   `xp` int(11) NOT NULL DEFAULT '0' COMMENT 'Puntos de experiencia',
   `nivel` int(11) NOT NULL DEFAULT '1',
   `acPersonaje` int(11) DEFAULT NULL COMMENT 'Clase de armadura',
-  `oro` int(11) NOT NULL DEFAULT '0'
+  `oro` int(11) NOT NULL DEFAULT '50'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -265,7 +270,8 @@ CREATE TABLE `pocioncantidad` (
 
 CREATE TABLE `raza` (
   `idRaza` int(11) NOT NULL,
-  `raza` varchar(25) NOT NULL
+  `raza` varchar(25) NOT NULL,
+  `estadisticaRaza` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
