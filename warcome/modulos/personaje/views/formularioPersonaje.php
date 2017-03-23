@@ -1,6 +1,8 @@
 <?php
 	require_once(dirname(dirname(__FILE__)) . "/controllers/nuevoPersonaje.php");
 	require_once(dirname(dirname(__FILE__)) . "/controllers/infoPersonajes.php");
+	require_once(dirname(dirname(__FILE__)) . "/controllers/mostrarEstadisticas.php");
+	require_once(dirname(dirname(__FILE__)) . "/controllers/mostrarVida.php");
 	require_once(dirname(dirname(__FILE__)) . "/controllers/mostrarHabilidades.php");
 	require_once(dirname(dirname(__FILE__)) . "/controllers/mostrarDescripcion.php");
 ?>
@@ -40,7 +42,7 @@
 			</div>
 			<div>
 				<label for="razaPersonaje">Raza:</label>
-				<select name="razaPersonaje" id="razaPersonaje" required>
+				<select name="razaPersonaje" id="razaPersonaje" onclick="mostrarEstadisticasRaza(this)" required>
 					<option name="razaPersonaje" value="0" selected disabled>- selecciona una raza -</option>
 					<?php
 						while($registroRaza = $resultadoRaza->fetch_assoc()){
@@ -48,10 +50,12 @@
 						}
 					?>
 				</select>
+				<div id="estadisticas">
+				</div>
 			</div>
 			<div>
 				<label for="clasePersonaje">Clase:</label>
-				<select name="clasePersonaje" id="clasePersonaje" onchange="mostrarHabilidades()" required>
+				<select name="clasePersonaje" id="clasePersonaje" onclick="mostrarEstadisticasClase(this)" required>
 					<option name="clasePersonaje" value="0" selected disabled>- selecciona una clase -</option>
 					<?php
 						while($registroClase = $resultadoClase->fetch_assoc()){
@@ -59,6 +63,8 @@
 						}
 					?>
 				</select>
+				<div id="vida">
+				</div>
 			</div>
 			<div>
 				<label for="habilidadPersonaje">Habilidad:</label>

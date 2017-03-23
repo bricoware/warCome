@@ -12,6 +12,7 @@ function mostrarHabilidades(){
 	
 	xhttp.onreadystatechange = function(){
 		if(this.readyState == 4 && this.status == 200){
+			document.getElementById("descripcion").innerHTML = '';
 			document.getElementById("habilidadPersonaje").innerHTML = '<option name="habilidadPersonaje" value="0" selected disabled>- selecciona una habilidad -</option>';
 			document.getElementById("habilidadPersonaje").innerHTML += this.responseText;
 		}

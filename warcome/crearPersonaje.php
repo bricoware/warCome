@@ -8,6 +8,7 @@
 		<script type="text/javascript" src="js/dados.js"></script>
 		<script type="text/javascript" src="modulos/personaje/views/js/crearFicha.js"></script>
 		<script type="text/javascript" src="modulos/personaje/views/js/drag.js"></script>
+		<script type="text/javascript" src="modulos/personaje/views/js/mostrarEstadisticas.js"></script>
 	</head>
 	<body>
 		<?php
