@@ -17,7 +17,7 @@ INSERT INTO `clase` (`idClase`, `clase`, `dadoVida`) VALUES
 --
 INSERT INTO `habilidad` (`idHabilidad`, `nombreHabilidad`, `descripcionHabilidad`, `danho`, `estadisticaHabilidad`, `posibilidadGolpearHabilidad`) VALUES
 -- Guerrero
-(1, 'Colleja infernal', 'Concentra todo tu poder el la palma de la mano para asestar un golpe en la nuca.', '1d6', 'fuerza', 2),
+(1, 'Colleja infernal', 'Concentra todo tu poder en la palma de la mano para asestar un golpe en la nuca.', '1d6', 'fuerza', 2),
 (2, 'Patada sencillita', 'Haz aspavientos innecesarios para dar una patada poco vistosa.', '1d8', 'destreza', 1),
 (3, 'Golpe de trasero metalizado', 'Aprieta fuerte tus nalgas y golpea de espaldas.', '1d4', 'constitucion', 3),
 (4, 'Giro con doble tirabuzón hacia atrás', 'Gira rápidamente y presume de tus años compitiendo en salto sincronizado desde trampolín.', '2d6', 'inteligencia', 0),
@@ -42,9 +42,9 @@ INSERT INTO `habilidad` (`idHabilidad`, `nombreHabilidad`, `descripcionHabilidad
 
 -- Cazador
 (17, 'Golpe a los huevos', 'Asesta un golpe bajo donde más duele.', '1d4', 'fuerza', 3),
-(18, 'Corbata colombiana', 'Rodea con los brazos a tu oponente y hazle una llave.', '1d8', 'destreza', 2),
-(19, 'Trampa para ratones', 'Haz que tu oponente caiga una trampa que lo inmovilice.', '1d10', 'inteligencia', 1),
-(20, 'Locura transitoria', 'Sufre un periodo de enagenación mental transitoria para atacar indiscriminadamente.', '2d6', 'constitucion', 0);
+(18, 'Corbata colombiana', 'Rodea a tu oponente y hazle una llave.', '1d8', 'destreza', 2),
+(19, 'Trampa para ratones', 'Haz que tu oponente caiga en una trampa que lo inmovilice.', '1d10', 'inteligencia', 1),
+(20, 'Locura transitoria', 'Sufres un periodo de enagenación mental transitoria para atacar indiscriminadamente.', '2d6', 'constitucion', 0);
 
 --
 -- Relaciones entre `habilidad` y `habilidadclase`
@@ -66,15 +66,15 @@ INSERT INTO `habilidadclase` (`idHabilidadClase`, `idClase`, `idHabilidad`) VALU
 (11, 3, 11),
 (12, 3, 12),
 -- Nigromante
-(13, 3, 13),
-(14, 3, 14),
-(15, 3, 15),
-(16, 3, 16),
+(13, 4, 13),
+(14, 4, 14),
+(15, 4, 15),
+(16, 4, 16),
 -- Cazador
-(17, 3, 17),
-(18, 3, 18),
-(19, 3, 19),
-(20, 3, 20);
+(17, 5, 17),
+(18, 5, 18),
+(19, 5, 19),
+(20, 5, 20);
 
 --
 -- Volcado de datos para la tabla `raza`

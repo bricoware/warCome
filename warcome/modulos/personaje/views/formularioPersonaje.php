@@ -1,6 +1,7 @@
 <?php
 	require_once(dirname(dirname(__FILE__)) . "/controllers/nuevoPersonaje.php");
 	require_once(dirname(dirname(__FILE__)) . "/controllers/infoPersonajes.php");
+	require_once(dirname(dirname(__FILE__)) . "/controllers/mostrarHabilidades.php");
 	require_once(dirname(dirname(__FILE__)) . "/controllers/mostrarDescripcion.php");
 ?>
 <section class="centro">
@@ -50,7 +51,7 @@
 			</div>
 			<div>
 				<label for="clasePersonaje">Clase:</label>
-				<select name="clasePersonaje" id="clasePersonaje" required>
+				<select name="clasePersonaje" id="clasePersonaje" onchange="mostrarHabilidades()" required>
 					<option name="clasePersonaje" value="0" selected disabled>- selecciona una clase -</option>
 					<?php
 						while($registroClase = $resultadoClase->fetch_assoc()){
@@ -61,12 +62,12 @@
 			</div>
 			<div>
 				<label for="habilidadPersonaje">Habilidad:</label>
-				<select name="habilidadPersonaje" id="habilidadPersonaje" onchange="mostrarDescripcion()" required>
+				<select name="habilidadPersonaje" id="habilidadPersonaje" onchange="mostrarDescripcion()" disabled required>
 					<option name="habilidadPersonaje" value="0" selected disabled>- selecciona una habilidad -</option>
 					<?php
-						while($registroHabilidad = $resultadoHabilidad->fetch_assoc()){
-							echo '<option name="habilidadPersonaje" value="' . $registroHabilidad['idHabilidad'] . '">' . utf8_encode($registroHabilidad['nombreHabilidad']) . '</option>';
-						}
+						// while($registroHabilidad = $resultadoHabilidad->fetch_assoc()){
+							// echo '<option name="habilidadPersonaje" value="' . $registroHabilidad['idHabilidad'] . '">' . utf8_encode($registroHabilidad['nombreHabilidad']) . '</option>';
+						// }
 					?>
 				</select>
 				<div id="descripcion">
