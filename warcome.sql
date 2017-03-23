@@ -72,7 +72,20 @@ CREATE TABLE `habilidad` (
   `nombreHabilidad` varchar(50) NOT NULL,
   `descripcionHabilidad` text,
   `danho` varchar(5) DEFAULT NULL,
-  `estadisticaHabilidad` varchar(25) NOT NULL
+  `estadisticaHabilidad` varchar(25) NOT NULL,
+  `posibilidadGolpearHabilidad` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `habilidadclase`
+--
+
+CREATE TABLE `habilidadclase` (
+  `idHabilidadClase` int(11) NOT NULL,
+  `idClase` int(11) NOT NULL,
+  `idHabilidad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -125,7 +138,8 @@ CREATE TABLE `monstruo` (
   `acMonstruo` int(11) NOT NULL COMMENT 'Clase de armadura',
   `vidaMonstruo` int(11) NOT NULL,
   `xpOtorgada` int(11) NOT NULL COMMENT 'Puntos de experiencia otorgados por el monstruo',
-  `posibilidadGolpear` int(11) NOT NULL
+  `posibilidadGolpear` int(11) NOT NULL,
+  `oroOtorgado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -153,7 +167,8 @@ CREATE TABLE `objeto` (
   `estadistica1` varchar(20) DEFAULT NULL,
   `valor1` int(11) DEFAULT NULL,
   `estadistica2` varchar(20) DEFAULT NULL,
-  `valor2` int(11) DEFAULT NULL
+  `valor2` int(11) DEFAULT NULL,
+  `precio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -271,7 +286,10 @@ CREATE TABLE `pocioncantidad` (
 CREATE TABLE `raza` (
   `idRaza` int(11) NOT NULL,
   `raza` varchar(25) NOT NULL,
-  `estadisticaRaza` varchar(25) NOT NULL
+  `estadistica1` varchar(25) NOT NULL,
+  `valor1` int(11) NOT NULL,
+  `estadistica2` varchar(25) NOT NULL,
+  `valor2` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -351,6 +369,14 @@ ALTER TABLE `clase`
 ALTER TABLE `habilidad`
   ADD PRIMARY KEY (`idHabilidad`),
   ADD UNIQUE KEY `nombreHabilidad` (`nombreHabilidad`);
+
+--
+-- Indices de la tabla `habilidadclase`
+--
+ALTER TABLE `habilidadclase`
+  ADD PRIMARY KEY (`idHabilidadClase`),
+  ADD KEY `clase_habilidadClase_FK` (`idClase`),
+  ADD KEY `habilidad_habilidadClase_FK` (`idHabilidad`);
 
 --
 -- Indices de la tabla `habilidadpersonaje`
@@ -502,6 +528,11 @@ ALTER TABLE `usuariopersonaje`
 ALTER TABLE `aventura`
   MODIFY `idAventura` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT de la tabla `habilidadclase`
+--
+ALTER TABLE `habilidadclase`
+  MODIFY `idHabilidadClase` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT de la tabla `habilidadpersonaje`
 --
 ALTER TABLE `habilidadpersonaje`
@@ -580,6 +611,13 @@ ALTER TABLE `usuariopersonaje`
 --
 ALTER TABLE `aventura`
   ADD CONSTRAINT `texto_aventura_FK` FOREIGN KEY (`idTexto`) REFERENCES `texto` (`idTexto`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `habilidadclase`
+--
+ALTER TABLE `habilidadclase`
+  ADD CONSTRAINT `clase_habilidadClase_FK` FOREIGN KEY (`idClase`) REFERENCES `clase` (`idClase`),
+  ADD CONSTRAINT `habilidad_habilidadClase_FK` FOREIGN KEY (`idHabilidad`) REFERENCES `habilidad` (`idHabilidad`);
 
 --
 -- Filtros para la tabla `habilidadpersonaje`

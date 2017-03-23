@@ -6,4 +6,4 @@
 	while($fila = $resultado->fetch_object()){
 		echo $fila->idUsuario." ".$fila->nombrePersonaje;
 	}
-?>	
+?>

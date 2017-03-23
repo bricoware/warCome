@@ -1,5 +1,6 @@
 <?php
-	require_once(dirname(dirname(__FILE__)) . "/model/infoPersonajes.php");
+	require_once(dirname(dirname(__FILE__)) . "/controllers/nuevoPersonaje.php");
+	require_once(dirname(dirname(__FILE__)) . "/controllers/infoPersonajes.php");
 	require_once(dirname(dirname(__FILE__)) . "/controllers/mostrarDescripcion.php");
 ?>
 <section class="centro">
@@ -7,7 +8,7 @@
 		<h1>Nuevo personaje</h1>
 		<div id="dados">
 		</div>
-		<form action="modulos/personaje/controllers/nuevoPersonaje.php" method="post">
+		<form action="#" method="post">
 			<div>
 				<label for="nombrePersonaje">Nombre del personaje:</label>
 				<input type="text" id="nombrePersonaje" name="nombrePersonaje" required>
@@ -64,7 +65,7 @@
 					<option name="habilidadPersonaje" value="0" selected disabled>- selecciona una habilidad -</option>
 					<?php
 						while($registroHabilidad = $resultadoHabilidad->fetch_assoc()){
-							echo '<option name="habilidadPersonaje" value="' . $registroHabilidad['idHabilidad'] . '">' . $registroHabilidad['nombreHabilidad'] . '</option>';
+							echo '<option name="habilidadPersonaje" value="' . $registroHabilidad['idHabilidad'] . '">' . utf8_encode($registroHabilidad['nombreHabilidad']) . '</option>';
 						}
 					?>
 				</select>
