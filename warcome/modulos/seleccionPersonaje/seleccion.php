@@ -6,5 +6,6 @@
 	$resultado = $conexion->query($consulta);
 	while($fila = $resultado->fetch_object()){
 		echo "<a href='#'><div class='nombre' onclick=javascript:mostrar();>".$fila->nombrePersonaje."</div></a>";
+		echo "<a href='eliminarPersonaje.php?id=".$fila->idPersonaje."'><div class='nombre'>Eliminar Personaje</div></a>";
 	}
 ?>
