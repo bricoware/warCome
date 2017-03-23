@@ -1,18 +1,18 @@
 /* -- Variables Globales -- */
-var personaje;
-var pociones;
-var habilidades;
-var monstruo;
+var personaje = {};
+var pociones = {};
+var habilidades = {};
+var monstruo = {};
 
-personaje.push(bonusFuerza: 0);
-personaje.push(bonusDestreza: 0);		/* Bonuses temporales por pociones, etc. */
-personaje.push(bonusInteligencia: 0);
+personaje.bonusFuerza = 0;
+personaje.bonusDestreza = 0;		/* Bonuses temporales por pociones, etc. */
+personaje.bonusInteligencia = 0;
 
-monstruo.push(dmgRecibido: 0);		/* Valor temporal para ver la vida que va perdiendo */
+monstruo.dmgRecibido = 0;		/* Valor temporal para ver la vida que va perdiendo */
 
 function comenzarBatalla(idMonstruo){
-	var arrayPersonaje;
-	var arrayMonstruo;
+	var arrayPersonaje = [];
+	var arrayMonstruo = [];
 	
 /* -- Recuperamos XML con info sobre el Personaje -- */
 	if (Object.keys(personaje).length == 3){
@@ -22,7 +22,7 @@ function comenzarBatalla(idMonstruo){
 			var xhttp1 = new ActiveXObject("Microsoft.XMLHTTP");
 		}
 		
-		var direccion1 = "http://warcome/modulos/batalla/controllers/getPersonaje.php";
+		var direccion1 = "http://warcome.local/modulos/batalla/controllers/getPersonaje.php";
 		
 		xhttp1.open("POST", direccion1, true);
 		xhttp1.setRequestHeader('Content-Type', 'text/xml');
@@ -45,7 +45,7 @@ function comenzarBatalla(idMonstruo){
 			var xhttp2 = new ActiveXObject("Microsoft.XMLHTTP");
 		}
 		
-		var direccion2 = "http://warcome/modulos/batalla/controllers/getMonstruo.php";
+		var direccion2 = "http://warcome.local/modulos/batalla/controllers/getMonstruo.php";
 		
 		xhttp2.open("POST", direccion2, true);
 		xhttp2.setRequestHeader('Content-Type', 'text/xml');
@@ -63,28 +63,28 @@ function comenzarBatalla(idMonstruo){
 /* ---------- Metemos toda la info de los XML en variables para que sea más facil de acceder/modificar ---------- */
 	if (Object.keys(personaje).length == 3){		
 		personaje = {
-			nombrePersonaje: arrayPersonaje[0].children[0].firstChild.nodeValue,
-			fuerza: arrayPersonaje[0].children[1].firstChild.nodeValue,
-			destreza: arrayPersonaje[0].children[2].firstChild.nodeValue,
-			inteligencia: arrayPersonaje[0].children[3].firstChild.nodeValue,
-			constitucion: arrayPersonaje[0].children[4].firstChild.nodeValue,
-			vidaMax: arrayPersonaje[0].children[5].firstChild.nodeValue,
-			vidaActual: arrayPersonaje[0].children[6].firstChild.nodeValue,
-			xp: arrayPersonaje[0].children[7].firstChild.nodeValue,
-			acPersonaje: arrayPersonaje[0].children[8].firstChild.nodeValue,
-			oro: arrayPersonaje[0].children[9].firstChild.nodeValue,
-			avatar: arrayPersonaje[0].children[10].firstChild.nodeValue,
-			armaEquipadaEstadistica1: arrayPersonaje[0].children[11].children[0].firstChild.nodeValue,
-			armaEquipadaValor1: arrayPersonaje[0].children[11].children[1].firstChild.nodeValue,
-			armaEquipadaEstadistica2: arrayPersonaje[0].children[11].children[2].firstChild.nodeValue,
-			armaEquipadaValor2: arrayPersonaje[0].children[11].children[3].firstChild.nodeValue,
-			armaduraEquipadaEstadistica1: arrayPersonaje[0].children[12].children[0].firstChild.nodeValue,
-			armaduraEquipadaValor1: arrayPersonaje[0].children[12].children[1].firstChild.nodeValue,
-			armaduraEquipadaEstadistica2: arrayPersonaje[0].children[12].children[2].firstChild.nodeValue,
-			armaduraEquipadaValor2: arrayPersonaje[0].children[12].children[3].firstChild.nodeValue,
-			nivel: arrayPersonaje[0].children[15].firstChild.nodeValue,
-			idPersonaje: arrayPersonaje[0].children[16].firstChild.nodeValue,
-			dadoVida: arrayPersonaje[0].children[17].firstChild.nodeValue
+			"nombrePersonaje": arrayPersonaje[0].children[0].firstChild.nodeValue,
+			"fuerza": arrayPersonaje[0].children[1].firstChild.nodeValue,
+			"destreza": arrayPersonaje[0].children[2].firstChild.nodeValue,
+			"inteligencia": arrayPersonaje[0].children[3].firstChild.nodeValue,
+			"constitucion": arrayPersonaje[0].children[4].firstChild.nodeValue,
+			"vidaMax": arrayPersonaje[0].children[5].firstChild.nodeValue,
+			"vidaActual": arrayPersonaje[0].children[6].firstChild.nodeValue,
+			"xp": arrayPersonaje[0].children[7].firstChild.nodeValue,
+			"acPersonaje": arrayPersonaje[0].children[8].firstChild.nodeValue,
+			"oro": arrayPersonaje[0].children[9].firstChild.nodeValue,
+			"avatar": arrayPersonaje[0].children[10].firstChild.nodeValue,
+			"armaEquipadaEstadistica1": arrayPersonaje[0].children[11].children[0].firstChild.nodeValue,
+			"armaEquipadaValor1": arrayPersonaje[0].children[11].children[1].firstChild.nodeValue,
+			"armaEquipadaEstadistica2": arrayPersonaje[0].children[11].children[2].firstChild.nodeValue,
+			"armaEquipadaValor2": arrayPersonaje[0].children[11].children[3].firstChild.nodeValue,
+			"armaduraEquipadaEstadistica1": arrayPersonaje[0].children[12].children[0].firstChild.nodeValue,
+			"armaduraEquipadaValor1": arrayPersonaje[0].children[12].children[1].firstChild.nodeValue,
+			"armaduraEquipadaEstadistica2": arrayPersonaje[0].children[12].children[2].firstChild.nodeValue,
+			"armaduraEquipadaValor2": arrayPersonaje[0].children[12].children[3].firstChild.nodeValue,
+			"nivel": arrayPersonaje[0].children[15].firstChild.nodeValue,
+			"idPersonaje": arrayPersonaje[0].children[16].firstChild.nodeValue,
+			"dadoVida": arrayPersonaje[0].children[17].firstChild.nodeValue
 		}		
 		
 		personaje.vidaInicial = personaje.vidaActual;
@@ -92,12 +92,12 @@ function comenzarBatalla(idMonstruo){
 		pociones = [];
 		for (var k = 0; k < arrayPersonaje[0].children[13].children.length; k++){ /* REVISAR!!! (un "children" de más??) */
 			var pocion = {
-				nombrePocion: arrayPersonaje[0].children[13].children[k].children[0].firstChild.nodeValue,
-				descripcionPocion: arrayPersonaje[0].children[13].children[k].children[1].firstChild.nodeValue,
-				pocionEstadistica1: arrayPersonaje[0].children[13].children[k].children[2].firstChild.nodeValue,
-				pocionValor1: arrayPersonaje[0].children[13].children[k].children[3].firstChild.nodeValue,
-				cantidad: arrayPersonaje[0].children[13].children[k].children[4].firstChild.nodeValue,
-				idPocion: arrayPersonaje[0].children[13].children[k].children[5].firstChild.nodeValue
+				"nombrePocion": arrayPersonaje[0].children[13].children[k].children[0].firstChild.nodeValue,
+				"descripcionPocion": arrayPersonaje[0].children[13].children[k].children[1].firstChild.nodeValue,
+				"pocionEstadistica1": arrayPersonaje[0].children[13].children[k].children[2].firstChild.nodeValue,
+				"pocionValor1": arrayPersonaje[0].children[13].children[k].children[3].firstChild.nodeValue,
+				"cantidad": arrayPersonaje[0].children[13].children[k].children[4].firstChild.nodeValue,
+				"idPocion": arrayPersonaje[0].children[13].children[k].children[5].firstChild.nodeValue
 			}
 			
 			pociones.push(pocion);
@@ -106,12 +106,12 @@ function comenzarBatalla(idMonstruo){
 		habilidades = [];
 		for (var l = 0; l < arrayPersonaje[0].children[14].children.length; l++){ /* REVISAR!!! (un "children" de más??) */
 			var habilidad = {
-				nombreHabilidad: arrayPersonaje[0].children[14].children[l].children[0].firstChild.nodeValue,
-				descripcionHabilidad: arrayPersonaje[0].children[14].children[l].children[1].firstChild.nodeValue,
-				dmg: arrayPersonaje[0].children[14].children[l].children[2].firstChild.nodeValue,
-				idHabilidad: arrayPersonaje[0].children[14].children[l].children[3].firstChild.nodeValue,
-				estadisticaHabilidad: arrayPersonaje[0].children[14].children[l].children[4].firstChild.nodeValue,
-				posibilidadGolpearHabilidad: arrayPersonaje[0].children[14].children[l].children[5].firstChild.nodeValue
+				"nombreHabilidad": arrayPersonaje[0].children[14].children[l].children[0].firstChild.nodeValue,
+				"descripcionHabilidad": arrayPersonaje[0].children[14].children[l].children[1].firstChild.nodeValue,
+				"dmg": arrayPersonaje[0].children[14].children[l].children[2].firstChild.nodeValue,
+				"idHabilidad": arrayPersonaje[0].children[14].children[l].children[3].firstChild.nodeValue,
+				"estadisticaHabilidad": arrayPersonaje[0].children[14].children[l].children[4].firstChild.nodeValue,
+				"posibilidadGolpearHabilidad": arrayPersonaje[0].children[14].children[l].children[5].firstChild.nodeValue
 			}
 			
 			habilidades.push(habilidad);
@@ -120,23 +120,23 @@ function comenzarBatalla(idMonstruo){
 	
 	if (Object.keys(monstruo).length == 1){
 		monstruo = {
-			monstruoID: idMonstruo,
-			nombreMonstruo: arrayMonstruo[0].children[0].firstChild.nodeValue,
-			ataqueMonstruo: arrayMonstruo[0].children[1].firstChild.nodeValue,
-			acMonstruo: arrayMonstruo[0].children[2].firstChild.nodeValue,
-			vidaMonstruo: arrayMonstruo[0].children[3].firstChild.nodeValue,
-			xpOtorgada: arrayMonstruo[0].children[4].firstChild.nodeValue,
-			avatar: arrayMonstruo[0].children[5].firstChild.nodeValue,
-			posibilidadGolpear: arrayMonstruo[0].children[6].firstChild.nodeValue,
-			oroOtorgado: arrayMonstruo[0].children[7].firstChild.nodeValue
+			"monstruoID": idMonstruo,
+			"nombreMonstruo": arrayMonstruo[0].children[0].firstChild.nodeValue,
+			"ataqueMonstruo": arrayMonstruo[0].children[1].firstChild.nodeValue,
+			"acMonstruo": arrayMonstruo[0].children[2].firstChild.nodeValue,
+			"vidaMonstruo": arrayMonstruo[0].children[3].firstChild.nodeValue,
+			"xpOtorgada": arrayMonstruo[0].children[4].firstChild.nodeValue,
+			"avatar": arrayMonstruo[0].children[5].firstChild.nodeValue,
+			"posibilidadGolpear": arrayMonstruo[0].children[6].firstChild.nodeValue,
+			"oroOtorgado": arrayMonstruo[0].children[7].firstChild.nodeValue
 		}
 	}
 	
 /* -- Variables calculadas -- */
 	
-	personaje.push(modificadorFuerza: parseInt((personaje.fuerza + personaje.bonusFuerza - 10)/2));
-	personaje.push(modificadorDestreza: parseInt((personaje.destreza + personaje.bonusDestreza - 10)/2));		/* Valores usados en cálculos de daño, etc. */
-	personaje.push(modificadorInteligencia: parseInt((personaje.inteligencia + personaje.bonusInteligencia - 10)/2));
+	personaje.modificadorFuerza = parseInt((personaje.fuerza + personaje.bonusFuerza - 10)/2);
+	personaje.modificadorDestreza = parseInt((personaje.destreza + personaje.bonusDestreza - 10)/2);		/* Valores usados en cálculos de daño, etc. */
+	personaje.modificadorInteligencia = parseInt((personaje.inteligencia + personaje.bonusInteligencia - 10)/2);
 	
 /* ---------- Ventana Modal ---------- */
 	if (! document.getElementById("ventanaModal")){
@@ -290,10 +290,10 @@ function elegirHabilidad(e, indice){
 			monstruo.nombreMonstruo + " por " + dmgInfligido + " puntos de daño. <br/>";
 			scrollDown();
 		} else {
-			if (dados(1d2) == 1){
+			if (dados("1d2") == 1){
 				combatLog.innerHTML += personaje.nombrePersonaje + " usó " + habilidades[indice].nombreHabilidad + ": el ataque falló. <br/>";
 				scrollDown();
-			} else if (dados(1d2) == 2){
+			} else if (dados("1d2") == 2){
 				combatLog.innerHTML += personaje.nombrePersonaje + " usó " + habilidades[indice].nombreHabilidad + ": " +
 				monstruo.nombreMonstruo + "bloqueó el ataque. <br/>";
 				scrollDown();
@@ -307,10 +307,10 @@ function elegirHabilidad(e, indice){
 			monstruo.nombreMonstruo + " por " + dmgInfligido + " puntos de daño. <br/>";
 			scrollDown();
 		} else {
-			if (dados(1d2) == 1){
+			if (dados("1d2") == 1){
 				combatLog.innerHTML += personaje.nombrePersonaje + " usó " + habilidades[indice].nombreHabilidad + ": el ataque falló. <br/>";
 				scrollDown();
-			} else if (dados(1d2) == 2){
+			} else if (dados("1d2") == 2){
 				combatLog.innerHTML += personaje.nombrePersonaje + " usó " + habilidades[indice].nombreHabilidad + ": " +
 				monstruo.nombreMonstruo + "bloqueó el ataque. <br/>";
 				scrollDown();
@@ -324,10 +324,10 @@ function elegirHabilidad(e, indice){
 			monstruo.nombreMonstruo + " por " + dmgInfligido + " puntos de daño. <br/>";
 			scrollDown();
 		} else {
-			if (dados(1d2) == 1){
+			if (dados("1d2") == 1){
 				combatLog.innerHTML += personaje.nombrePersonaje + " usó " + habilidades[indice].nombreHabilidad + ": el ataque falló. <br/>";
 				scrollDown();
-			} else if (dados(1d2) == 2){
+			} else if (dados("1d2") == 2){
 				combatLog.innerHTML += personaje.nombrePersonaje + " usó " + habilidades[indice].nombreHabilidad + ": " +
 				monstruo.nombreMonstruo + "bloqueó el ataque. <br/>";
 				scrollDown();
@@ -384,17 +384,17 @@ function rondaMonstruo(){
 	var combatLog = document.getElementById("divCombatLog");
 	scrollDown();
 	
-	if ( (dados(1d20) + monstruo.posibilidadGolpear >= personaje.acPersonaje){
+	if ( (dados("1d20") + monstruo.posibilidadGolpear) >= personaje.acPersonaje){
 		var dmgInfligido = dados(monstruo.ataqueMonstruo);
 		personaje.vidaActual = personaje.vidaActual - dmgInfligido;
 		combatLog.innerHTML += monstruo.nombreMonstruo + " golpeó a " + personaje.nombrePersonaje + " por " +
 		dmgInfligido + " puntos de daño. <br/>";
 		scrollDown();
 	} else {
-		if (dados(1d2) == 1){
+		if (dados("1d2") == 1){
 			combatLog.innerHTML += monstruo.nombreMonstruo + " intentó atacar a " + personaje.nombrePersonaje + ", pero falló. <br/>";
 			scrollDown();
-		} else if (dados(1d2) == 2){
+		} else if (dados("1d2") == 2){
 			combatLog.innerHTML += monstruo.nombreMonstruo + " atacó, pero " + personaje.nombrePersonaje + " bloqueó el ataque. <br/>";
 			scrollDown();
 		}
@@ -573,7 +573,7 @@ function terminarBatalla(ventanaModal){
 			var xhttp = new ActiveXObject("Microsoft.XMLHTTP");
 		}
 		
-		var direccion = "http://warcome/modulos/batalla/controllers/datosActualizarPociones.php";
+		var direccion = "http://warcome.local/modulos/batalla/controllers/datosActualizarPociones.php";
 		var datos = "idPocion = " + pociones[p].idPocion + "cantidad = " + pociones[p].cantidadPocion; 
 		
 		xhttp.open("POST", direccion, true);
@@ -586,10 +586,10 @@ function terminarBatalla(ventanaModal){
 		}
 	}
 	
-	var personaje;
-	var pociones;		/* Reseteamos variables globales */
-	var habilidades;
-	var monstruo;
+	var personaje = {};
+	var pociones = {};		/* Reseteamos variables globales */
+	var habilidades = {};
+	var monstruo = {};
 	
 	document.body.removeChild(document.body, ventanaModal);		/* Eliminamos la ventana modal */
 }
@@ -601,10 +601,10 @@ function gameOver(ventanaModal){
 	
 	cargarPartida(personaje.idPersonaje);		/* Placeholder, no sé como se llamará la función que carga la partida */
 	
-	var personaje;
-	var pociones;		/* Reseteamos variables globales */
-	var habilidades;
-	var monstruo;
+	var personaje = {};
+	var pociones = {};		/* Reseteamos variables globales */
+	var habilidades = {};
+	var monstruo = {};
 }
 
 function scrollDown(){

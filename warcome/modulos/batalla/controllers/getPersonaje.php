@@ -1,19 +1,21 @@
 <?php
 			
 	session_start();
-		
+	$_SESSION['personaje'] = 1; /* TESTING */
+	
 	require_once(dirname( dirname( __FILE__) )."/model/batallaPersonaje.php");
 	
 	$batallaPersonaje = new batallaPersonaje($_SESSION['personaje']);
-	$batallaPersonaje->obtenerDatosPersonaje();
+	$respuesta = $batallaPersonaje->obtenerDatosPersonaje();
 	
-	header("Content-Type: text/xml");
+	var_dump($respuesta);
+	/*header("Content-Type: text/xml");
 	$xml = "<?xml version='1.0' encoding='utf8' ?>";
-	$xml .= "<personajes>";
+	$xml .= "<personajes>";*/
 
-	while($registroPersonaje = $batallaPersonaje[0]->fetch_object()){
-
-		$xml .= "<personaje>"; 
+	//while($registroPersonaje = $respuesta[0]->fetch_object()){
+		//var_dump($registroPersonaje);
+		/*$xml .= "<personaje>"; 
 			
 			$xml .= "<nombrePersonaje>".$registroPersonaje->nombrePersonaje."</nombrePersonaje>";
 			$xml .= "<fuerza>".$registroPersonaje->fuerza."</fuerza>";
@@ -26,7 +28,7 @@
 			$xml .= "<acPersonaje>".$registroPersonaje->acPersonaje."</acPersonaje>";
 			$xml .= "<avatar>".$registroPersonaje->avatar."</avatar>";
 			$xml .= "<armaEquipada>";
-				while($registroArma = $batallaPersonaje[1]->fetch_object()){
+				while($registroArma = $respuesta[1]->fetch_object()){
 					$xml .= "<estadistica1>".$registroArma->estadistica1."</estadistica1>";
 					$xml .= "<valor1>".$registroArma->valor1."</valor1>";
 					$xml .= "<estadistica2>".$registroArma->estadistica2."</estadistica2>";
@@ -34,7 +36,7 @@
 				}
 			$xml .= "</armaEquipada>";
 			$xml .= "<armaduraEquipada>";
-				while($registroArmadura = $batallaPersonaje[2]->fetch_object()){
+				while($registroArmadura = $respuesta[2]->fetch_object()){
 					$xml .= "<estadistica1>".$registroArmadura->estadistica1."</estadistica1>";
 					$xml .= "<valor1>".$registroArmadura->valor1."</valor1>";
 					$xml .= "<estadistica2>".$registroArmadura->estadistica2."</estadistica2>";
@@ -42,7 +44,7 @@
 				}
 			$xml .= "</armaduraEquipada>";
 			$xml .= "<pociones>";
-				while($registroPociones = $batallaPersonaje[3]->fetch_object()){
+				while($registroPociones = $respuesta[3]->fetch_object()){
 					$xml .= "<pocion>";
 						$xml .= "<nombreObjeto>".$registroPociones->nombreObjeto."</nombreObjeto>";
 						$xml .= "<descripcionObjeto>".$registroPociones->descripcionObjeto."</descripcionObjeto>";
@@ -54,7 +56,7 @@
 				}
 			$xml .= "</pociones>";
 			$xml .= "<habilidades>";
-				while($registroHabilidades = $batallaPersonaje[4]->fetch_object()){
+				while($registroHabilidades = $respuesta[4]->fetch_object()){
 					$xml .= "<habilidad>";
 						$xml .= "<nombreHabilidad>".$registroHabilidades->nombreHabilidad."</nombreHabilidad>";
 						$xml .= "<descripcionHabilidad>".$registroHabilidades->descripcionHabilidad."</descripcionHabilidad>";
@@ -68,9 +70,9 @@
 			$xml .= "<nivel>".$registroPersonaje->nivel."</nivel>";
 			$xml .= "<idPersonaje>".$_SESSION['personaje']."</idPersonaje>";
 			
-		$xml .= "</personaje>";
-	}
-	$xml .= "</personajes>";
+		$xml .= "</personaje>";*/
+	//}
+	//$xml .= "</personajes>";
 	
-	echo $xml;
+	//echo $xml;*/
 ?>

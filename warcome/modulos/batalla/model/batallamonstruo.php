@@ -22,9 +22,8 @@
 							ON monstruo.idMonstruo = monstruoavatar.idMonstruo
 							INNER JOIN avatar
 							ON monstruoavatar.idAvatar = avatar.idAvatar
-							WHERE idMonstruo = '".$this->idMonstruo."';";
+							WHERE monstruo.idMonstruo = '".$this->idMonstruo."';";
 						
-				//var_dump($consulta);
 				$resultado = $this->acceso->getConector()->query($consulta);
 				if(!$resultado){
 					throw new Exception("No se pudo insertar");
@@ -34,6 +33,7 @@
 				}
 				
 				return $resultado;
+				//return $consulta;
 			}catch(Exception $error){
 				return $error->getMessage();
 			}

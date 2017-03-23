@@ -80,7 +80,7 @@
 				//var_dump($consultaPociones);
 				$resultadoPociones = $this->acceso->getConector()->query($consultaPociones);
 				if(!$resultadoPociones){
-					throw new Exception("No se pudo seleccionar");
+					//throw new Exception("No se pudo seleccionar");
 				}
 				if($resultadoPociones->num_rows == 0){
 					throw new Exception("<div id='error'> No se encontró ese personaje </div>");
@@ -102,7 +102,8 @@
 					throw new Exception("<div id='error'> No se encontró esa habilidad </div>");
 				}
 				
-				$respuesta = array($resultadoPersonaje, $resultadoArma, $resultadoArmadura, $resultadoPociones, $resultadoHabilidades);
+				//$respuesta = array($resultadoPersonaje, $resultadoArma, $resultadoArmadura, $resultadoPociones, $resultadoHabilidades);
+				$respuesta = array($consultaPersonaje, $consultaArma, $consultaArmadura, $consultaPociones, $consultaHabilidades);
 				
 				return $respuesta;
 			}catch(Exception $error){

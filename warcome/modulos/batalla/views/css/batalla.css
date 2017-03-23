@@ -82,7 +82,7 @@
 
 #divListaAtaques, #divListaObjetos {
 	display: none;
-	position: absolute;
+	position: relative;
 	width: 200px;
 	height: 200px;
 	top: -300px;
