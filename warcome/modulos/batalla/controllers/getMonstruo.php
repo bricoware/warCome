@@ -2,7 +2,7 @@
 	
 	if (isset($_POST)){
 		
-		require_once(dirname( dirname( __FILE__) )."/model/personaje.php");
+		require_once(dirname( dirname( __FILE__) )."/model/batallaMonstruo.php");
 				
 		$batallaMonstruo = new batallaMonstruo($_POST['idMonstruo']);
 		$batallaMonstruo->obtenerDatosMonstruo();
@@ -17,12 +17,13 @@
 			$xml .= "<monstruo>"; 
 				
 				$xml .= "<nombreMonstruo>".$registroMonstruo->nombreMonstruo."</nombreMonstruo>";
-				$xml .= "<ataqueMonstruo>".$registroMonstruo->ataqueMonstruo.".</ataqueMonstruo>";
-				$xml .= "<acMonstruo>".$registroMonstruo->acMonstruo.".</acMonstruo>";
-				$xml .= "<vidaMonstruo>".$registroMonstruo->vidaMonstruo.".</vidaMonstruo>";
-				$xml .= "<xpOtorgada>".$registroMonstruo->xpOtorgada.".</xpOtorgada>";
-				$xml .= "<avatar>".$registroMonstruo->avatar.".</avatar>";
-				$xml .= "<posibilidadGolpear>".$registroMonstruo->posibilidadGolpear.".</posibilidadGolpear>";
+				$xml .= "<ataqueMonstruo>".$registroMonstruo->ataqueMonstruo."</ataqueMonstruo>";
+				$xml .= "<acMonstruo>".$registroMonstruo->acMonstruo."</acMonstruo>";
+				$xml .= "<vidaMonstruo>".$registroMonstruo->vidaMonstruo."</vidaMonstruo>";
+				$xml .= "<xpOtorgada>".$registroMonstruo->xpOtorgada."</xpOtorgada>";
+				$xml .= "<avatar>".$registroMonstruo->avatar."</avatar>";
+				$xml .= "<posibilidadGolpear>".$registroMonstruo->posibilidadGolpear."</posibilidadGolpear>";
+				$xml .= "<oroOtorgado>".$registroMonstruo->oroOtorgado."</oroOtorgado>";
 				
 			$xml .= "</monstruo>"; 
 		}
