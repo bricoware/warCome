@@ -1,4 +1,5 @@
 /* -- Variables Globales -- */
+
 var personaje = {};
 var pociones = {};
 var habilidades = {};
@@ -11,10 +12,11 @@ personaje.bonusInteligencia = 0;
 monstruo.dmgRecibido = 0;		/* Valor temporal para ver la vida que va perdiendo */
 
 function comenzarBatalla(idMonstruo){
-	var arrayPersonaje = [];
-	var arrayMonstruo = [];
+	//var arrayPersonaje = [];
+	//var arrayMonstruo = [];
 	
 /* -- Recuperamos XML con info sobre el Personaje -- */
+
 	if (Object.keys(personaje).length == 3){
 		if (window.XMLHttpRequest) {
 			var xhttp1 = new XMLHttpRequest();
@@ -32,12 +34,68 @@ function comenzarBatalla(idMonstruo){
 			if (this.readyState == 4 && this.status == 200) {
 				xmlDoc = this.responseXML;
 
-				arrayPersonaje = xmlDoc.getElementsByTagName("personaje");
+				var arrayPersonaje = xmlDoc.getElementsByTagName("personaje");
+				
+				personaje = {
+					"nombrePersonaje": arrayPersonaje[0].children[0].firstChild.nodeValue,
+					"fuerza": arrayPersonaje[0].children[1].firstChild.nodeValue,
+					"destreza": arrayPersonaje[0].children[2].firstChild.nodeValue,
+					"inteligencia": arrayPersonaje[0].children[3].firstChild.nodeValue,
+					"constitucion": arrayPersonaje[0].children[4].firstChild.nodeValue,
+					"vidaMax": arrayPersonaje[0].children[5].firstChild.nodeValue,
+					"vidaActual": arrayPersonaje[0].children[6].firstChild.nodeValue,
+					"xp": arrayPersonaje[0].children[7].firstChild.nodeValue,
+					"acPersonaje": arrayPersonaje[0].children[8].firstChild.nodeValue,
+					"oro": arrayPersonaje[0].children[9].firstChild.nodeValue,
+					"avatar": arrayPersonaje[0].children[10].firstChild.nodeValue,
+					"armaEquipadaEstadistica1": arrayPersonaje[0].children[11].children[0].firstChild.nodeValue,
+					"armaEquipadaValor1": arrayPersonaje[0].children[11].children[1].firstChild.nodeValue,
+					"armaEquipadaEstadistica2": arrayPersonaje[0].children[11].children[2].firstChild.nodeValue,
+					"armaEquipadaValor2": arrayPersonaje[0].children[11].children[3].firstChild.nodeValue,
+					"armaduraEquipadaEstadistica1": arrayPersonaje[0].children[12].children[0].firstChild.nodeValue,
+					"armaduraEquipadaValor1": arrayPersonaje[0].children[12].children[1].firstChild.nodeValue,
+					"armaduraEquipadaEstadistica2": arrayPersonaje[0].children[12].children[2].firstChild.nodeValue,
+					"armaduraEquipadaValor2": arrayPersonaje[0].children[12].children[3].firstChild.nodeValue,
+					"nivel": arrayPersonaje[0].children[15].firstChild.nodeValue,
+					"idPersonaje": arrayPersonaje[0].children[16].firstChild.nodeValue,
+					"dadoVida": arrayPersonaje[0].children[17].firstChild.nodeValue
+				}		
+				
+				personaje.vidaInicial = personaje.vidaActual;
+				
+				pociones = [];
+				for (var k = 0; k < arrayPersonaje[0].children[13].children.length; k++){ /* REVISAR!!! (un "children" de más??) */
+					var pocion = {
+						"nombrePocion": arrayPersonaje[0].children[13].children[k].children[0].firstChild.nodeValue,
+						"descripcionPocion": arrayPersonaje[0].children[13].children[k].children[1].firstChild.nodeValue,
+						"pocionEstadistica1": arrayPersonaje[0].children[13].children[k].children[2].firstChild.nodeValue,
+						"pocionValor1": arrayPersonaje[0].children[13].children[k].children[3].firstChild.nodeValue,
+						"cantidad": arrayPersonaje[0].children[13].children[k].children[4].firstChild.nodeValue,
+						"idPocion": arrayPersonaje[0].children[13].children[k].children[5].firstChild.nodeValue
+					}
+					
+					pociones.push(pocion);
+				}
+				
+				habilidades = [];
+				for (var l = 0; l < arrayPersonaje[0].children[14].children.length; l++){ /* REVISAR!!! (un "children" de más??) */
+					var habilidad = {
+						"nombreHabilidad": arrayPersonaje[0].children[14].children[l].children[0].firstChild.nodeValue,
+						"descripcionHabilidad": arrayPersonaje[0].children[14].children[l].children[1].firstChild.nodeValue,
+						"dmg": arrayPersonaje[0].children[14].children[l].children[2].firstChild.nodeValue,
+						"idHabilidad": arrayPersonaje[0].children[14].children[l].children[3].firstChild.nodeValue,
+						"estadisticaHabilidad": arrayPersonaje[0].children[14].children[l].children[4].firstChild.nodeValue,
+						"posibilidadGolpearHabilidad": arrayPersonaje[0].children[14].children[l].children[5].firstChild.nodeValue
+					}
+					
+					habilidades.push(habilidad);
+				}
 			}
 		}
 	}
 	
 /* -- Recuperamos XML con info sobre el Monstruo -- */
+
 	if (Object.keys(monstruo).length == 1){
 		if (window.XMLHttpRequest) {
 			var xhttp2 = new XMLHttpRequest();
@@ -45,9 +103,9 @@ function comenzarBatalla(idMonstruo){
 			var xhttp2 = new ActiveXObject("Microsoft.XMLHTTP");
 		}
 		
-		var direccion2 = "http://warcome.local/modulos/batalla/controllers/getMonstruo.php";
+		var direccion2 = "http://warcome.local/modulos/batalla/controllers/getMonstruo.php?idMonstruo=" + idMonstruo;
 		
-		xhttp2.open("POST", direccion2, true);
+		xhttp2.open("GET", direccion2, true);
 		xhttp2.setRequestHeader('Content-Type', 'text/xml');
 		xhttp2.send();
 		
@@ -55,82 +113,22 @@ function comenzarBatalla(idMonstruo){
 			if (this.readyState == 4 && this.status == 200) {
 				xmlDoc = this.responseXML;
 
-				arrayMonstruo = xmlDoc.getElementsByTagName("monstruo");
+				var arrayMonstruo = xmlDoc.getElementsByTagName("monstruo");
+				
+				monstruo = {
+					"monstruoID": idMonstruo,
+					"nombreMonstruo": arrayMonstruo[0].children[0].firstChild.nodeValue,
+					"ataqueMonstruo": arrayMonstruo[0].children[1].firstChild.nodeValue,
+					"acMonstruo": arrayMonstruo[0].children[2].firstChild.nodeValue,
+					"vidaMonstruo": arrayMonstruo[0].children[3].firstChild.nodeValue,
+					"xpOtorgada": arrayMonstruo[0].children[4].firstChild.nodeValue,
+					"avatar": arrayMonstruo[0].children[5].firstChild.nodeValue,
+					"posibilidadGolpear": arrayMonstruo[0].children[6].firstChild.nodeValue,
+					"oroOtorgado": arrayMonstruo[0].children[7].firstChild.nodeValue
+				}
 			}
 		}
-	}
-	
-/* ---------- Metemos toda la info de los XML en variables para que sea más facil de acceder/modificar ---------- */
-	if (Object.keys(personaje).length == 3){		
-		personaje = {
-			"nombrePersonaje": arrayPersonaje[0].children[0].firstChild.nodeValue,
-			"fuerza": arrayPersonaje[0].children[1].firstChild.nodeValue,
-			"destreza": arrayPersonaje[0].children[2].firstChild.nodeValue,
-			"inteligencia": arrayPersonaje[0].children[3].firstChild.nodeValue,
-			"constitucion": arrayPersonaje[0].children[4].firstChild.nodeValue,
-			"vidaMax": arrayPersonaje[0].children[5].firstChild.nodeValue,
-			"vidaActual": arrayPersonaje[0].children[6].firstChild.nodeValue,
-			"xp": arrayPersonaje[0].children[7].firstChild.nodeValue,
-			"acPersonaje": arrayPersonaje[0].children[8].firstChild.nodeValue,
-			"oro": arrayPersonaje[0].children[9].firstChild.nodeValue,
-			"avatar": arrayPersonaje[0].children[10].firstChild.nodeValue,
-			"armaEquipadaEstadistica1": arrayPersonaje[0].children[11].children[0].firstChild.nodeValue,
-			"armaEquipadaValor1": arrayPersonaje[0].children[11].children[1].firstChild.nodeValue,
-			"armaEquipadaEstadistica2": arrayPersonaje[0].children[11].children[2].firstChild.nodeValue,
-			"armaEquipadaValor2": arrayPersonaje[0].children[11].children[3].firstChild.nodeValue,
-			"armaduraEquipadaEstadistica1": arrayPersonaje[0].children[12].children[0].firstChild.nodeValue,
-			"armaduraEquipadaValor1": arrayPersonaje[0].children[12].children[1].firstChild.nodeValue,
-			"armaduraEquipadaEstadistica2": arrayPersonaje[0].children[12].children[2].firstChild.nodeValue,
-			"armaduraEquipadaValor2": arrayPersonaje[0].children[12].children[3].firstChild.nodeValue,
-			"nivel": arrayPersonaje[0].children[15].firstChild.nodeValue,
-			"idPersonaje": arrayPersonaje[0].children[16].firstChild.nodeValue,
-			"dadoVida": arrayPersonaje[0].children[17].firstChild.nodeValue
-		}		
-		
-		personaje.vidaInicial = personaje.vidaActual;
-		
-		pociones = [];
-		for (var k = 0; k < arrayPersonaje[0].children[13].children.length; k++){ /* REVISAR!!! (un "children" de más??) */
-			var pocion = {
-				"nombrePocion": arrayPersonaje[0].children[13].children[k].children[0].firstChild.nodeValue,
-				"descripcionPocion": arrayPersonaje[0].children[13].children[k].children[1].firstChild.nodeValue,
-				"pocionEstadistica1": arrayPersonaje[0].children[13].children[k].children[2].firstChild.nodeValue,
-				"pocionValor1": arrayPersonaje[0].children[13].children[k].children[3].firstChild.nodeValue,
-				"cantidad": arrayPersonaje[0].children[13].children[k].children[4].firstChild.nodeValue,
-				"idPocion": arrayPersonaje[0].children[13].children[k].children[5].firstChild.nodeValue
-			}
-			
-			pociones.push(pocion);
-		}
-		
-		habilidades = [];
-		for (var l = 0; l < arrayPersonaje[0].children[14].children.length; l++){ /* REVISAR!!! (un "children" de más??) */
-			var habilidad = {
-				"nombreHabilidad": arrayPersonaje[0].children[14].children[l].children[0].firstChild.nodeValue,
-				"descripcionHabilidad": arrayPersonaje[0].children[14].children[l].children[1].firstChild.nodeValue,
-				"dmg": arrayPersonaje[0].children[14].children[l].children[2].firstChild.nodeValue,
-				"idHabilidad": arrayPersonaje[0].children[14].children[l].children[3].firstChild.nodeValue,
-				"estadisticaHabilidad": arrayPersonaje[0].children[14].children[l].children[4].firstChild.nodeValue,
-				"posibilidadGolpearHabilidad": arrayPersonaje[0].children[14].children[l].children[5].firstChild.nodeValue
-			}
-			
-			habilidades.push(habilidad);
-		}
-	}
-	
-	if (Object.keys(monstruo).length == 1){
-		monstruo = {
-			"monstruoID": idMonstruo,
-			"nombreMonstruo": arrayMonstruo[0].children[0].firstChild.nodeValue,
-			"ataqueMonstruo": arrayMonstruo[0].children[1].firstChild.nodeValue,
-			"acMonstruo": arrayMonstruo[0].children[2].firstChild.nodeValue,
-			"vidaMonstruo": arrayMonstruo[0].children[3].firstChild.nodeValue,
-			"xpOtorgada": arrayMonstruo[0].children[4].firstChild.nodeValue,
-			"avatar": arrayMonstruo[0].children[5].firstChild.nodeValue,
-			"posibilidadGolpear": arrayMonstruo[0].children[6].firstChild.nodeValue,
-			"oroOtorgado": arrayMonstruo[0].children[7].firstChild.nodeValue
-		}
-	}
+	}	
 	
 /* -- Variables calculadas -- */
 	
@@ -160,7 +158,7 @@ function comenzarBatalla(idMonstruo){
 		document.body.appendChild(ventanaModal);
 	}
 	
-	while (contenidoModal.childlen.length > 0){
+	while (contenidoModal.children.length > 0){
 		contenidoModal.removeChild(contenidoModal.children[0]);
 	}
 
@@ -169,7 +167,7 @@ function comenzarBatalla(idMonstruo){
 		var divNombrePJ = document.createElement("div");
 			divNombrePJ.id = "divNombrePJ";
 			divNombrePJ.appendChild(document.createTextNode(personaje.nombrePersonaje));
-		divImagenPJ.apppendChild(divNombrePJ);
+		divImagenPJ.appendChild(divNombrePJ);
 		
 		var imagenPJ = document.createElement("img");
 			imagenPJ.src = personaje.avatar;
@@ -185,7 +183,7 @@ function comenzarBatalla(idMonstruo){
 	var divVs = document.createElement("div");
 		divVs.id = "divVs";
 		var imagenVs = document.createElement("img");
-			imagenVs.src = "images/vs.png";
+			imagenVs.src = "views/images/vs.png";
 		divVs.appendChild(imagenVs);
 	contenidoModal.appendChild(divVs);
 	
@@ -194,7 +192,7 @@ function comenzarBatalla(idMonstruo){
 		var divNombreMonstruo = document.createElement("div");
 			divNombreMonstruo.id = "divNombreMonstruo";
 			divNombreMonstruo.appendChild(document.createTextNode(monstruo.nombreMonstruo));
-		divImagenMonstruo.apppendChild(divNombreMonstruo);
+		divImagenMonstruo.appendChild(divNombreMonstruo);
 		
 		var imagenMonstruo = document.createElement("img");
 			imagenMonstruo.src = monstruo.avatar;
@@ -233,8 +231,8 @@ function comenzarBatalla(idMonstruo){
 						divHabilidad.attachEvent("onclick", function(evento){elegirHabilidad(evento, i)});
 					}
 				}
-			divBotonObjetos.appendChild(divListaAtaques);
-		divBotones.apppendChild(divBotonAtaque);
+			divBotonAtaque.appendChild(divListaAtaques);
+		divBotones.appendChild(divBotonAtaque);
 		
 		var divBotonObjetos = document.createElement("div");
 			divBotonObjetos.id = "divBotonObjetos";
@@ -274,7 +272,7 @@ function comenzarBatalla(idMonstruo){
 					}
 				}
 			divBotonObjetos.appendChild(divListaObjetos);
-		divBotones.apppendChild(divBotonObjetos);
+		divBotones.appendChild(divBotonObjetos);
 	contenidoModal.appendChild(divBotones);
 }
 

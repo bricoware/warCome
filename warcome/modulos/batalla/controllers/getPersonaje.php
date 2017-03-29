@@ -8,23 +8,24 @@
 	$batallaPersonaje = new batallaPersonaje($_SESSION['personaje']);
 	$respuesta = $batallaPersonaje->obtenerDatosPersonaje();
 	
-	var_dump($respuesta);
-	/*header("Content-Type: text/xml");
+	//var_dump($respuesta);
+	//var_dump($registroPersonaje = $respuesta[0]->fetch_object());
+	header("Content-Type: text/xml");
 	$xml = "<?xml version='1.0' encoding='utf8' ?>";
-	$xml .= "<personajes>";*/
+	$xml .= "<personajes>";
 
-	//while($registroPersonaje = $respuesta[0]->fetch_object()){
+	while($registroPersonaje = $respuesta[0]->fetch_object()){
 		//var_dump($registroPersonaje);
-		/*$xml .= "<personaje>"; 
+		$xml .= "<personaje>"; 
 			
-			$xml .= "<nombrePersonaje>".$registroPersonaje->nombrePersonaje."</nombrePersonaje>";
+			$xml .= "<nombrePersonaje>".utf8_encode($registroPersonaje->nombrePersonaje)."</nombrePersonaje>";
 			$xml .= "<fuerza>".$registroPersonaje->fuerza."</fuerza>";
 			$xml .= "<destreza>".$registroPersonaje->destreza."</destreza>";
 			$xml .= "<inteligencia>".$registroPersonaje->inteligencia."</inteligencia>";
 			$xml .= "<constitucion>".$registroPersonaje->constitucion."</constitucion>";
 			$xml .= "<vidaMax>".$registroPersonaje->vidaMax."</vidaMax>";
 			$xml .= "<vidaActual>".$registroPersonaje->vidaActual."</vidaActual>";
-			$xml .= "<xp>".$registroPersonaje->xp.".</xp>";
+			$xml .= "<xp>".$registroPersonaje->xp."</xp>";
 			$xml .= "<acPersonaje>".$registroPersonaje->acPersonaje."</acPersonaje>";
 			$xml .= "<avatar>".$registroPersonaje->avatar."</avatar>";
 			$xml .= "<armaEquipada>";
@@ -46,20 +47,20 @@
 			$xml .= "<pociones>";
 				while($registroPociones = $respuesta[3]->fetch_object()){
 					$xml .= "<pocion>";
-						$xml .= "<nombreObjeto>".$registroPociones->nombreObjeto."</nombreObjeto>";
-						$xml .= "<descripcionObjeto>".$registroPociones->descripcionObjeto."</descripcionObjeto>";
+						$xml .= "<nombreObjeto>".utf8_encode($registroPociones->nombreObjeto)."</nombreObjeto>";
+						$xml .= "<descripcionObjeto>".utf8_encode($registroPociones->descripcionObjeto)."</descripcionObjeto>";
 						$xml .= "<estadistica1>".$registroPociones->estadistica1."</estadistica1>";
 						$xml .= "<valor1>".$registroPociones->valor1."</valor1>";
 						$xml .= "<cantidad>".$registroPociones->cantidad."</cantidad>";
-						$xml .= "<idObjeto>".$registroPociones->idObjeto."</idObjeto>";
+						$xml .= "<idPocion>".$registroPociones->idPocion."</idPocion>";
 					$xml .= "</pocion>";
 				}
 			$xml .= "</pociones>";
 			$xml .= "<habilidades>";
 				while($registroHabilidades = $respuesta[4]->fetch_object()){
 					$xml .= "<habilidad>";
-						$xml .= "<nombreHabilidad>".$registroHabilidades->nombreHabilidad."</nombreHabilidad>";
-						$xml .= "<descripcionHabilidad>".$registroHabilidades->descripcionHabilidad."</descripcionHabilidad>";
+						$xml .= "<nombreHabilidad>".utf8_encode($registroHabilidades->nombreHabilidad)."</nombreHabilidad>";
+						$xml .= "<descripcionHabilidad>".utf8_encode($registroHabilidades->descripcionHabilidad)."</descripcionHabilidad>";
 						$xml .= "<danho>".$registroHabilidades->danho."</danho>";
 						$xml .= "<idHabilidad>".$registroHabilidades->idHabilidad."</idHabilidad>";
 						$xml .= "<estadisticaHabilidad>".$registroHabilidades->estadisticaHabilidad."</estadisticaHabilidad>";
@@ -70,9 +71,9 @@
 			$xml .= "<nivel>".$registroPersonaje->nivel."</nivel>";
 			$xml .= "<idPersonaje>".$_SESSION['personaje']."</idPersonaje>";
 			
-		$xml .= "</personaje>";*/
-	//}
-	//$xml .= "</personajes>";
+		$xml .= "</personaje>";
+	}
+	$xml .= "</personajes>";
 	
-	//echo $xml;*/
+	echo $xml;
 ?>

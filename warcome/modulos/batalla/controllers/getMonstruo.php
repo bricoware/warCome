@@ -1,11 +1,9 @@
 <?php
 	
-	//if (isset($_POST)){
 	if (isset($_GET)){
 		
 		require_once(dirname( dirname( __FILE__) )."/model/batallaMonstruo.php");
 				
-		//$batallaMonstruo = new batallaMonstruo($_POST['idMonstruo']);
 		$batallaMonstruo = new batallaMonstruo($_GET['idMonstruo']);
 		$resultado = $batallaMonstruo->obtenerDatosMonstruo();
 		

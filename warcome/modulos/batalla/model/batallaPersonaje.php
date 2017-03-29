@@ -17,7 +17,7 @@
 			try{
 				$consultaPersonaje = "SELECT personaje.nombrePersonaje, personaje.fuerza, personaje.destreza, personaje.inteligencia, 
 							personaje.constitucion, personaje.vidaMax, personaje.vidaActual, personaje.acPersonaje, 
-							personaje.oro, avatar.avatar, personaje.nivel, clase.dadoVida
+							personaje.oro, personaje.xp, avatar.avatar, personaje.nivel, clase.dadoVida
 							FROM personaje
 							INNER JOIN personajeavatar
 							ON personaje.idPersonaje = personajeavatar.idPersonaje
@@ -67,7 +67,7 @@
 					throw new Exception("<div id='error'> No se encontró ese objeto </div>");
 				}
 				
-				$consultaPociones = "SELECT objeto.nombreObjeto, objeto.descripcion, objeto.estadistica1, objeto.valor1, pocionCantidad.cantidad, pocionCantidad.idPocion
+				$consultaPociones = "SELECT objeto.nombreObjeto, objeto.descripcionObjeto, objeto.estadistica1, objeto.valor1, pocionCantidad.cantidad, pocionCantidad.idPocion
 							FROM objeto
 							INNER JOIN pocion
 							ON objeto.idObjeto = pocion.idObjeto
@@ -80,7 +80,7 @@
 				//var_dump($consultaPociones);
 				$resultadoPociones = $this->acceso->getConector()->query($consultaPociones);
 				if(!$resultadoPociones){
-					//throw new Exception("No se pudo seleccionar");
+					throw new Exception("No se pudo seleccionar");
 				}
 				if($resultadoPociones->num_rows == 0){
 					throw new Exception("<div id='error'> No se encontró ese personaje </div>");
@@ -102,8 +102,8 @@
 					throw new Exception("<div id='error'> No se encontró esa habilidad </div>");
 				}
 				
-				//$respuesta = array($resultadoPersonaje, $resultadoArma, $resultadoArmadura, $resultadoPociones, $resultadoHabilidades);
-				$respuesta = array($consultaPersonaje, $consultaArma, $consultaArmadura, $consultaPociones, $consultaHabilidades);
+				$respuesta = array($resultadoPersonaje, $resultadoArma, $resultadoArmadura, $resultadoPociones, $resultadoHabilidades);
+				//$respuesta = array($consultaPersonaje, $consultaArma, $consultaArmadura, $consultaPociones, $consultaHabilidades);
 				
 				return $respuesta;
 			}catch(Exception $error){
