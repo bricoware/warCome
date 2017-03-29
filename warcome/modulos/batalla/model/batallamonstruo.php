@@ -26,7 +26,7 @@
 						
 				$resultado = $this->acceso->getConector()->query($consulta);
 				if(!$resultado){
-					throw new Exception("No se pudo insertar");
+					throw new Exception("No se pudo seleccionar");
 				}
 				if($resultado->num_rows == 0){
 					echo "<div id='error'> No se encontró ese monstruo </div>";
