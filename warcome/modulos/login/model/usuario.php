@@ -1,8 +1,7 @@
 ﻿<?php
-
 	require_once($_SERVER['DOCUMENT_ROOT']."/core/conector.php");
-
-	class usuario{
+	
+	class usuario {
 		
 		private $nombre;
 		private $pass;
@@ -13,16 +12,16 @@
 			$this->nombre = $nombre;
 			$this->pass = $pass;
 		}
-
+		
 		function recuperaUsuario(){
-			try{
+			try {
 				$consulta = "SELECT * FROM usuario WHERE nombre = \"".$this->nombre."\"";
 				$resultado = $this->acceso->getConector()->query($consulta);
 				if(!$resultado){
-					throw new Exception("No se pudo recuperar");
+					throw new Exception("No se pudo recuperar el usuario.");
 				}
 				if($resultado->num_rows == 0){
-					echo "<div class='error'> No se encontró ese usuario </div>";
+					echo "<div class='error'>No se encontró ese usuario.</div>";
 				}
 				while($registro = $resultado->fetch_object()){
 					if(md5($this->pass) == $registro->password){
@@ -30,10 +29,23 @@
 					}
 				}
 				return false;
-			}catch(Exception $error){
+			} catch(Exception $error){
+				echo $error->getMessage();
+			}
+		}
+		
+		function recuperaIdUsuario(){
+			try {
+				$consulta = "SELECT idUsuario FROM usuario WHERE nombre = \"" . $this->nombre . "\";";
+				$resultado = $this->acceso->getConector()->query($consulta);
+				if(!$resultado){
+					throw new Exception("No se pudo recuperar el identificador de usuario.");
+				}
+				$registro = $resultado->fetch_object();
+				return $registro->idUsuario;
+			} catch(Exception $error){
 				echo $error->getMessage();
 			}
 		}
 	}
-
 ?>

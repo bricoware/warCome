@@ -19,6 +19,6 @@
 		$nuevoPersonaje->crearNuevoPersonaje();
 		
 		// Redirección a la página de selección de personaje una vez se crea.
-		header("Location: http://warcome.local/modulos/seleccionPersonaje/hojaSeleccion.php");
+		header("Location: http://warcome.local/seleccionarPersonaje.php");
 	}
 ?>
