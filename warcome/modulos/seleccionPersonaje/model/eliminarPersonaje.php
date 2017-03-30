@@ -14,7 +14,7 @@
 			throw new Exception('<p class="error">ERROR: No puede eliminar una partida de otro usuario.</p>');
 		}
 		
-		$consulta = "DELETE FROM personaje WHERE personaje.idPersonaje = \"$idPersonaje\";";
+		$consulta = "CALL eliminarPersonaje(\"$idPersonaje\");";
 		$resultado = $conexion->getConector()->query($consulta);
 		if(!$resultado){
 			var_dump($conexion);
