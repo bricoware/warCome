@@ -343,35 +343,35 @@ CREATE TABLE `usuariopersonaje` (
 --
 
 --
--- Indices de la tabla `avatar`
+-- Índices de la tabla `avatar`
 --
 ALTER TABLE `avatar`
   ADD PRIMARY KEY (`idAvatar`),
   ADD UNIQUE KEY `avatar` (`avatar`);
 
 --
--- Indices de la tabla `aventura`
+-- Índices de la tabla `aventura`
 --
 ALTER TABLE `aventura`
   ADD PRIMARY KEY (`idAventura`),
   ADD KEY `texto_aventura_FK` (`idTexto`);
 
 --
--- Indices de la tabla `clase`
+-- Índices de la tabla `clase`
 --
 ALTER TABLE `clase`
   ADD PRIMARY KEY (`idClase`),
   ADD UNIQUE KEY `clase` (`clase`);
 
 --
--- Indices de la tabla `habilidad`
+-- Índices de la tabla `habilidad`
 --
 ALTER TABLE `habilidad`
   ADD PRIMARY KEY (`idHabilidad`),
   ADD UNIQUE KEY `nombreHabilidad` (`nombreHabilidad`);
 
 --
--- Indices de la tabla `habilidadclase`
+-- Índices de la tabla `habilidadclase`
 --
 ALTER TABLE `habilidadclase`
   ADD PRIMARY KEY (`idHabilidadClase`),
@@ -379,7 +379,7 @@ ALTER TABLE `habilidadclase`
   ADD KEY `habilidad_habilidadClase_FK` (`idHabilidad`);
 
 --
--- Indices de la tabla `habilidadpersonaje`
+-- Índices de la tabla `habilidadpersonaje`
 --
 ALTER TABLE `habilidadpersonaje`
   ADD PRIMARY KEY (`idHabilidadPersonaje`),
@@ -387,7 +387,7 @@ ALTER TABLE `habilidadpersonaje`
   ADD KEY `habilidad_habilidadPersonaje_FK` (`idHabilidad`);
 
 --
--- Indices de la tabla `inventariopersonaje`
+-- Índices de la tabla `inventariopersonaje`
 --
 ALTER TABLE `inventariopersonaje`
   ADD PRIMARY KEY (`idInventarioPersonaje`),
@@ -395,20 +395,20 @@ ALTER TABLE `inventariopersonaje`
   ADD KEY `objeto_inventarioPersonaje_armaduraEquipada_FK` (`armaduraEquipada`);
 
 --
--- Indices de la tabla `mapa`
+-- Índices de la tabla `mapa`
 --
 ALTER TABLE `mapa`
   ADD PRIMARY KEY (`idMapa`);
 
 --
--- Indices de la tabla `monstruo`
+-- Índices de la tabla `monstruo`
 --
 ALTER TABLE `monstruo`
   ADD PRIMARY KEY (`idMonstruo`),
   ADD UNIQUE KEY `nombreMonstruo` (`nombreMonstruo`);
 
 --
--- Indices de la tabla `monstruoavatar`
+-- Índices de la tabla `monstruoavatar`
 --
 ALTER TABLE `monstruoavatar`
   ADD PRIMARY KEY (`idMonstruoAvatar`),
@@ -416,14 +416,14 @@ ALTER TABLE `monstruoavatar`
   ADD KEY `avatar_monstruoAvatar_FK` (`idAvatar`);
 
 --
--- Indices de la tabla `objeto`
+-- Índices de la tabla `objeto`
 --
 ALTER TABLE `objeto`
   ADD PRIMARY KEY (`idObjeto`),
   ADD UNIQUE KEY `nombreObjeto` (`nombreObjeto`);
 
 --
--- Indices de la tabla `objetotipo`
+-- Índices de la tabla `objetotipo`
 --
 ALTER TABLE `objetotipo`
   ADD PRIMARY KEY (`idObjetoTipo`),
@@ -431,7 +431,7 @@ ALTER TABLE `objetotipo`
   ADD KEY `tipo_objetoTipo_FK` (`idTipo`);
 
 --
--- Indices de la tabla `partida`
+-- Índices de la tabla `partida`
 --
 ALTER TABLE `partida`
   ADD PRIMARY KEY (`idPartida`),
@@ -439,13 +439,13 @@ ALTER TABLE `partida`
   ADD KEY `personaje_partida_FK` (`idPersonaje`);
 
 --
--- Indices de la tabla `personaje`
+-- Índices de la tabla `personaje`
 --
 ALTER TABLE `personaje`
   ADD PRIMARY KEY (`idPersonaje`);
 
 --
--- Indices de la tabla `personajeavatar`
+-- Índices de la tabla `personajeavatar`
 --
 ALTER TABLE `personajeavatar`
   ADD PRIMARY KEY (`idPersonajeAvatar`),
@@ -453,7 +453,7 @@ ALTER TABLE `personajeavatar`
   ADD KEY `avatar_personajeAvatar_FK` (`idAvatar`);
 
 --
--- Indices de la tabla `personajeclase`
+-- Índices de la tabla `personajeclase`
 --
 ALTER TABLE `personajeclase`
   ADD PRIMARY KEY (`idPersonajeClase`),
@@ -461,7 +461,7 @@ ALTER TABLE `personajeclase`
   ADD KEY `clase_personajeClase_FK` (`idClase`);
 
 --
--- Indices de la tabla `personajeraza`
+-- Índices de la tabla `personajeraza`
 --
 ALTER TABLE `personajeraza`
   ADD PRIMARY KEY (`idPersonajeRaza`),
@@ -469,7 +469,7 @@ ALTER TABLE `personajeraza`
   ADD KEY `clase_personajeRaza_FK` (`idRaza`);
 
 --
--- Indices de la tabla `pocion`
+-- Índices de la tabla `pocion`
 --
 ALTER TABLE `pocion`
   ADD PRIMARY KEY (`idPocion`),
@@ -477,41 +477,41 @@ ALTER TABLE `pocion`
   ADD KEY `objeto_pocion_FK` (`idObjeto`);
 
 --
--- Indices de la tabla `pocioncantidad`
+-- Índices de la tabla `pocioncantidad`
 --
 ALTER TABLE `pocioncantidad`
   ADD PRIMARY KEY (`idPocionCantidad`),
   ADD KEY `pocion_pocionCantidad_FK` (`idPocion`);
 
 --
--- Indices de la tabla `raza`
+-- Índices de la tabla `raza`
 --
 ALTER TABLE `raza`
   ADD PRIMARY KEY (`idRaza`),
   ADD UNIQUE KEY `raza` (`raza`);
 
 --
--- Indices de la tabla `texto`
+-- Índices de la tabla `texto`
 --
 ALTER TABLE `texto`
   ADD PRIMARY KEY (`idTexto`);
 
 --
--- Indices de la tabla `tipo`
+-- Índices de la tabla `tipo`
 --
 ALTER TABLE `tipo`
   ADD PRIMARY KEY (`idTipo`),
   ADD UNIQUE KEY `tipo` (`tipo`);
 
 --
--- Indices de la tabla `usuario`
+-- Índices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`idUsuario`),
   ADD UNIQUE KEY `nombre` (`nombre`);
 
 --
--- Indices de la tabla `usuariopersonaje`
+-- Índices de la tabla `usuariopersonaje`
 --
 ALTER TABLE `usuariopersonaje`
   ADD PRIMARY KEY (`idUsuarioPersonaje`),
@@ -694,6 +694,29 @@ ALTER TABLE `pocioncantidad`
 ALTER TABLE `usuariopersonaje`
   ADD CONSTRAINT `personaje_usuarioPersonaje_FK` FOREIGN KEY (`idPersonaje`) REFERENCES `personaje` (`idPersonaje`),
   ADD CONSTRAINT `usuario_usuarioPersonaje_FK` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`);
+
+-- --------------------------------------------------------
+--
+-- Procedimientos
+--
+-- --------------------------------------------------------
+
+--
+-- Eliminación de personajes
+--
+DELIMITER //
+CREATE PROCEDURE eliminar_personaje(IN idPersonaje int(11))
+BEGIN
+DELETE FROM usuariopersonaje WHERE usuariopersonaje.idPersonaje = idPersonaje;
+DELETE FROM habilidadpersonaje WHERE habilidadpersonaje.idPersonaje = idPersonaje;
+DELETE FROM pocioncantidad WHERE pocioncantidad.idPocion IN (SELECT pocion.idPocion FROM pocion WHERE pocion.idPersonaje = idPersonaje);
+DELETE FROM pocion WHERE pocion.idPersonaje = idPersonaje;
+DELETE FROM partida WHERE partida.idPersonaje = idPersonaje;
+DELETE FROM personajeraza WHERE personajeraza.idPersonaje = idPersonaje;
+DELETE FROM personajeclase WHERE personajeclase.idPersonaje = idPersonaje;
+DELETE FROM personajeavatar WHERE personajeavatar.idPersonaje = idPersonaje;
+END //
+DELIMITER ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
