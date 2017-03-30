@@ -1,3 +1,9 @@
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+}
+
 .modalBatallas {
     position: fixed;
     z-index: 1;
@@ -7,16 +13,17 @@
     height: 95%;
 	margin: 2.5% 5%;
 	overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
+    background-color: lightgray;
 }
 
 .modal-contentBatallas {
-	background-color: #fefefe;
-    margin: 10% auto;
-    padding: 20px;
+	background-color: lightblue;
+    margin: 2% auto;
+    padding: 10px;
     border: 1px solid #888;
-    width: 90%;
+    width: 96%;
+	height: 90%;
+	font-size: 1.5em;
 }
 
 #divCombatLog {
@@ -27,30 +34,22 @@
 #divImagenPJ, #divImagenMonstruo {
 	float: left;
 	width: 35%;
-	height: 480px;
+	height: 200px;
 	margin: 10px 2.5%;
 }
 
 #divNombrePJ, #divNombreMonstruo {
 	width: 100%;
-	height: 50px;
-}
-
-#divImagenPJ img {
-	width: 100%;
-	height: 350px;
-}
-
-#divImagenMonstruo img {
-	width: 100%;
-	height: 430px;
+	height: 30px;
+	background-color: white;
 }
 
 #divHP {
-	float: left;
-	width: 35%;
-	height: 50px;
-	margin: 5px 2.5%;
+	position: relative;
+	top: 150px;
+	width: 100%;
+	height: 30px;
+	background-color: white;
 }
 
 #divVs {
@@ -78,14 +77,17 @@
 	width: 40%;
 	height: 100;
 	margin: 25px 5%;
+	border: solid 1px black;
+	box-sizing: border-box;
 }
 
 #divListaAtaques, #divListaObjetos {
 	display: none;
 	position: relative;
-	width: 200px;
+	width: 100%;
 	height: 200px;
-	top: -300px;
+	top: -220px;
+	background-color: white;
 }
 
 #divBotonAtaque:hover #divListaAtaques {

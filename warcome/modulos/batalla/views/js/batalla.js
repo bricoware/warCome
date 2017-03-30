@@ -9,7 +9,7 @@ function comenzarBatalla(idMonstruo){
 		var xhttp1 = new ActiveXObject("Microsoft.XMLHTTP");
 	}
 	
-	var direccion1 = "http://warcome.local/modulos/batalla/controllers/getPersonaje.php?idMonstruo=" + idMonstruo;
+	var direccion1 = "http://warcome.local/modulos/batalla/controllers/getPersonajeMonstruo.php?idMonstruo=" + idMonstruo;
 	
 	xhttp1.open("GET", direccion1, true);
 	xhttp1.setRequestHeader('Content-Type', 'text/xml');
@@ -38,15 +38,15 @@ function comenzarBatalla(idMonstruo){
 				//"armaEquipadaEstadistica2": arrayPersonaje[0].children[11].children[2].firstChild.nodeValue,
 				//"armaEquipadaValor2": arrayPersonaje[0].children[11].children[3].firstChild.nodeValue,
 				"armaduraEquipadaEstadistica1": arrayPersonaje[0].children[12].children[0].firstChild.nodeValue,
-				//"armaduraEquipadaValor1": arrayPersonaje[0].children[12].children[1].firstChild.nodeValue,
+				"armaduraEquipadaValor1": arrayPersonaje[0].children[12].children[1].firstChild.nodeValue,
 				//"armaduraEquipadaEstadistica2": arrayPersonaje[0].children[12].children[2].firstChild.nodeValue,
 				//"armaduraEquipadaValor2": arrayPersonaje[0].children[12].children[3].firstChild.nodeValue,
 				"nivel": arrayPersonaje[0].children[15].firstChild.nodeValue,
-				//"idPersonaje": arrayPersonaje[0].children[16].firstChild.nodeValue,
-				//"dadoVida": arrayPersonaje[0].children[17].firstChild.nodeValue
+				"idPersonaje": arrayPersonaje[0].children[16].firstChild.nodeValue,
+				"dadoVida": arrayPersonaje[0].children[17].firstChild.nodeValue
 			}		
 			
-			console.log(arrayPersonaje[0].children[11].children[0].firstChild);
+			//console.log(arrayPersonaje[0].children[15]);
 			
 			personaje.vidaInicial = personaje.vidaActual;	/* Por si hay que recargar la partida */
 			
@@ -139,14 +139,12 @@ function crearVentana(personaje, pociones, habilidades, monstruo){
 
 	var divImagenPJ = document.createElement("div");
 		divImagenPJ.id = "divImagenPJ";
+		divImagenPJ.style.background = "url(views/images/" + personaje.avatar + ") no-repeat";
+		divImagenPJ.style.backgroundSize = "100% 100%";
 		var divNombrePJ = document.createElement("div");
 			divNombrePJ.id = "divNombrePJ";
 			divNombrePJ.appendChild(document.createTextNode(personaje.nombrePersonaje));
 		divImagenPJ.appendChild(divNombrePJ);
-		
-		var imagenPJ = document.createElement("img");
-			imagenPJ.src = "views/images/" + personaje.avatar;
-		divImagenPJ.appendChild(imagenPJ);
 		
 		var divHP = document.createElement("div");
 			divHP.id = "divHP";
@@ -164,20 +162,19 @@ function crearVentana(personaje, pociones, habilidades, monstruo){
 	
 	var divImagenMonstruo = document.createElement("div");
 		divImagenMonstruo.id = "divImagenMonstruo";
+		divImagenMonstruo.style.background = "url(views/images/" + monstruo.avatar + ") no-repeat";
+		divImagenMonstruo.style.backgroundSize = "100% 100%";
 		var divNombreMonstruo = document.createElement("div");
 			divNombreMonstruo.id = "divNombreMonstruo";
 			divNombreMonstruo.appendChild(document.createTextNode(monstruo.nombreMonstruo));
 		divImagenMonstruo.appendChild(divNombreMonstruo);
-		
-		var imagenMonstruo = document.createElement("img");
-			imagenMonstruo.src = "views/images/" + monstruo.avatar;
-		divImagenMonstruo.appendChild(imagenMonstruo);
 	contenidoModal.appendChild(divImagenMonstruo);
 	
 	var divBotones = document.createElement("div");
 		divBotones.id = "divBotones";
 		var divBotonAtaque = document.createElement("div");
 			divBotonAtaque.id = "divBotonAtaque";
+			divBotonAtaque.appendChild(document.createTextNode("Atacar"));
 			var divListaAtaques = document.createElement("div");
 				divListaAtaques.id = "divListaAtaques";
 				for (var i = 0; i < habilidades.length; i++){
@@ -199,11 +196,11 @@ function crearVentana(personaje, pociones, habilidades, monstruo){
 							divDescripcionHabilidad.className = "descripcionHabilidad";
 							divDescripcionHabilidad.appendChild(document.createTextNode(habilidades[i].descripcionHabilidad));
 						divHabilidad.appendChild(divDescripcionHabilidad);
-					divListaObjetos.appendChild(divHabilidad);
+					divListaAtaques.appendChild(divHabilidad);
 					if (divHabilidad.addEventListener) {
-						divHabilidad.addEventListener("click", function(evento){elegirHabilidad(evento, i)});
+						divHabilidad.addEventListener("click", function(evento){elegirHabilidad(evento, this.id, personaje, pociones, habilidades, monstruo)});
 					} else if (divHabilidad.attachEvent) {
-						divHabilidad.attachEvent("onclick", function(evento){elegirHabilidad(evento, i)});
+						divHabilidad.attachEvent("onclick", function(evento){elegirHabilidad(evento, this.id, personaje, pociones, habilidades, monstruo)});
 					}
 				}
 			divBotonAtaque.appendChild(divListaAtaques);
@@ -211,6 +208,7 @@ function crearVentana(personaje, pociones, habilidades, monstruo){
 		
 		var divBotonObjetos = document.createElement("div");
 			divBotonObjetos.id = "divBotonObjetos";
+			divBotonObjetos.appendChild(document.createTextNode("Objetos"));
 			var divListaObjetos = document.createElement("div");
 				divListaObjetos.id = "divListaObjetos";
 				for (var j = 0; j < pociones.length; j++){
@@ -239,10 +237,10 @@ function crearVentana(personaje, pociones, habilidades, monstruo){
 								}
 							divPocion.appendChild(divDescripcionPocion);
 						divListaObjetos.appendChild(divPocion);
-						if (divHabilidad.addEventListener) {
-							divHabilidad.addEventListener("click", function(evento){elegirPocion(evento, j)});
-						} else if (divHabilidad.attachEvent) {
-							divHabilidad.attachEvent("onclick", function(evento){elegirPocion(evento, j)});
+						if (divPocion.addEventListener) {
+							divPocion.addEventListener("click", function(evento){elegirPocion(evento, this.id, personaje, pociones, habilidades, monstruo)});
+						} else if (divPocion.attachEvent) {
+							divPocion.attachEvent("onclick", function(evento){elegirPocion(evento, this.id, personaje, pociones, habilidades, monstruo)});
 						}
 					}
 				}
@@ -251,65 +249,69 @@ function crearVentana(personaje, pociones, habilidades, monstruo){
 	contenidoModal.appendChild(divBotones);
 }
 
-function elegirHabilidad(e, indice){
+function elegirHabilidad(e, idHabilidad, personaje, pociones, habilidades, monstruo){
 	var combatLog = document.getElementById("divCombatLog");
 	scrollDown();
 	
-	if (habilidades[indice].estadisticaHabilidad == "fuerza"){
-		if ( (dados("1d20") + personaje.modificadorFuerza + habilidades[indice].posibilidadGolpearHabilidad) >= monstruo.acMonstruo){
-			var dmgInfligido = dados(habilidades[indice].dmg) + personaje.modificadorFuerza;
-			monstruo.dmgRecibido += dmgInfligido;
-			combatLog.innerHTML += personaje.nombrePersonaje + " usó " + habilidades[indice].nombreHabilidad + ": golpeó a " +
-			monstruo.nombreMonstruo + " por " + dmgInfligido + " puntos de daño. <br/>";
-			scrollDown();
-		} else {
-			if (dados("1d2") == 1){
-				combatLog.innerHTML += personaje.nombrePersonaje + " usó " + habilidades[indice].nombreHabilidad + ": el ataque falló. <br/>";
-				scrollDown();
-			} else if (dados("1d2") == 2){
-				combatLog.innerHTML += personaje.nombrePersonaje + " usó " + habilidades[indice].nombreHabilidad + ": " +
-				monstruo.nombreMonstruo + "bloqueó el ataque. <br/>";
-				scrollDown();
-			}
-		}
-	} else if (habilidades[indice].estadisticaHabilidad == "destreza"){
-		if ( (dados("1d20") + personaje.modificadorDestreza + habilidades[indice].posibilidadGolpearHabilidad) >= monstruo.acMonstruo){
-			var dmgInfligido = dados(habilidades[indice].dmg) + personaje.modificadorDestreza;
-			monstruo.dmgRecibido += dmgInfligido;
-			combatLog.innerHTML += personaje.nombrePersonaje + " usó " + habilidades[indice].nombreHabilidad + ": golpeó a " +
-			monstruo.nombreMonstruo + " por " + dmgInfligido + " puntos de daño. <br/>";
-			scrollDown();
-		} else {
-			if (dados("1d2") == 1){
-				combatLog.innerHTML += personaje.nombrePersonaje + " usó " + habilidades[indice].nombreHabilidad + ": el ataque falló. <br/>";
-				scrollDown();
-			} else if (dados("1d2") == 2){
-				combatLog.innerHTML += personaje.nombrePersonaje + " usó " + habilidades[indice].nombreHabilidad + ": " +
-				monstruo.nombreMonstruo + "bloqueó el ataque. <br/>";
-				scrollDown();
-			}
-		}
-	} else if (habilidades[indice].estadisticaHabilidad == "inteligencia"){
-		if ( (dados("1d20") + personaje.modificadorInteligencia + habilidades[indice].posibilidadGolpearHabilidad) >= monstruo.acMonstruo){
-			var dmgInfligido = dados(habilidades[indice].dmg) + personaje.modificadorInteligencia;
-			monstruo.dmgRecibido += dmgInfligido;
-			combatLog.innerHTML += personaje.nombrePersonaje + " usó " + habilidades[indice].nombreHabilidad + ": golpeó a " +
-			monstruo.nombreMonstruo + " por " + dmgInfligido + " puntos de daño. <br/>";
-			scrollDown();
-		} else {
-			if (dados("1d2") == 1){
-				combatLog.innerHTML += personaje.nombrePersonaje + " usó " + habilidades[indice].nombreHabilidad + ": el ataque falló. <br/>";
-				scrollDown();
-			} else if (dados("1d2") == 2){
-				combatLog.innerHTML += personaje.nombrePersonaje + " usó " + habilidades[indice].nombreHabilidad + ": " +
-				monstruo.nombreMonstruo + "bloqueó el ataque. <br/>";
-				scrollDown();
+	for (var indice = 0; indice < habilidades.length; indice++){
+		if (habilidades[indice].idHabilidad == idHabilidad){
+			if (habilidades[indice].estadisticaHabilidad == "fuerza"){
+				if ( (dados("1d20") + personaje.modificadorFuerza + habilidades[indice].posibilidadGolpearHabilidad) >= monstruo.acMonstruo){
+					var dmgInfligido = dados(habilidades[indice].dmg) + personaje.modificadorFuerza;
+					monstruo.dmgRecibido += dmgInfligido;
+					combatLog.innerHTML += personaje.nombrePersonaje + " usó " + habilidades[indice].nombreHabilidad + ": golpeó a " +
+					monstruo.nombreMonstruo + " por " + dmgInfligido + " puntos de daño. <br/>";
+					scrollDown();
+				} else {
+					if (dados("1d2") == 1){
+						combatLog.innerHTML += personaje.nombrePersonaje + " usó " + habilidades[indice].nombreHabilidad + ": el ataque falló. <br/>";
+						scrollDown();
+					} else if (dados("1d2") == 2){
+						combatLog.innerHTML += personaje.nombrePersonaje + " usó " + habilidades[indice].nombreHabilidad + ": " +
+						monstruo.nombreMonstruo + "bloqueó el ataque. <br/>";
+						scrollDown();
+					}
+				}
+			} else if (habilidades[indice].estadisticaHabilidad == "destreza"){
+				if ( (dados("1d20") + personaje.modificadorDestreza + habilidades[indice].posibilidadGolpearHabilidad) >= monstruo.acMonstruo){
+					var dmgInfligido = dados(habilidades[indice].dmg) + personaje.modificadorDestreza;
+					monstruo.dmgRecibido += dmgInfligido;
+					combatLog.innerHTML += personaje.nombrePersonaje + " usó " + habilidades[indice].nombreHabilidad + ": golpeó a " +
+					monstruo.nombreMonstruo + " por " + dmgInfligido + " puntos de daño. <br/>";
+					scrollDown();
+				} else {
+					if (dados("1d2") == 1){
+						combatLog.innerHTML += personaje.nombrePersonaje + " usó " + habilidades[indice].nombreHabilidad + ": el ataque falló. <br/>";
+						scrollDown();
+					} else if (dados("1d2") == 2){
+						combatLog.innerHTML += personaje.nombrePersonaje + " usó " + habilidades[indice].nombreHabilidad + ": " +
+						monstruo.nombreMonstruo + "bloqueó el ataque. <br/>";
+						scrollDown();
+					}
+				}
+			} else if (habilidades[indice].estadisticaHabilidad == "inteligencia"){
+				if ( (dados("1d20") + personaje.modificadorInteligencia + habilidades[indice].posibilidadGolpearHabilidad) >= monstruo.acMonstruo){
+					var dmgInfligido = dados(habilidades[indice].dmg) + personaje.modificadorInteligencia;
+					monstruo.dmgRecibido += dmgInfligido;
+					combatLog.innerHTML += personaje.nombrePersonaje + " usó " + habilidades[indice].nombreHabilidad + ": golpeó a " +
+					monstruo.nombreMonstruo + " por " + dmgInfligido + " puntos de daño. <br/>";
+					scrollDown();
+				} else {
+					if (dados("1d2") == 1){
+						combatLog.innerHTML += personaje.nombrePersonaje + " usó " + habilidades[indice].nombreHabilidad + ": el ataque falló. <br/>";
+						scrollDown();
+					} else if (dados("1d2") == 2){
+						combatLog.innerHTML += personaje.nombrePersonaje + " usó " + habilidades[indice].nombreHabilidad + ": " +
+						monstruo.nombreMonstruo + "bloqueó el ataque. <br/>";
+						scrollDown();
+					}
+				}
 			}
 		}
 	}
 	
 	if (monstruo.dmgRecibido >= monstruo.vidaMonstruo){
-		monstruoEliminado();
+		monstruoEliminado(personaje, pociones, habilidades, monstruo);
 	} else {
 		if (monstruo.dmgRecibido*2 >= monstruo.vidaMonstruo){
 			combatLog.innerHTML += monstruo.nombreMonstruo + "parece herido. <br/>";
@@ -318,11 +320,11 @@ function elegirHabilidad(e, indice){
 			combatLog.innerHTML += monstruo.nombreMonstruo + "está gravemente herido. <br/>";
 			scrollDown();
 		}
-		rondaMonstruo();
+		rondaMonstruo(personaje, pociones, habilidades, monstruo);
 	}
 }
 
-function elegirPocion(e, indice){
+function elegirPocion(e, idPocion, personaje, pociones, habilidades, monstruo){
 	if (pociones[indice].pocionEstadistica1 == "vidaActual"){
 		if (personaje.vidaActual + pociones[indice].pocionValor1 < personaje.vidaMax){
 			personaje.vidaActual += pociones[indice].pocionValor1;
@@ -350,10 +352,10 @@ function elegirPocion(e, indice){
 	
 	pociones[indice].cantidad = pociones[indice].cantidad - 1;
 	
-	rondaMonstruo();
+	rondaMonstruo(personaje, pociones, habilidades, monstruo);
 }
 
-function rondaMonstruo(){
+function rondaMonstruo(personaje, pociones, habilidades, monstruo){
 	var combatLog = document.getElementById("divCombatLog");
 	scrollDown();
 	
@@ -374,22 +376,22 @@ function rondaMonstruo(){
 	}
 	
 	if (personaje.vidaActual <= 0){
-		personajeEliminado();
+		personajeEliminado(personaje, pociones, habilidades, monstruo);
 	} else {
-		comenzarBatalla(monstruo.monstruoID);
+		crearVentana(personaje, pociones, habilidades, monstruo);
 	}
 }
 
-function monstruoEliminado(){
+function monstruoEliminado(personaje, pociones, habilidades, monstruo){
 	personaje.oro += monstruo.oroOtorgado;
 	
 	var combatLog = document.getElementById("divCombatLog");
-	combatLog.innerHTML += personaje.nombrePersonaje + "encontró " + monstruo.oroOtorgado + " piezas de oro. <br/>";
+	combatLog.innerHTML += personaje.nombrePersonaje + " encontró " + monstruo.oroOtorgado + " piezas de oro. <br/>";
 	scrollDown();
 	
 	personaje.xp += monstruo.xpOtorgada;
 	
-	combatLog.innerHTML += personaje.nombrePersonaje + "ganó " + monstruo.xpOtorgada + " puntos de experiencia. <br/>";
+	combatLog.innerHTML += personaje.nombrePersonaje + " ganó " + monstruo.xpOtorgada + " puntos de experiencia. <br/>";
 	scrollDown();
 	
 	var xpUmbral = 0;
@@ -398,11 +400,11 @@ function monstruoEliminado(){
 	}
 	if (personaje.nivel < 5){
 		if (personaje.xp >= (Math.pow(3, personaje.nivel)*100)){
-			levelUp(personaje.nivel);
+			levelUp(personaje, pociones, habilidades, monstruo);
 		}
 	} else if (personaje.nivel <= 20){
 		if (personaje.xp >= xpUmbral){
-			levelUp(personaje.nivel);
+			levelUp(personaje, pociones, habilidades, monstruol);
 		}
 	}
 	
@@ -427,14 +429,14 @@ function personajeEliminado(){
 	var ventanaModal = document.getElementById("ventanaModal");
 	
 	if (ventanaModal.addEventListener) {
-		ventanaModal.addEventListener("click", function(evento){gameOver(evento, this)});
+		ventanaModal.addEventListener("click", function(evento){gameOver(evento, this, personaje, pociones, habilidades, monstruo)});
 	} else if (ventanaModal.attachEvent) {
-		ventanaModal.attachEvent("onclick", function(evento){gameOver(evento, this)});
+		ventanaModal.attachEvent("onclick", function(evento){gameOver(evento, this, personaje, pociones, habilidades, monstruo)});
 	}	
 }
 
-function levelUp(nivelActual){
-	personaje.nivel = nivelActual + 1;
+function levelUp(personaje, pociones, habilidades, monstruo){
+	personaje.nivel = personaje.nivel + 1;
 	
 	var combatLog = document.getElementById("divCombatLog");
 	combatLog.innerHTML += personaje.nombrePersonaje + "subió de nivel: Nivel  " + personaje.nivel + ". <br/>";
@@ -516,7 +518,7 @@ function levelUp(nivelActual){
 	scrollDown();
 }
 
-function terminarBatalla(ventanaModal){
+function terminarBatalla(ventanaModal, personaje, pociones, habilidades, monstruo){
 	ventanaModal.style.display = "none";
 	
 	if (window.XMLHttpRequest) {
@@ -524,6 +526,8 @@ function terminarBatalla(ventanaModal){
 	} else {
 		var xhttp = new ActiveXObject("Microsoft.XMLHTTP");
 	}
+	
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	
 	var direccion = "http://warcome/modulos/batalla/controllers/datosActualizarPersonaje.php";
 	var datos = "fuerza = " + personaje.fuerza + "destreza = " + personaje.destreza + "inteligencia = " + personaje.inteligencia + 
@@ -559,11 +563,6 @@ function terminarBatalla(ventanaModal){
 		}
 	}
 	
-	var personaje = {};
-	var pociones = {};		/* Reseteamos variables globales */
-	var habilidades = {};
-	var monstruo = {};
-	
 	document.body.removeChild(document.body, ventanaModal);		/* Eliminamos la ventana modal */
 }
 
@@ -574,10 +573,6 @@ function gameOver(ventanaModal){
 	
 	cargarPartida(personaje.idPersonaje);		/* Placeholder, no sé como se llamará la función que carga la partida */
 	
-	var personaje = {};
-	var pociones = {};		/* Reseteamos variables globales */
-	var habilidades = {};
-	var monstruo = {};
 }
 
 function scrollDown(){

@@ -4,7 +4,7 @@
 		session_start();
 		$_SESSION['personaje'] = 1; /* TESTING */
 		
-		require_once(dirname( dirname( __FILE__) )."/model/batallaPersonaje.php");
+		require_once(dirname( dirname( __FILE__) )."/model/batallaPersonajeMonstruo.php");
 		
 		$batallaPersonaje = new batallaPersonaje($_SESSION['personaje'], $_GET['idMonstruo']);
 		$respuesta = $batallaPersonaje->obtenerDatosPersonaje();
@@ -28,6 +28,7 @@
 				$xml .= "<vidaActual>".$registroPersonaje->vidaActual."</vidaActual>";
 				$xml .= "<xp>".$registroPersonaje->xp."</xp>";
 				$xml .= "<acPersonaje>".$registroPersonaje->acPersonaje."</acPersonaje>";
+				$xml .= "<oro>".$registroPersonaje->oro."</oro>";
 				$xml .= "<avatar>".$registroPersonaje->avatar."</avatar>";
 				$xml .= "<armaEquipada>";
 					while($registroArma = $respuesta[1]->fetch_object()){
@@ -71,6 +72,7 @@
 				$xml .= "</habilidades>";
 				$xml .= "<nivel>".$registroPersonaje->nivel."</nivel>";
 				$xml .= "<idPersonaje>".$_SESSION['personaje']."</idPersonaje>";
+				$xml .= "<dadoVida>".$registroPersonaje->dadoVida."</dadoVida>";
 				
 			$xml .= "</personaje>";
 		}
