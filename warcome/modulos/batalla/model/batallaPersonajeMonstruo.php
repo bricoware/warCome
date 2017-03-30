@@ -5,12 +5,14 @@
 	class batallaPersonaje{
 		
 		private $idPersonaje;
+		private $idMonstruo;
 		
 		private $acceso;
 		
-		public function __construct($idPersonaje){
+		public function __construct($idPersonaje, $idMonstruo){
 			$this->acceso = new conector();
 			$this->idPersonaje = $idPersonaje;
+			$this->idMonstruo = $idMonstruo;
 		}
 
 		function obtenerDatosPersonaje(){
@@ -102,8 +104,24 @@
 					throw new Exception("<div id='error'> No se encontró esa habilidad </div>");
 				}
 				
-				$respuesta = array($resultadoPersonaje, $resultadoArma, $resultadoArmadura, $resultadoPociones, $resultadoHabilidades);
-				//$respuesta = array($consultaPersonaje, $consultaArma, $consultaArmadura, $consultaPociones, $consultaHabilidades);
+				$consultaMonstruo = "SELECT monstruo.nombreMonstruo, monstruo.ataqueMonstruo, monstruo.acMonstruo, monstruo.vidaMonstruo, 
+							monstruo.xpOtorgada, avatar.avatar, monstruo.posibilidadGolpear, monstruo.oroOtorgado
+							FROM monstruo
+							INNER JOIN monstruoavatar
+							ON monstruo.idMonstruo = monstruoavatar.idMonstruo
+							INNER JOIN avatar
+							ON monstruoavatar.idAvatar = avatar.idAvatar
+							WHERE monstruo.idMonstruo = '".$this->idMonstruo."';";
+						
+				$resultadoMonstruo = $this->acceso->getConector()->query($consultaMonstruo);
+				if(!$resultadoMonstruo){
+					throw new Exception("No se pudo seleccionar");
+				}
+				if($resultadoMonstruo->num_rows == 0){
+					echo "<div id='error'> No se encontró ese monstruo </div>";
+				}
+				
+				$respuesta = array($resultadoPersonaje, $resultadoArma, $resultadoArmadura, $resultadoPociones, $resultadoHabilidades, $resultadoMonstruo);
 				
 				return $respuesta;
 			}catch(Exception $error){

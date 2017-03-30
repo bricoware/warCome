@@ -1,7 +1,7 @@
 
 function comenzarBatalla(idMonstruo){
 	
-/* -- Recuperamos XML con info sobre el Personaje -- */
+/* -- Recuperamos XML con info sobre el Personaje y el Monstruo -- */
 		
 	if (window.XMLHttpRequest) {
 		var xhttp1 = new XMLHttpRequest();
@@ -9,9 +9,9 @@ function comenzarBatalla(idMonstruo){
 		var xhttp1 = new ActiveXObject("Microsoft.XMLHTTP");
 	}
 	
-	var direccion1 = "http://warcome.local/modulos/batalla/controllers/getPersonaje.php";
+	var direccion1 = "http://warcome.local/modulos/batalla/controllers/getPersonaje.php?idMonstruo=" + idMonstruo;
 	
-	xhttp1.open("POST", direccion1, true);
+	xhttp1.open("GET", direccion1, true);
 	xhttp1.setRequestHeader('Content-Type', 'text/xml');
 	xhttp1.send();
 			
@@ -35,22 +35,31 @@ function comenzarBatalla(idMonstruo){
 				"avatar": arrayPersonaje[0].children[10].firstChild.nodeValue,
 				"armaEquipadaEstadistica1": arrayPersonaje[0].children[11].children[0].firstChild.nodeValue,
 				"armaEquipadaValor1": arrayPersonaje[0].children[11].children[1].firstChild.nodeValue,
-				"armaEquipadaEstadistica2": arrayPersonaje[0].children[11].children[2].firstChild.nodeValue,
-				"armaEquipadaValor2": arrayPersonaje[0].children[11].children[3].firstChild.nodeValue,
+				//"armaEquipadaEstadistica2": arrayPersonaje[0].children[11].children[2].firstChild.nodeValue,
+				//"armaEquipadaValor2": arrayPersonaje[0].children[11].children[3].firstChild.nodeValue,
 				"armaduraEquipadaEstadistica1": arrayPersonaje[0].children[12].children[0].firstChild.nodeValue,
-				"armaduraEquipadaValor1": arrayPersonaje[0].children[12].children[1].firstChild.nodeValue,
-				"armaduraEquipadaEstadistica2": arrayPersonaje[0].children[12].children[2].firstChild.nodeValue,
-				"armaduraEquipadaValor2": arrayPersonaje[0].children[12].children[3].firstChild.nodeValue,
+				//"armaduraEquipadaValor1": arrayPersonaje[0].children[12].children[1].firstChild.nodeValue,
+				//"armaduraEquipadaEstadistica2": arrayPersonaje[0].children[12].children[2].firstChild.nodeValue,
+				//"armaduraEquipadaValor2": arrayPersonaje[0].children[12].children[3].firstChild.nodeValue,
 				"nivel": arrayPersonaje[0].children[15].firstChild.nodeValue,
-				"idPersonaje": arrayPersonaje[0].children[16].firstChild.nodeValue,
-				"dadoVida": arrayPersonaje[0].children[17].firstChild.nodeValue
+				//"idPersonaje": arrayPersonaje[0].children[16].firstChild.nodeValue,
+				//"dadoVida": arrayPersonaje[0].children[17].firstChild.nodeValue
 			}		
+			
+			console.log(arrayPersonaje[0].children[11].children[0].firstChild);
 			
 			personaje.vidaInicial = personaje.vidaActual;	/* Por si hay que recargar la partida */
 			
 			personaje.bonusFuerza = 0;
 			personaje.bonusDestreza = 0;		/* Bonuses temporales por pociones, etc. */
 			personaje.bonusInteligencia = 0;
+				
+			/* -- Variables calculadas -- */
+			
+			personaje.modificadorFuerza = parseInt((personaje.fuerza + personaje.bonusFuerza - 10)/2);
+			personaje.modificadorDestreza = parseInt((personaje.destreza + personaje.bonusDestreza - 10)/2);		/* Valores usados en cálculos de daño, etc. */
+			personaje.modificadorInteligencia = parseInt((personaje.inteligencia + personaje.bonusInteligencia - 10)/2);
+			
 			
 			var pociones = [];
 			for (var k = 0; k < arrayPersonaje[0].children[13].children.length; k++){ /* REVISAR!!! (un "children" de más??) */
@@ -79,27 +88,7 @@ function comenzarBatalla(idMonstruo){
 				
 				habilidades.push(habilidad);
 			}
-		}
-	}
-	
-/* -- Recuperamos XML con info sobre el Monstruo -- */
-
-	if (window.XMLHttpRequest) {
-		var xhttp2 = new XMLHttpRequest();
-	} else {
-		var xhttp2 = new ActiveXObject("Microsoft.XMLHTTP");
-	}
-	
-	var direccion2 = "http://warcome.local/modulos/batalla/controllers/getMonstruo.php?idMonstruo=" + idMonstruo;
-	
-	xhttp2.open("GET", direccion2, true);
-	xhttp2.setRequestHeader('Content-Type', 'text/xml');
-	xhttp2.send();
-	
-	xhttp2.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			xmlDoc = this.responseXML;
-
+			
 			var arrayMonstruo = xmlDoc.getElementsByTagName("monstruo");
 			
 			var monstruo = {
@@ -115,15 +104,13 @@ function comenzarBatalla(idMonstruo){
 			}
 			
 			monstruo.dmgRecibido = 0;		/* Valor temporal para ver la vida que va perdiendo */
+			
+			crearVentana(personaje, pociones, habilidades, monstruo);
 		}
 	}
-	
-/* -- Variables calculadas -- */
-	
-	personaje.modificadorFuerza = parseInt((personaje.fuerza + personaje.bonusFuerza - 10)/2);
-	personaje.modificadorDestreza = parseInt((personaje.destreza + personaje.bonusDestreza - 10)/2);		/* Valores usados en cálculos de daño, etc. */
-	personaje.modificadorInteligencia = parseInt((personaje.inteligencia + personaje.bonusInteligencia - 10)/2);
-	
+}
+
+function crearVentana(personaje, pociones, habilidades, monstruo){
 /* ---------- Ventana Modal ---------- */
 	if (! document.getElementById("ventanaModal")){
 		var ventanaModal = document.createElement("div");
@@ -262,8 +249,6 @@ function comenzarBatalla(idMonstruo){
 			divBotonObjetos.appendChild(divListaObjetos);
 		divBotones.appendChild(divBotonObjetos);
 	contenidoModal.appendChild(divBotones);
-	
-	console.log(FML[0]);
 }
 
 function elegirHabilidad(e, indice){
