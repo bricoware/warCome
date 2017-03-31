@@ -77,3 +77,21 @@
     from {top: -300px; opacity: 0}
     to {top: 0; opacity: 1}
 }
+h2{
+    text-align: center;
+}
+h3{
+    text-align: right;
+    margin-right: 12%;
+}
+label,select{
+    display: inline-block;
+    width:15%;
+}
+select{
+    width:40%;
+}
+.moneda{
+    width:15px;
+    height:15px;
+}
