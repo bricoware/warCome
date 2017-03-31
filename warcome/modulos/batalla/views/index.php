@@ -5,7 +5,7 @@
 ?>
 
 <!-- El botón está solo para testeos -->
-<input type="button" onclick="Javascript:comenzarBatalla(1);" value="Comentar este botón una vez esté todo montado" />
+<!-- <input type="button" onclick="Javascript:comenzarBatalla(1);" value="Descomentar para testeos" /> -->
 
 <link rel="stylesheet" type="text/css" href="views/css/batalla.css"/>
 <script type="text/javascript" src="views/js/dados.js"></script>

@@ -113,7 +113,7 @@
 
 			$xml .= "<monstruo>"; 
 				
-				$xml .= "<nombreMonstruo>".$registroMonstruo->nombreMonstruo."</nombreMonstruo>";
+				$xml .= "<nombreMonstruo>".utf8_encode($registroMonstruo->nombreMonstruo)."</nombreMonstruo>";
 				$xml .= "<ataqueMonstruo>".$registroMonstruo->ataqueMonstruo."</ataqueMonstruo>";
 				$xml .= "<acMonstruo>".$registroMonstruo->acMonstruo."</acMonstruo>";
 				$xml .= "<vidaMonstruo>".$registroMonstruo->vidaMonstruo."</vidaMonstruo>";

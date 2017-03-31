@@ -179,7 +179,7 @@ function crearVentana(personaje, pociones, habilidades, monstruo){
 
 	var divImagenPJ = document.createElement("div");
 		divImagenPJ.id = "divImagenPJ";
-		divImagenPJ.style.background = "url(views/images/" + personaje.avatar + ") no-repeat";
+		divImagenPJ.style.background = "url(/" + personaje.avatar + ") no-repeat";
 		divImagenPJ.style.backgroundSize = "100% 100%";
 		var divNombrePJ = document.createElement("div");
 			divNombrePJ.id = "divNombrePJ";
@@ -202,7 +202,7 @@ function crearVentana(personaje, pociones, habilidades, monstruo){
 	
 	var divImagenMonstruo = document.createElement("div");
 		divImagenMonstruo.id = "divImagenMonstruo";
-		divImagenMonstruo.style.background = "url(views/images/" + monstruo.avatar + ") no-repeat";
+		divImagenMonstruo.style.background = "url(/" + monstruo.avatar + ") no-repeat";
 		divImagenMonstruo.style.backgroundSize = "100% 100%";
 		var divNombreMonstruo = document.createElement("div");
 			divNombreMonstruo.id = "divNombreMonstruo";
