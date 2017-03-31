@@ -1,24 +1,22 @@
-<div id='autentificado'> 
-	<h2> 
-		<?php
-			if(isset($_SESSION["usuario"])){
-				echo "Bienvenido, ".$_SESSION["usuario"];
-			} else {
-				// Hasta aquí no se debería llegar, pero en caso
-				// contrario volvemos a la página de inicio.
-				header('Location: /');
-			}
-		?>
-	</h2>
+<div id="autentificado">
+	<?php
+		if(isset($_SESSION['usuario'])){
+			echo '<h2>Bienvenido, ' . $_SESSION['usuario'] . '</h2>';
+		} else {
+			// Hasta aquí no se debería llegar, pero en caso
+			// contrario volvemos a la página de inicio.
+			header('Location: /');
+		}
+	?>
 	<ul>
 		<li>
-			<a href='http://warcome.local/crearPersonaje.php'> <div class="menuPrincipal"> Partida Nueva </div> </a> 
+			<a href="crearPersonaje.php"><div class="menuPrincipal">Partida nueva</div></a>
 		</li>
 		<li>
-			<a href='http://warcome.local/seleccionarPersonaje.php'> <div class="menuPrincipal"> Cargar Partida </div> </a> 
+			<a href="seleccionarPersonaje.php"><div class="menuPrincipal">Cargar partida</div></a>
 		</li>
 		<li>
-			<a href='http://warcome.local/modulos/login/controllers/logout.php'> <div class="menuPrincipal"> Log Out </div> </a> 
-		</li>		
+			<a href="modulos/login/controllers/logout.php"><div class="menuPrincipal">Log out</div></a>
+		</li>
 	</ul>
 </div>

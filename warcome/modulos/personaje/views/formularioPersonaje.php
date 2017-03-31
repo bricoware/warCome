@@ -1,4 +1,7 @@
 <?php
+	// En primer lugar, compruebo si el usuario está logueado.
+	require_once(dirname(dirname(dirname(dirname(__FILE__)))) . "/modulos/comprobarLogin/controller/comprobarLogin.php");
+	// En caso de estar logueado, cargo el resto de controladores.
 	require_once(dirname(dirname(__FILE__)) . "/controllers/nuevoPersonaje.php");
 	require_once(dirname(dirname(__FILE__)) . "/controllers/infoPersonajes.php");
 	require_once(dirname(dirname(__FILE__)) . "/controllers/mostrarEstadisticas.php");

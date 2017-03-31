@@ -17,6 +17,6 @@
 			}
 		}
 	} else {
-		echo "<p>No se puede mostrar el contenido del módulo de logueo.</p>";
+		echo '<p class="error">ERROR: No se puede mostrar el contenido del módulo de logueo.</p>';
 	}
 ?>

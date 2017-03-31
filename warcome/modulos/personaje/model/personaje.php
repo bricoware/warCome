@@ -1,5 +1,7 @@
 <?php
-	session_start();
+	// La sesión ya se inicia en el
+	// módulo de comprobación de logueo.
+	// session_start();
 	require_once(dirname(dirname(dirname(dirname(__FILE__)))) . "/core/conector.php");
 	
 	class nuevoPersonaje {
