@@ -3,6 +3,9 @@
 	// módulo de comprobación de logueo.
 	// session_start();
 	$idUsuario = $_SESSION['idUsuario'];
+	if(!empty($_GET) && isset($_GET['id'])){
+		$_SESSION['idPersonaje'] = $_GET['id'];
+	}
 	
 	require_once(dirname(dirname(dirname(dirname(__FILE__)))) . "/core/conector.php");
 	

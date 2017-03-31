@@ -10,7 +10,7 @@
 		if($resultado->num_rows > 0){
 			while($fila = $resultado->fetch_object()){
 				echo '<div class="fila">';
-				echo '<a href="#"><div class="personaje"><img src="' . $fila->avatar . '" height="80"><p>'. $fila->nombrePersonaje. '</p></div></a>';
+				echo '<div class="personaje" id="' . $fila->idPersonaje . '" onclick="informacion(this)"><img src="' . $fila->avatar . '" height="80"><p>'. $fila->nombrePersonaje. '</p></div></a>';
 				echo '<a href="?eliminar=1&id=' . $fila->idPersonaje. '"><div class="eliminar"><p>Borrar la partida</p></div></a>';
 				echo '</div>';
 			}
@@ -19,3 +19,8 @@
 		}
 	?>
 </div>
+<div id="modal">
+</div>
+<?php
+	require_once(dirname(dirname(dirname(dirname(__FILE__)))) . "/modulos/estadisticasPersonaje/index.php");
+?>

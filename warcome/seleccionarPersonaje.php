@@ -5,6 +5,7 @@
 		<title>Selección de personaje - The Legend of Warcome</title>
 		<link rel="stylesheet" href="css/estilos.css">
 		<link rel="stylesheet" href="modulos/seleccionPersonaje/views/css/estilos.css">
+		<link rel="stylesheet" href="modulos/estadisticasPersonaje/view/css/estilos.css">
 	</head>
 	<body>
 		<?php

@@ -17,7 +17,7 @@ function mostrarVida(){
 </script>
 <?php
 	if(!empty($_GET) && isset($_GET['clase'])){
-		require_once($_SERVER['DOCUMENT_ROOT'] . "core/conector.php");
+		require_once(dirname(dirname(dirname(dirname(__FILE__)))) . "/core/conector.php");
 		$clase = $_GET['clase'];
 		$conexion = new conector();
 		$consulta = "SELECT clase.dadoVida FROM clase WHERE clase.idClase = \"$clase\";";

@@ -1,8 +1,7 @@
 <?php
-
-	require_once(dirname(dirname(dirname(dirname(__FILE__))))."/core/conector.php");
-
-	class nuevoUsuario{
+	require_once(dirname(dirname(dirname(dirname(__FILE__)))) . "/core/conector.php");
+	
+	class nuevoUsuario {
 		
 		private $nombre;
 		private $pass;
@@ -13,9 +12,9 @@
 			$this->nombre = $nombre;
 			$this->pass = $pass;
 		}
-
-		function registraUsuario(){
-			try{
+		
+		public function registraUsuario(){
+			try {
 				$consulta = "SELECT * FROM usuario WHERE nombre = \"".$this->nombre."\"";
 				$resultado = $this->acceso->getConector()->query($consulta);
 				if(!$resultado){
@@ -35,10 +34,9 @@
 					}
 					echo "Usuario ".$this->nombre." registrado correctamente";
 				}
-			}catch(Exception $error){
+			} catch(Exception $error){
 				echo $error->getMessage();
 			}
 		}
 	}
-
 ?>

@@ -17,7 +17,7 @@ function mostrarDescripcion(){
 </script>
 <?php
 	if(!empty($_GET) && isset($_GET['habilidad'])){
-		require_once($_SERVER['DOCUMENT_ROOT'] . "core/conector.php");
+		require_once(dirname(dirname(dirname(dirname(__FILE__)))) . "/core/conector.php");
 		$habilidad = $_GET['habilidad'];
 		$conexion = new conector();
 		$consulta = "SELECT * FROM habilidad WHERE idHabilidad = \"$habilidad\";";

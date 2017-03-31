@@ -3,7 +3,7 @@
 	$idUsuario = $_SESSION['idUsuario'];
 	$idPersonaje = $_GET['id'];
 	
-	require_once($_SERVER['DOCUMENT_ROOT'] . "/core/conector.php");
+	require_once(dirname(dirname(dirname(dirname(__FILE__)))) . "/core/conector.php");
 	
 	try {
 		$conexion = new conector();

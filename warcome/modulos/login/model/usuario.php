@@ -1,5 +1,5 @@
 ﻿<?php
-	require_once($_SERVER['DOCUMENT_ROOT']."/core/conector.php");
+	require_once(dirname(dirname(dirname(dirname(__FILE__)))). "/core/conector.php");
 	
 	class usuario {
 		
@@ -13,7 +13,7 @@
 			$this->pass = $pass;
 		}
 		
-		function recuperaUsuario(){
+		public function recuperaUsuario(){
 			try {
 				$consulta = "SELECT * FROM usuario WHERE nombre = \"".$this->nombre."\"";
 				$resultado = $this->acceso->getConector()->query($consulta);
@@ -34,7 +34,7 @@
 			}
 		}
 		
-		function recuperaIdUsuario(){
+		public function recuperaIdUsuario(){
 			try {
 				$consulta = "SELECT idUsuario FROM usuario WHERE nombre = \"" . $this->nombre . "\";";
 				$resultado = $this->acceso->getConector()->query($consulta);

@@ -17,7 +17,7 @@ function mostrarEstadisticas(){
 </script>
 <?php
 	if(!empty($_GET) && isset($_GET['raza'])){
-		require_once($_SERVER['DOCUMENT_ROOT'] . "core/conector.php");
+		require_once(dirname(dirname(dirname(dirname(__FILE__)))) . "/core/conector.php");
 		$raza = $_GET['raza'];
 		$conexion = new conector();
 		$consulta = "SELECT estadistica1, valor1, estadistica2, valor2 FROM raza WHERE idRaza = \"$raza\";";

@@ -13,6 +13,8 @@
 					// para que no se muestre el mensaje
 					// de confirmación de reenvío del formulario.
 					header('Location: /');
+				} else {
+					echo '<p class="error">La constraseña introducida no es correcta.</p>';
 				}
 			}
 		}

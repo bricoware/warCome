@@ -16,7 +16,7 @@
 			<a href="seleccionarPersonaje.php"><div class="menuPrincipal">Cargar partida</div></a>
 		</li>
 		<li>
-			<a href="modulos/login/controllers/logout.php"><div class="menuPrincipal">Log out</div></a>
+			<a href="logout.php"><div class="menuPrincipal">Log out</div></a>
 		</li>
 	</ul>
 </div>
