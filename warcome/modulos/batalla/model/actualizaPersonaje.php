@@ -21,16 +21,16 @@
 		public function __construct($idPersonaje, $fuerza, $destreza, $inteligencia, $constitucion, $vidaMax, $vidaActual, $xp, $nivel, $acPersonaje, $oro){
 			$this->acceso = new conector();
 			$this->idPersonaje = $idPersonaje;
-			$this->idPersonaje = $fuerza;
-			$this->idPersonaje = $destreza;
-			$this->idPersonaje = $inteligencia;
-			$this->idPersonaje = $constitucion;
-			$this->idPersonaje = $vidaMax;
-			$this->idPersonaje = $vidaActual;
-			$this->idPersonaje = $xp;
-			$this->idPersonaje = $nivel;
-			$this->idPersonaje = $acPersonaje;
-			$this->idPersonaje = $oro;
+			$this->fuerza = $fuerza;
+			$this->destreza = $destreza;
+			$this->inteligencia = $inteligencia;
+			$this->constitucion = $constitucion;
+			$this->vidaMax = $vidaMax;
+			$this->vidaActual = $vidaActual;
+			$this->xp = $xp;
+			$this->nivel = $nivel;
+			$this->acPersonaje = $acPersonaje;
+			$this->oro = $oro;
 		}
 
 		function actualizarPersonaje(){
@@ -47,6 +47,7 @@
 				}
 				
 				return $respuesta;
+				//return $consulta;
 			}catch(Exception $error){
 				return $error->getMessage();
 			}

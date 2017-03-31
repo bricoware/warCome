@@ -11,14 +11,14 @@
 		
 		public function __construct($idPocion, $cantidad){
 			$this->acceso = new conector();
-			$this->idPersonaje = $nombreObjeto;
-			$this->idPersonaje = $cantidad;
+			$this->idPocion = $idPocion;
+			$this->cantidad = $cantidad;
 		}
 
 		function actualizarPociones(){
 			try{
 				$consulta = "UPDATE `pocionCantidad` SET pocionCantidad.cantidad = '".$this->cantidad."'
-							WHERE pocionCantidad.idPocion = '".$this->idPersonaje."';";
+							WHERE pocionCantidad.idPocion = '".$this->idPocion."';";
 				//var_dump($consulta);
 				$respuesta = $this->acceso->getConector()->query($consulta);
 				if(!$respuesta){
