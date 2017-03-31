@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<title>Selección de personaje - The Legend of Warcome</title>
 		<link rel="stylesheet" href="css/estilos.css">
-		<link rel="stylesheet" href="modulos/seleccionPersonaje/views/css/div.css">
+		<link rel="stylesheet" href="modulos/seleccionPersonaje/views/css/estilos.css">
 	</head>
 	<body>
 		<?php

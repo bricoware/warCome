@@ -17,7 +17,6 @@
 		$consulta = "CALL eliminarPersonaje(\"$idPersonaje\");";
 		$resultado = $conexion->getConector()->query($consulta);
 		if(!$resultado){
-			var_dump($conexion);
 			throw new Exception('<p class="error">ERROR: Se ha producido un error al intentar borrar el personaje seleccionado.</p>');
 		}
 		header('Location: seleccionarPersonaje.php');

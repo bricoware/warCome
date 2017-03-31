@@ -17,6 +17,17 @@
 				<input type="text" id="nombrePersonaje" name="nombrePersonaje" required>
 			</div>
 			<div>
+				<label for="avatarPersonaje">Selecciona un avatar:</label>
+				<div id="divAvatar">
+					<?php
+						while($registroAvatar = $resultadoAvatar->fetch_assoc()){
+							echo '<img src="' . $registroAvatar['avatar'] . '" height="90" class="avatar" id="' . $registroAvatar['idAvatar'] . '" onclick="seleccionarAvatar(this)">';
+						}
+					?>
+				</div>
+				<input type="hidden" id="avatar" name="avatar" required>
+			</div>
+			<div>
 				<p><em>Tira los dados para asignar estadísticas a tu personaje.</em></p>
 				<button type="button" onclick="javascript:crearFicha();" id="botonTirada">Tirar los dados</button>
 			</div>

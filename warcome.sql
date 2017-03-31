@@ -715,6 +715,7 @@ DELETE FROM partida WHERE partida.idPersonaje = idPersonaje;
 DELETE FROM personajeraza WHERE personajeraza.idPersonaje = idPersonaje;
 DELETE FROM personajeclase WHERE personajeclase.idPersonaje = idPersonaje;
 DELETE FROM personajeavatar WHERE personajeavatar.idPersonaje = idPersonaje;
+DELETE FROM personaje WHERE personaje.idPersonaje = idPersonaje;
 END //
 DELIMITER ;
 

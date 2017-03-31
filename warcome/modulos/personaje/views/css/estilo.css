@@ -46,3 +46,16 @@ form div.habilidades {
 	float: left;
 	width: 20%;
 }
+#divAvatar {
+	height: 150px;
+	width: 100%;
+	overflow-y: scroll;
+	background-color: rgba(10, 10, 10, 0.75);
+}
+img.avatar {
+	margin: 5px;
+	cursor: pointer;
+}
+.seleccionado {
+	border: 2px solid #eee;
+}
