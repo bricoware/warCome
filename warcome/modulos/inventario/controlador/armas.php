@@ -1,5 +1,5 @@
 <?php
-	require_once(dirname(dirname(__FILE__))."/modelo/armadura.php");	
+	require_once(dirname(dirname(__FILE__))."/modelo/objeto.php");	
 		$idPersonaje = 1;
 		$objeto = new objeto();
 		$ids= $objeto->getIds($idPersonaje);
@@ -14,8 +14,8 @@
 		 	}
 		 }
 
-		
-	
+
+
 
 
 

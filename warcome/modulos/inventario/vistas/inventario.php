@@ -1,12 +1,12 @@
-<?php 
+<?php
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title></title>
 	<meta charset="UTF-8"/>
-	<link rel="stylesheet" type="text/css" href="../css/estilos.css">
-  <script type="text/javascript" src="../js/ajax.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+  <script type="text/javascript" src="js/ajax.js"></script>
 </head>
 <body>
 <!-- Trigger/Open The Modal -->
@@ -28,17 +28,17 @@
       		<option value="0">Selecciona arma</option>
       		<?php
       			require_once(dirname(dirname(__FILE__))."/controlador/armas.php");
-           ?>	
-       	</select>       
+           ?>
+       	</select>
       </div>
       <div id="armaduraequipada">
       	<label for="armadura">2 .Armadura equipada</label>
       	<select id="armadura" name="armadura" onChange="seleccionarArmadura();">
       		<option value="0">Selecciona armadura</option>
       		<?php
-      			require_once(dirname(dirname(__FILE__))."/controlador/armaduras.php");                          
+      			require_once(dirname(dirname(__FILE__))."/controlador/armaduras.php");
       		 ?>
-      	</select>        
+      	</select>
       </div>
 
     </div>
@@ -46,8 +46,8 @@
        	<h2>Pociones</h2>
      </div>
      <div class="modal-body">
-     	<?php     		
-     		require_once(dirname(dirname(__FILE__))."/controlador/Pociones.php");       
+     	<?php
+     		//require_once(dirname(dirname(__FILE__))."/controlador/Pociones.php");
 
      	 ?>
 
@@ -56,17 +56,17 @@
         <h2>Miscelanea</h2>
      </div>
      <div class="modal-body">
-      <?php         
+      <?php
         var_dump(dirname(dirname(__FILE__))."/controlador/miscelanea.php");
        ?>
 
      </div>
     <div class="modal-footer">
-      <h3>Oro : 
+      <h3>Oro :
       <?php
         require_once(dirname(dirname(__FILE__))."/controlador/oro.php");
         echo "&nbsp;";
-        echo "<img class='moneda' src='../img/moneda.jpg'/>";
+        echo "<img class='moneda' src='img/moneda.jpg'/>";
        ?>
       </h3>
     </div>
@@ -76,7 +76,7 @@
 </body>
 </html>
 <script type="text/javascript">
-  
+
 // Get the modal
 var modal = document.getElementById('myModal');
 
@@ -96,4 +96,3 @@ span.onclick = function() {
     modal.style.display = "none";
 }
 </script>
-
