@@ -47,7 +47,7 @@
      </div>
      <div class="modal-body">
      	<?php
-     		//require_once(dirname(dirname(__FILE__))."/controlador/Pociones.php");
+     		require_once(dirname(dirname(__FILE__))."/controlador/Pociones.php");
 
      	 ?>
 
