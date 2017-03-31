@@ -40,7 +40,7 @@
       		 ?>
       	</select>
       </div>
-
+			<div id="resultadoArmaArmadura"></div>
     </div>
     <div class="modal-header">
        	<h2>Pociones</h2>

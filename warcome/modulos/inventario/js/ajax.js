@@ -15,7 +15,8 @@
 	 xhttp.onreadystatechange = function() {
     	if (this.readyState == 4 && this.status == 200) {
     		var recibido = this.responseText;
-    		console.log(recibido);
+        var div = document.getElementById("resultadoArmaArmadura");
+    		div.innerHTML="Armadura cambiada";
 
     	}
 	}
@@ -37,10 +38,29 @@ function seleccionarArma(){
   		xhttp.send();
 	 xhttp.onreadystatechange = function() {
     	if (this.readyState == 4 && this.status == 200) {
-    		var recibido = this.responseText;
-    		console.log(recibido);
+        var recibido = this.responseText;
+        var div = document.getElementById("resultadoArmaArmadura");
+        div.innerHTML="Arma cambiada";
 
     	}
 	}
+
+}
+
+  function usarPocion(id){
+
+  	var objeto = "pocion";
+  	var xhttp = new XMLHttpRequest();
+  	var direccion = "controlador/actualizar.php?id="+id+"&opcion="+objeto;
+    		xhttp.open("GET", direccion, true);
+    		xhttp.send();
+  	 xhttp.onreadystatechange = function() {
+      	if (this.readyState == 4 && this.status == 200) {
+          var recibido = this.responseText;
+          var div = document.getElementById("resultadoArmaArmadura");
+          div.innerHTML="Arma cambiada";
+
+      	}
+  	}
 
 }
