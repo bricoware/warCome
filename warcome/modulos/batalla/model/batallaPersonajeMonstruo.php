@@ -75,7 +75,7 @@
 							ON objeto.idObjeto = pocion.idObjeto
 							INNER JOIN pocionCantidad
 							ON pocion.idPocion = pocionCantidad.idPocion
-							WHERE objeto.idObjeto = (
+							WHERE objeto.idObjeto IN (
 								SELECT pocion.idObjeto FROM pocion 
 								WHERE pocion.idPersonaje = '".$this->idPersonaje."'
 							);";
@@ -91,7 +91,7 @@
 				$consultaHabilidades = "SELECT habilidad.nombreHabilidad, habilidad.descripcionHabilidad, habilidad.danho, 
 										habilidad.idHabilidad, habilidad.estadisticaHabilidad, habilidad.posibilidadGolpearHabilidad
 										FROM habilidad
-										WHERE habilidad.idHabilidad = (
+										WHERE habilidad.idHabilidad IN (
 											SELECT habilidadpersonaje.idHabilidad FROM habilidadpersonaje 
 											WHERE habilidadpersonaje.idPersonaje = '".$this->idPersonaje."'
 										);";

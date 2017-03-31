@@ -32,18 +32,50 @@
 				$xml .= "<avatar>".$registroPersonaje->avatar."</avatar>";
 				$xml .= "<armaEquipada>";
 					while($registroArma = $respuesta[1]->fetch_object()){
-						$xml .= "<estadistica1>".$registroArma->estadistica1."</estadistica1>";
-						$xml .= "<valor1>".$registroArma->valor1."</valor1>";
-						$xml .= "<estadistica2>".$registroArma->estadistica2."</estadistica2>";
-						$xml .= "<valor2>".$registroArma->valor2."</valor2>";
+						if (is_null($registroArma->estadistica1)){
+							$xml .= "<estadistica1>"."-"."</estadistica1>";
+						} else {
+							$xml .= "<estadistica1>".$registroArma->estadistica1."</estadistica1>";
+						}
+						if (is_null($registroArma->valor1)){
+							$xml .= "<valor1>"."0"."</valor1>";
+						} else {
+							$xml .= "<valor1>".$registroArma->valor1."</valor1>";
+						}
+						if (is_null($registroArma->estadistica2)){
+							$xml .= "<estadistica2>"."-"."</estadistica2>";
+						} else {
+							$xml .= "<estadistica2>".$registroArma->estadistica2."</estadistica2>";
+						}
+						if (is_null($registroArma->valor2)){
+							$xml .= "<valor2>"."0"."</valor2>";
+						} else {
+							$xml .= "<valor2>".$registroArma->valor2."</valor2>";
+						}
 					}
 				$xml .= "</armaEquipada>";
 				$xml .= "<armaduraEquipada>";
 					while($registroArmadura = $respuesta[2]->fetch_object()){
-						$xml .= "<estadistica1>".$registroArmadura->estadistica1."</estadistica1>";
-						$xml .= "<valor1>".$registroArmadura->valor1."</valor1>";
-						$xml .= "<estadistica2>".$registroArmadura->estadistica2."</estadistica2>";
-						$xml .= "<valor2>".$registroArmadura->valor2."</valor2>";
+						if (is_null($registroArmadura->estadistica1)){
+							$xml .= "<estadistica1>"."-"."</estadistica1>";
+						} else {
+							$xml .= "<estadistica1>".$registroArmadura->estadistica1."</estadistica1>";
+						}
+						if (is_null($registroArmadura->valor1)){
+							$xml .= "<valor1>"."0"."</valor1>";
+						} else {
+							$xml .= "<valor1>".$registroArmadura->valor1."</valor1>";
+						}
+						if (is_null($registroArmadura->estadistica2)){
+							$xml .= "<estadistica2>"."-"."</estadistica2>";
+						} else {
+							$xml .= "<estadistica2>".$registroArmadura->estadistica2."</estadistica2>";
+						}
+						if (is_null($registroArmadura->valor2)){
+							$xml .= "<valor2>"."0"."</valor2>";
+						} else {
+							$xml .= "<valor2>".$registroArmadura->valor2."</valor2>";
+						}
 					}
 				$xml .= "</armaduraEquipada>";
 				$xml .= "<pociones>";
