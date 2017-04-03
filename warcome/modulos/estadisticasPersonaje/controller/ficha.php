@@ -44,6 +44,7 @@ function informacion(seleccion){
 </script>
 <?php
 if(!empty($_GET) && isset($_GET['id'])){
+	session_start();
 	$_SESSION['idPersonaje'] = $_GET['id'];
 	require_once(dirname(dirname(__FILE__)) . "/model/ficha.php");
 	
