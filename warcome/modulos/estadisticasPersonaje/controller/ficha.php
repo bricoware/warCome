@@ -87,7 +87,6 @@ if(!empty($_GET) && isset($_GET['id'])){
 			break;
 	}
 	
-	
 	echo '
 <div id="myModal" class="modal">
 	<div class="modal-content">

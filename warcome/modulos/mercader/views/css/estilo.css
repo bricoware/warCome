@@ -1,0 +1,41 @@
+* {
+font-family:Baskerville Old;
+list-style:none;
+text-decoration:none;
+margin:12px;
+padding:0px;
+}
+h1{
+font-family: Algerian;
+}
+.vertical-menu {
+    width: 500px;
+    height: auto;
+    overflow-y: auto;
+}
+.vertical-menu a {
+    background-color:#e67300;
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+}
+.vertical-menu a:hover {
+    background-color: red;
+}
+.vertical-menu a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+.nav li ul {
+	position:relative;
+}
+.nav li:hover > ul {
+	display:block;
+}
+.nav li ul li ul{
+	position:relative;
+}
+.nav li ul li ul {
+	top:0;
+}

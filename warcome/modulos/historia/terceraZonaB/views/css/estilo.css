@@ -1,0 +1,33 @@
+
+#introduccion1, #introduccion,#terceraZonaB,#cuartaZona,#volver{
+border-radius: 5px;
+background-color: #ffdb4d;
+color: black;
+padding: 10px;
+width: 70%;
+font-family: Baskerville Old;
+font-size: 1em;
+border-bottom: 20px solid #ffdb4d;
+border-right: 18px solid transparent;
+border-left: 18px solid transparent;
+margin: 10px 0 0 10px;
+}
+
+#profecia, #introduccion1,#primeraZona,#segundaZona,#terceraZonaA,#volver{
+	display:none;
+}
+
+a{
+text-decoration:none;
+color:black;
+
+}
+#inventario{
+position:absolute;
+bottom:0px;
+}
+#siguiente{
+position:absolute;
+bottom:0px;
+right:0px;
+}
