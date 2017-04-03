@@ -622,6 +622,8 @@ function terminarBatalla(evento, personaje, pociones){
 			}
 		}
 	}
+	
+	return true;
 }
 
 function gameOver(evento, personaje){

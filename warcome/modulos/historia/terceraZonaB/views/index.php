@@ -24,5 +24,5 @@
 	</div>
 <input type="button" value="Siguiente" onclick="historia();"/>
 <div id="inventario">
-	<input type="button" value="Inventario"/>
+	<input type="button" value="Inventario" onclick="location.href='../../inventario/inventario.php'" />
 </div>

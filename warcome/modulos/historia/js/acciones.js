@@ -17,11 +17,11 @@ function historia() {
 
 function zonaA(){
 	if(zonaA){
-		window.location = "terceraZonaA/index.php"
+		window.location = "modulos/historia/terceraZonaA/index.php"
 	}
 }
 function zonaB(){
 	if(zonaB){
-		window.location = "terceraZonaB/index.php"
+		window.location = "modulos/historia/terceraZonaB/index.php"
 	}
 }

@@ -50,6 +50,7 @@
 				
 				// Recupero el identificador de personaje de la consulta anterior.
 				$identificadorPersonaje = $this->acceso->getConector()->insert_id;
+				$_SESSION['idPersonaje'] = $identificadorPersonaje;
 				// Recupero el identificador de usuario de la sesión actual.
 				$consultaID = "SELECT idUsuario FROM usuario WHERE usuario.nombre LIKE \"". $_SESSION['usuario'] . "\";";
 				$resultadoUsuario = $this->acceso->getConector()->query($consultaID);

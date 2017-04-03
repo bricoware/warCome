@@ -2,11 +2,11 @@
 	
 	if (isset($_GET['idMonstruo'])){
 		session_start();
-		$_SESSION['personaje'] = 1; /* TESTING */
+		//$_SESSION['idPersonaje'] = 1; /* TESTING */
 		
 		require_once(dirname( dirname( __FILE__) )."/model/batallaPersonajeMonstruo.php");
 		
-		$batallaPersonaje = new batallaPersonaje($_SESSION['personaje'], $_GET['idMonstruo']);
+		$batallaPersonaje = new batallaPersonaje($_SESSION['idPersonaje'], $_GET['idMonstruo']);
 		$respuesta = $batallaPersonaje->obtenerDatosPersonaje();
 		
 		//var_dump($respuesta);

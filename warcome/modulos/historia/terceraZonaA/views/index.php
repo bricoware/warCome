@@ -31,5 +31,5 @@
 </div>
 <input type="button" id="siguiente" value="Siguiente" onclick="historiaA();"/>
 <div id="inventario">
-	<input type="button" value="Inventario" />
+	<input type="button" value="Inventario" onclick="location.href='../../inventario/inventario.php'" />
 </div>
