@@ -1,6 +1,6 @@
 <?php
 
-	session_start();
+
 
 ?>
 <!DOCTYPE html>
@@ -8,8 +8,8 @@
 <head>
 	<title></title>
 	<meta charset="UTF-8"/>
-	<link rel="stylesheet" type="text/css" href="../inventario/css/estilos.css">
-  <script type="text/javascript" src="../inventario/js/ajax.js"></script>
+	<link rel="stylesheet" type="text/css" href="modulos/inventario/css/estilos.css">
+  <script type="text/javascript" src="modulos/inventario/js/ajax.js"></script>
 </head>
 <body>
 <!-- Trigger/Open The Modal -->
@@ -60,7 +60,7 @@
       <?php
         require_once(dirname(dirname(__FILE__))."/controlador/oro.php");
         echo "&nbsp;";
-        echo "<img class='moneda' src='../inventario/img/moneda.jpg'/>";
+        echo "<img class='moneda' src='modulos/inventario/img/moneda.jpg'/>";
        ?>
       </h3>
     </div>

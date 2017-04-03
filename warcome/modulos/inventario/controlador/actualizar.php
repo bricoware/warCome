@@ -34,8 +34,8 @@
 			while($datos = $pociones->fetch_assoc()){
 				$pocion = $datos['valor1'];
 				$cantidad = $datos['cantidad'];
-			}
-			$cantidad2 = $cantidad -1;
+			}			
+			$cantidad2 = $cantidad-1;
 			if($cantidad2 == 0){
 				$actualizar->eliminarPocion();
 			}

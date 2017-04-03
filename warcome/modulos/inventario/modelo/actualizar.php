@@ -3,7 +3,7 @@
    class actualizar
   {
   	private $id;
-		private $session;
+	private $session;
   	private $acceso;
   	function __construct($id,$session)
   	{
@@ -105,23 +105,23 @@
 		} catch (Exception $e) {
 			echo $e;
 		}
-}
-
-function eliminarPocion(){
-		try {
-						$consulta ="DELETE from pocioncantidad where idPocion in
-												(select idPocion from pocion
- 												where idPersonaje = '".$this->session."' AND idObjeto = '".$this->id."')";
-						$resultado = $this->acceso->getConector()->query($consulta);
-
-		if(!$resultado){
-					throw new Exception($resultado->error);
-
-		}
-	} catch (Exception $e) {
-		echo $e;
 	}
-}
+
+	function eliminarPocion(){
+			try {
+							$consulta ="DELETE from pocioncantidad where idPocion in
+													(select idPocion from pocion
+	 												where idPersonaje = '".$this->session."' AND idObjeto = '".$this->id."')";
+							$resultado = $this->acceso->getConector()->query($consulta);
+
+			if(!$resultado){
+						throw new Exception($resultado->error);
+
+			}
+		} catch (Exception $e) {
+			echo $e;
+		}
+	}
 
 }
- ?>
+?>
