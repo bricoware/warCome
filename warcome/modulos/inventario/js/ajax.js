@@ -33,7 +33,7 @@ function seleccionarArma(){
 	}
 	var objeto = "arma";
 	var xhttp = new XMLHttpRequest();
-	var direccion = "controlador/actualizar.php?id="+escogida+"&opcion="+objeto;
+	var direccion = "../inventario/controlador/actualizar.php?id="+escogida+"&opcion="+objeto;
   		xhttp.open("GET", direccion, true);
   		xhttp.send();
 	 xhttp.onreadystatechange = function() {
@@ -51,7 +51,7 @@ function seleccionarArma(){
 
   	var objeto = "pocion";
   	var xhttp = new XMLHttpRequest();
-  	var direccion = "controlador/actualizar.php?id="+id+"&opcion="+objeto;
+  	var direccion = "../inventario/controlador/actualizar.php?id="+id+"&opcion="+objeto;
     		xhttp.open("GET", direccion, true);
     		xhttp.send();
   	 xhttp.onreadystatechange = function() {
