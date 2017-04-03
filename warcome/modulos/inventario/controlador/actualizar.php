@@ -43,7 +43,7 @@
 				echo "-1";
 			}else{
 				$curacion = $pocion + $vidaActual;
-				$respuesta = $cantidad - 1;
+				$respuesta = $cantidad-1;
 				if($curacion >= $vidaMax){
 					$actualizacion = $actualizar->beberPocion($vidaMax);
 					echo "0".$respuesta;

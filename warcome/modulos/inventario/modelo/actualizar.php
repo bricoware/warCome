@@ -88,8 +88,8 @@
 
 							$consulta2 ="UPDATE pocioncantidad
 														inner join pocion on pocioncantidad.idPocion = pocion.idPocion
-														SET cantidad = cantidad - 1
-														WHERE idPersonaje LIKE 1 AND idObjeto = '".$this->id."'";
+														SET cantidad = cantidad-1
+														WHERE idPersonaje LIKE '".$this->session."' AND idObjeto = '".$this->id."'";
 							$resultado2 = $this->acceso->getConector()->query($consulta2);
 
 			if(!$resultado){
