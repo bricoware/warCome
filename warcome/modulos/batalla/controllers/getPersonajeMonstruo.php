@@ -2,7 +2,7 @@
 	
 	if (isset($_GET['idMonstruo'])){
 		session_start();
-		$_SESSION['personaje'] = 1; /* TESTING */
+		//$_SESSION['personaje'] = 1; /* TESTING */
 		
 		require_once(dirname( dirname( __FILE__) )."/model/batallaPersonajeMonstruo.php");
 		
