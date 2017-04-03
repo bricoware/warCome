@@ -1,7 +1,7 @@
 
 function comenzarBatalla(idMonstruo){
 /* -- Recuperamos XML con info sobre el Personaje y el Monstruo -- */
-		
+	//console.log(idMonstruo);
 	if (window.XMLHttpRequest) {
 		var xhttp1 = new XMLHttpRequest();
 	} else {
@@ -170,7 +170,7 @@ function crearVentana(personaje, pociones, habilidades, monstruo){
 			ventanaModal.style.display = "block";
 		var contenidoModal = document.getElementById("contenidoModal");
 		var divCombatLog = document.getElementById("divCombatLog");
-			divCombatLog.innerHTML = "";
+			//divCombatLog.innerHTML = "";
 	}
 	
 	while (contenidoModal.children.length > 0){
@@ -196,7 +196,7 @@ function crearVentana(personaje, pociones, habilidades, monstruo){
 	var divVs = document.createElement("div");
 		divVs.id = "divVs";
 		var imagenVs = document.createElement("img");
-			imagenVs.src = "views/images/vs.png";
+			imagenVs.src = "/modulos/batalla/views/images/vs.png";
 		divVs.appendChild(imagenVs);
 	contenidoModal.appendChild(divVs);
 	
@@ -299,7 +299,6 @@ function crearVentana(personaje, pociones, habilidades, monstruo){
 
 function elegirHabilidad(e, idHabilidad, personaje, pociones, habilidades, monstruo){
 	var combatLog = document.getElementById("divCombatLog");
-	scrollDown();
 	
 	for (var indice = 0; indice < habilidades.length; indice++){
 		if (habilidades[indice].idHabilidad == idHabilidad){
@@ -411,13 +410,15 @@ function elegirPocion(e, idPocion, personaje, pociones, habilidades, monstruo){
 
 function rondaMonstruo(personaje, pociones, habilidades, monstruo){
 	var combatLog = document.getElementById("divCombatLog");
-	scrollDown();
 	
 	if ( (dados("1d20") + monstruo.posibilidadGolpear) >= personaje.acPersonaje){
 		var dmgInfligido = dados(monstruo.ataqueMonstruo);
 		personaje.vidaActual = personaje.vidaActual - dmgInfligido;
 		combatLog.innerHTML += monstruo.nombreMonstruo + " golpeó a " + personaje.nombrePersonaje + " por " +
 		dmgInfligido + " puntos de daño. <br/>";
+		console.log(combatLog);
+		console.log(monstruo.nombreMonstruo + " golpeó a " + personaje.nombrePersonaje + " por " +
+		dmgInfligido + " puntos de daño. <br/>");
 		scrollDown();
 	} else {
 		if (dados("1d2") == 1){
@@ -572,6 +573,9 @@ function levelUp(personaje){
 }
 
 function terminarBatalla(evento, personaje, pociones){
+	
+	var combatLog = document.getElementById("divCombatLog");
+	combatLog.innerHTML = "";
 	
 	var ventanaModal = document.getElementById("ventanaModal");
 	

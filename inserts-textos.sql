@@ -39,26 +39,33 @@ INSERT INTO `texto` (`idTexto`, `texto`) VALUES
 			Te daré cualquier cosa que pidas pero te lo suplico, AYÚDANOS.
 		&lt;/p&gt;
 	&lt;/div&gt;
+	
+	&lt;div id=&quot;batalla1&quot;&gt;&lt;/div&gt;
 
 	&lt;div id=&quot;foso&quot;&gt;
-
 		&lt;div id=&quot;dialogo1&quot;&gt;
 			&lt;p&gt;Debo darme prisa, los engendros de la oscuridad ya se estan acercando.
 			   VOLVER A LA OSCURIDAD ENGENDROS DEL MAL!!!
 			&lt;/p&gt;
-
-		&lt;div id=&quot;pensamientos0&quot;&gt;
-			&lt;p&gt;A medida que iban pasando las horas y me iba alejando de El Bosque Encantado, podía apreciar como el paso de los años bajo el yugo de 
-			   El Rey Del Mal no era de extrañar, solo viendo esa pequeña muestra, que grandes ejércitos sucumbieran ante él; recuerdo que mi abuelo me contaba
-			   que hasta el propio Lucifer le temía y le otorgó ciertos dones que estaban prohibidos utilizar, le concedió el poder de la nigromancia 
-			   pero tal era su poder que no se conformó con liderar a ejércitos de NO MUERTOS, fue más allá, se adentró en las profundidades más 
-			   oscuras y se hizo con el mayor y temible ejército nunca antes visto por el hombre ni por ninguna otra criatura, solo nos podíamos 
-			   imaginar todos esos terrores por lo contado por Dante en su viaje por el purgatorio.
-		       La sensación de inseguridad estaba presente desde que puse el pie fuera del Castillo y de su protección, los gemidos deseosos de esos
-			   seres por alimentarse de mi corazón y de mi alma era más que evidente; pobres criaturas.
-			&lt;/p&gt;
 		&lt;/div&gt;
-
+	&lt;/div&gt;
+	
+	&lt;div id=&quot;batalla5&quot;&gt;&lt;/div&gt;
+	
+	&lt;div id=&quot;pensamientos0&quot;&gt;
+		&lt;p&gt;A medida que iban pasando las horas y me iba alejando de El Bosque Encantado, podía apreciar como el paso de los años bajo el yugo de 
+		   El Rey Del Mal no era de extrañar, solo viendo esa pequeña muestra, que grandes ejércitos sucumbieran ante él; recuerdo que mi abuelo me contaba
+		   que hasta el propio Lucifer le temía y le otorgó ciertos dones que estaban prohibidos utilizar, le concedió el poder de la nigromancia 
+		   pero tal era su poder que no se conformó con liderar a ejércitos de NO MUERTOS, fue más allá, se adentró en las profundidades más 
+		   oscuras y se hizo con el mayor y temible ejército nunca antes visto por el hombre ni por ninguna otra criatura, solo nos podíamos 
+		   imaginar todos esos terrores por lo contado por Dante en su viaje por el purgatorio.
+		   La sensación de inseguridad estaba presente desde que puse el pie fuera del Castillo y de su protección, los gemidos deseosos de esos
+		   seres por alimentarse de mi corazón y de mi alma era más que evidente; pobres criaturas.
+		&lt;/p&gt;
+	&lt;/div&gt;
+	
+	&lt;div id=&quot;batalla9&quot;&gt;&lt;/div&gt;
+		
 &lt;/div&gt;'),
 (3, '&lt;div id=&quot;segundaZona&quot;&gt;
 	&lt;div id=&quot;jardines&quot; onclick=&quot;historia();&quot;&gt;
@@ -66,6 +73,9 @@ INSERT INTO `texto` (`idTexto`, `texto`) VALUES
 		   Ahora el jardín ya no lucia como antaño, ahora todo eran zarzas, maleza y restos de ceniza; hasta la propia naturaleza sumcumbió a tal poder.
 		&lt;/p&gt;
 	&lt;/div&gt;
+	
+	&lt;div id=&quot;batalla13&quot;&gt;&lt;/div&gt;
+	
 	&lt;div id=&quot;decisiones&quot;&gt;
 		&lt;p&gt;El destino es caprichoso, ante mis ojos dos caminos. ¿Cúal sería el correcto? ¿Cúal más seguro? ¿Cúal me llevaría a mi destino?
 	      ¿Serían reales? ¿Una ilusión creada por el propio mal?
@@ -79,12 +89,28 @@ INSERT INTO `texto` (`idTexto`, `texto`) VALUES
 		&lt;p&gt;Se notaba que estaba rodeado, tenía la sensación de que hasta las zarzas y la maleza atacarían en cualquier momento...
 		&lt;/p&gt;
 	&lt;/div&gt;
+	
+	&lt;div id=&quot;batalla17&quot;&gt;&lt;/div&gt;
+	
+	&lt;div id=&quot;batalla2&quot;&gt;&lt;/div&gt;
+	
+	&lt;div id=&quot;batalla6&quot;&gt;&lt;/div&gt;
+	
+	&lt;div id=&quot;batalla10&quot;&gt;&lt;/div&gt;
+	
 &lt;/div&gt;'),
 (5, '&lt;div id=&quot;terceraZonaB&quot;&gt;
 	&lt;div id=&quot;pensamientos2&quot; &gt;
 		&lt;p&gt;Había un puente en estado dudoso, pero era normal después de tantos años y tantos daños.
 		&lt;/p&gt;
 	&lt;/div&gt;
+	
+	&lt;div id=&quot;batalla14&quot;&gt;&lt;/div&gt;
+	
+	&lt;div id=&quot;batalla18&quot;&gt;&lt;/div&gt;
+	
+	&lt;div id=&quot;batalla3&quot;&gt;&lt;/div&gt;
+	
 &lt;/div&gt;'),
 (6, '&lt;div id=&quot;cuartaZona&quot;&gt;
 	&lt;div id=&quot;pensamientos3&quot;&gt;
@@ -92,6 +118,8 @@ INSERT INTO `texto` (`idTexto`, `texto`) VALUES
 		   la ira, el terror estaban más presentes. Al rato de seguir el sendero pude ver una cueva, con la entrada sin vigilancia... o eso creía
 		&lt;/p&gt;
 	&lt;/div&gt;
+	
+	&lt;div id=&quot;batalla7&quot;&gt;&lt;/div&gt;
 
 	&lt;div id=&quot;pensamientos4&quot;&gt;
 		&lt;p&gt;Las leyendas tenían razón, su poder era enorme, o debía serlo si tenía a su servicio a El Perro de Urco. Me adentré en la cueva, sigilosamente fui
@@ -100,6 +128,8 @@ INSERT INTO `texto` (`idTexto`, `texto`) VALUES
 		   ya se habían percatado de mi presencia.
 		&lt;/p&gt;
 	&lt;/div&gt;
+	
+	&lt;div id=&quot;batalla11&quot;&gt;&lt;/div&gt;
 
 	&lt;div id=&quot;pensamientos5&quot;&gt;
 		&lt;p&gt;Agotado de la batalla, decidí continuar, no había tiempo que perder, notaba su presencia cerca y él notaba la mía, estaba furioso, había derrotado a
@@ -109,6 +139,9 @@ INSERT INTO `texto` (`idTexto`, `texto`) VALUES
 		   Que los dioses nos asistan.
 		&lt;/p&gt;
 	&lt;/div&gt;
+	
+	&lt;div id=&quot;batalla15&quot;&gt;&lt;/div&gt;
+	
 	&lt;div id=&quot;declaracion&quot;&gt;
 		&lt;p&gt;DEVOLVERÉ LA PAZ Y LA LUZ A ESTA TIERRA!!! 
 		
@@ -132,8 +165,8 @@ INSERT INTO `texto` (`idTexto`, `texto`) VALUES
 
 INSERT INTO `aventura` (`idDificultad`, `idTexto`, `idZona`, `imagenAventura`) VALUES
 (1, 1, 0, "placeholder-para-ruta"),
-(1, 2, 1, "placeholder-para-ruta"),
-(1, 3, 2, "placeholder-para-ruta"),
-(1, 4, 3, "placeholder-para-ruta"),
-(1, 5, 3, "placeholder-para-ruta"),
-(1, 6, 4, "placeholder-para-ruta");
+(2, 2, 1, "placeholder-para-ruta"),
+(3, 3, 2, "placeholder-para-ruta"),
+(4, 4, 3, "placeholder-para-ruta"),
+(4, 5, 3, "placeholder-para-ruta"),
+(5, 6, 4, "placeholder-para-ruta");
