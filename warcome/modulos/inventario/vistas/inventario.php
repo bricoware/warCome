@@ -50,16 +50,7 @@
      		require_once(dirname(dirname(__FILE__))."/controlador/Pociones.php");
 
      	 ?>
-
-     </div>
-     <div class="modal-header">
-        <h2>Miscelanea</h2>
-     </div>
-     <div class="modal-body">
-      <?php
-        var_dump(dirname(dirname(__FILE__))."/controlador/miscelanea.php");
-       ?>
-
+			 <div id="resultadoPocion" style="color:red;"></div>
      </div>
     <div class="modal-footer">
       <h3>Oro :

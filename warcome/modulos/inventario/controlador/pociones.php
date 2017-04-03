@@ -2,7 +2,9 @@
 	require_once(dirname(dirname(__FILE__))."/modelo/pocion.php");
 	$pocion = new pocion();
 	$pociones = $pocion->getPociones();
+	echo "<div id=PadrePociones>";
 	while($datos = $pociones->fetch_assoc()){
-		echo "<div>".utf8_encode($datos['nombreObjeto'])."   ".$datos['cantidad']." <button onclick='usarPocion(".$datos['idObjeto'].");'>Usar</button></div>";
+		echo "<div id='".$datos['idObjeto']."'>".utf8_encode($datos['nombreObjeto'])."  <span>".$datos['cantidad']."</span> <input type='button' onclick='usarPocion(".$datos['idObjeto'].");' value='Usar'/></div>";
 	}
+	echo "</div>";
 ?>

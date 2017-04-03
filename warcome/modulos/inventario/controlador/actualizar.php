@@ -21,22 +21,26 @@
 		case 'pocion':
 			$actualizar = new actualizar($id);
 			$vidas = $actualizar->comprobarVida();
-			var_dump($vidas);
-			while($datos = $vidas->fetch_array()){
+			while($datos = $vidas->fetch_assoc()){
 				$vidaMax = $datos['vidaMax'];
 				$vidaActual = $datos['vidaActual'];
 			}
-			$pocion = $actualizar->comprobarPocion();
+			$pociones = $actualizar->comprobarPocion();
+			while($datos = $pociones->fetch_assoc()){
+				$pocion = $datos['valor1'];
+				$cantidad = $datos['cantidad'];
+			}
 			if($vidaMax == $vidaActual){
-				echo "0";
+				echo "-1";
 			}else{
 				$curacion = $pocion + $vidaActual;
+				$respuesta = $cantidad - 1;
 				if($curacion >= $vidaMax){
 					$actualizacion = $actualizar->beberPocion($vidaMax);
-					echo "1";
+					echo "0".$respuesta;
 				}else{
 					$actualizacion = $actualizar->beberPocion($curacion);
-					echo "2";
+					echo "1".$respuesta;
 				}
 			}
 		break;

@@ -62,17 +62,17 @@
 	function comprobarPocion(){
 			try {
 
-						$consulta2 ="SELECT valor1 FROM objeto WHERE idObjeto = '".$this->id."'";
+						$consulta2 ="SELECT valor1,cantidad FROM objeto
+												inner join pocion on objeto.idObjeto = pocion.idObjeto
+												INNER JOIN pocioncantidad on pocion.idPocion = pocioncantidad.idPocion
+												WHERE objeto.idObjeto ='".$this->id."'";
 						$resultado2 = $this->acceso->getConector()->query($consulta2);
 
 					if(!$resultado2){
 						throw new Exception($resultado2->error);
 
 					}
-					while($datos = $resultado2->fetch_array()){
-						$result = $datos['valor1'];
-					}
-					return $result;
+					return $resultado2;
 				} catch (Exception $e) {
 					echo $e;
 		}
@@ -81,7 +81,6 @@
 	function beberPocion($vida){
 			try {
 
-							var_dump($this->id);
 							$consulta ="UPDATE personaje SET vidaActual = '".$vida."' WHERE idPersonaje LIKE 1";
 							$resultado = $this->acceso->getConector()->query($consulta);
 
