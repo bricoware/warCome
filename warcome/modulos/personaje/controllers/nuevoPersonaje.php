@@ -20,6 +20,9 @@
 				$nuevoPersonaje = new nuevoPersonaje($nombrePersonaje, $fuerza, $destreza, $inteligencia, $constitucion, $vidaMax, $vidaActual, $acPersonaje, $raza, $clase, $habilidad, $avatar);
 				$nuevoPersonaje->crearNuevoPersonaje();
 				
+				// Creo la nueva partida en cuanto se crea el personaje.
+				require_once(dirname(dirname(dirname(__FILE__))) . "/mapa/controller/mapaController.php");
+				
 				// Redirección a la página de selección de personaje una vez se crea.
 				header("Location: http://warcome.local/seleccionarPersonaje.php");
 			} else {

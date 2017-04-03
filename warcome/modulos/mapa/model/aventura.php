@@ -1,5 +1,5 @@
 <?php
-	require_once(dirname(dirname(dirname(__FILE__)))."/core/conector.php");
+	require_once(dirname(dirname(dirname(dirname(__FILE__))))."/core/conector.php");
 	class aventura{
 
 		private $id;
@@ -17,7 +17,7 @@
 				$resultado = $this->acceso->getConector()->query($consulta);
 				
 				if(!$resultado){
-				throw new Exception("Non se puido recuperar");
+					throw new Exception("Non se puido recuperar");
 				}
 				if($resultado->num_rows == 0){
 					return false;
@@ -29,7 +29,7 @@
 
 
 			} catch (Exception $e) {
-				echo $e;
+				echo $e->getMessage();
 			}
 
 		}

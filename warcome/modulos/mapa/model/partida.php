@@ -1,5 +1,5 @@
 <?php
-	require_once(dirname(dirname(dirname(__FILE__)))."/core/conector.php");	
+	require_once(dirname(dirname(dirname(dirname(__FILE__))))."/core/conector.php");	
 	class partida 
 	{
 		private $idpersonaje;
@@ -20,10 +20,10 @@
 				$resultado = $this->acceso->getConector()->query($consulta);
 				
 				if(!$resultado){
-					throw new Exception($this->acceso->error);
+					throw new Exception($this->acceso->getConector()->error);
 				}				
 			} catch (Exception $e) {
-				echo $e;
+				echo $e->getMessage();
 			}
 		}	
 	}
