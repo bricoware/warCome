@@ -1,0 +1,79 @@
+#introduccion1, #introduccion,#profecia,#primeraZona,#segundaZona,#terceraZonaA,#cuartaZona{
+border-radius: 5px;
+background-color: #ffdb4d;
+color: black;
+padding: 10px;
+width: 70%;
+font-family: Baskerville Old;
+font-size: 1em;
+border-bottom: 20px solid #ffdb4d;
+border-right: 18px solid transparent;
+border-left: 18px solid transparent;
+margin: 10px 0 0 10px;
+}
+
+#profecia, #introduccion1,#primeraZona,#segundaZona,#terceraZonaA,#cuartaZona{
+display:none;
+}
+
+a{
+text-decoration:none;
+color: black;
+}
+#inventario{
+position:absolute;
+bottom:0px;
+left:0px;
+}
+#siguiente{
+position:absolute;
+bottom:0px;
+right:0px;
+}
+* {
+font-family:Baskerville Old;
+list-style:none;
+text-decoration:none;
+margin:12px;
+padding:0px;
+}
+h1{
+font-family: Algerian;
+}
+.vertical-menu {
+    width: 500px;
+    height: auto;
+    overflow-y: auto;
+}
+
+.vertical-menu a {
+    background-color:#e67300;
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+}
+
+.vertical-menu a:hover {
+    background-color: red;
+}
+
+.vertical-menu a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.nav li ul {
+	display:none;
+	position:absolute;
+}
+.nav li:hover > ul {
+	display:block;
+}
+.nav li ul li {
+	position:relative;
+}
+.nav li ul li ul {
+	right:-140px;
+	top:0;
+}
