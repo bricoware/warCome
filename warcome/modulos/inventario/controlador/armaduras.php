@@ -1,9 +1,11 @@
 <?php
-	require_once(dirname(dirname(__FILE__))."/modelo/objeto.php");	
-		$idPersonaje = 1;
+	require_once(dirname(dirname(__FILE__))."/modelo/objeto.php");
+	session_start();
+
+	$session =  $_SESSION['idPersonaje'];
 		$objeto = new objeto();
 
-		$ids= $objeto->getIds($idPersonaje);
+		$ids= $objeto->getIds($session);
 		while($datos = $ids->fetch_assoc()){
 			$armaduras = $datos['objetosInventario'];
 		}

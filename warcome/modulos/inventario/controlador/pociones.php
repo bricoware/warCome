@@ -1,6 +1,8 @@
 <?php
 	require_once(dirname(dirname(__FILE__))."/modelo/pocion.php");
-	$pocion = new pocion();
+
+	$session =  $_SESSION['idPersonaje'];
+	$pocion = new pocion($session);
 	$pociones = $pocion->getPociones();
 	echo "<div id=PadrePociones>";
 	while($datos = $pociones->fetch_assoc()){

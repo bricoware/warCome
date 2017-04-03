@@ -3,16 +3,18 @@
    class actualizar
   {
   	private $id;
+		private $session;
   	private $acceso;
-  	function __construct($id)
+  	function __construct($id,$session)
   	{
   		$this->id = $id;
+			$this->session = $session;
   		$this->acceso = new conector();
   	}
   function actualizarArmadura(){
   	try {
 
-			      $consulta2 ="UPDATE inventariopersonaje SET armaduraEquipada = '".$this->id."' WHERE idPersonaje LIKE 1";
+			      $consulta2 ="UPDATE inventariopersonaje SET armaduraEquipada = '".$this->id."' WHERE idPersonaje LIKE '".$this->session."'";
 			  		$resultado2 = $this->acceso->getConector()->query($consulta2);
 						if(!$resultado2){
 			  			throw new Exception($resultado2->error);
@@ -28,7 +30,7 @@
   function actualizarArma(){
   		try {
 
-			  		$consulta2 ="UPDATE inventariopersonaje SET armaEquipada = '".$this->id."' WHERE idPersonaje LIKE 1";
+			  		$consulta2 ="UPDATE inventariopersonaje SET armaEquipada = '".$this->id."' WHERE idPersonaje LIKE '".$this->session."'";
 			  		$resultado2 = $this->acceso->getConector()->query($consulta2);
 
 
@@ -46,7 +48,7 @@
 	function comprobarVida(){
 			try {
 
-						$consulta2 ="SELECT vidaMax,vidaActual FROM personaje WHERE idPersonaje LIKE 1";
+						$consulta2 ="SELECT vidaMax,vidaActual FROM personaje WHERE idPersonaje LIKE '".$this->session."'";
 						$resultado2 = $this->acceso->getConector()->query($consulta2);
 
 					if(!$resultado2){
@@ -81,7 +83,7 @@
 	function beberPocion($vida){
 			try {
 
-							$consulta ="UPDATE personaje SET vidaActual = '".$vida."' WHERE idPersonaje LIKE 1";
+							$consulta ="UPDATE personaje SET vidaActual = '".$vida."' WHERE idPersonaje LIKE '".$this->session."'";
 							$resultado = $this->acceso->getConector()->query($consulta);
 
 							$consulta2 ="UPDATE pocioncantidad
@@ -103,6 +105,22 @@
 		} catch (Exception $e) {
 			echo $e;
 		}
+}
+
+function eliminarPocion(){
+		try {
+						$consulta ="DELETE from pocioncantidad where idPocion in
+												(select idPocion from pocion
+ 												where idPersonaje = '".$this->session."' AND idObjeto = '".$this->id."')";
+						$resultado = $this->acceso->getConector()->query($consulta);
+
+		if(!$resultado){
+					throw new Exception($resultado->error);
+
+		}
+	} catch (Exception $e) {
+		echo $e;
+	}
 }
 
 }
