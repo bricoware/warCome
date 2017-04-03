@@ -20,8 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 					if(!$resultado = $conexion->query($consultaArma)){
 					}
 					while($arma = $resultado->fetch_assoc()){
-						for ($i=1;$i<=11;$i++) 
-					echo "<li><input type='checkbox' id='arma[$i]' name='arma' value=".$arma['idObjeto']." />".(utf8_encode($arma['nombreObjeto'])).",".(utf8_encode($arma['precio']))."</li>";
+						echo "<li><input type='radio' id='".$arma['idObjeto']."' name='arma' value='".$arma['idObjeto']."' />".(utf8_encode($arma['nombreObjeto'])).", ".(utf8_encode($arma['precio']))."</li>";
 					}									
 				?>
 			</ul>
@@ -33,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 					if(!$respuesta = $conexion->query($consultaArmadura)){
 					}
 					while($armadura = $respuesta->fetch_assoc()){
-					echo "<li><input type='checkbox' id='armadura' name='armadura' value=".$armadura['idObjeto']." />".(utf8_encode($armadura['nombreObjeto'])).",".(utf8_encode($armadura['precio']))."</li>";
+					echo "<li><input type='radio' id='armadura' name='armadura' value='".$armadura['idObjeto']."' />".(utf8_encode($armadura['nombreObjeto'])).", ".(utf8_encode($armadura['precio']))."</li>";
 					}
 				?>	
 			</ul>
@@ -46,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 					if(!$result = $conexion->query($consultaPociones)){
 					}
 					while($pociones = $result->fetch_assoc()){
-					echo "<li><input type='checkbox' id='pocion' name='pocion' value=".$pociones['idObjeto']."/>".(utf8_encode($pociones['nombreObjeto'])).",".(utf8_encode($pociones['precio']))."</li>";
+					echo "<li><input type='radio' id='pocion' name='pocion' value='".$pociones['idObjeto']."'/>".(utf8_encode($pociones['nombreObjeto'])).", ".(utf8_encode($pociones['precio']))."</li>";
 					}
 				?>	
 			</ul>

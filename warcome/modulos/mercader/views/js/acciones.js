@@ -1,10 +1,27 @@
 function comprar(){
 	var xhttp = new XMLHttpRequest();
 
-	var armas = document.getElementById('arma');	
-	var armaduras = document.getElementById('armadura').checked;	
-	var pociones = document.getElementById('pocion').value;	
-	var direccion = "compra.php?arma="+armas+"armadura="+armaduras+"pocion"+pociones;
+	var armasRadio = document.getElementsByName('arma');	
+	var armadurasRadio = document.getElementsByName('armadura');	
+	var pocionesRadio = document.getElementsByName('pocion');	
+	
+	for(var i = 0; i < armasRadio.length; i++){
+		if(armasRadio[i].checked){
+			armas = armasRadio[i].value;
+		}
+	}
+	for(var i = 0; i < armadurasRadio.length; i++){
+		if(armadurasRadio[i].checked){
+			armaduras = armadurasRadio[i].value;
+		}
+	}
+	for(var i = 0; i < pocionesRadio.length; i++){
+		if(pocionesRadio[i].checked){
+			pociones = pocionesRadio[i].value;
+		}
+	}
+	
+	var direccion = "modulos/mercader/views/compra.php?arma="+armas+"&armadura="+armaduras+"&pocion="+pociones;
 		xhttp.open("POST", direccion, true);
 		xhttp.send();
 	xhttp.onreadystatechange = function() {
