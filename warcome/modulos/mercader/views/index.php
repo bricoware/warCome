@@ -5,8 +5,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pocion=$_POST['pocion'];
 }
 ?>
-<link type="text/css" rel="stylesheet" href="css/estilo.css" />
-<script src="js/acciones.js" type="text/Javascript"></script>
+<link type="text/css" rel="stylesheet" href="modulos/mercader/views/css/estilo.css" />
+<script src="modulos/mercader/views/js/acciones.js" type="text/Javascript"></script>
 
 <h1>Tienda 3B</h1>
 

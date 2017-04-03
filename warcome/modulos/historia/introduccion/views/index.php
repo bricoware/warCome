@@ -1,3 +1,4 @@
+<input type="button" id="siguiente" value="Siguiente" onclick="historia();"/>
 <div id="caja1">
 		<?php
 			$conexion= new mysqli ("localhost", "root", "", "warCome");
@@ -7,5 +8,4 @@
 				echo (utf8_encode(htmlspecialchars($fila['texto'])));
 			}
 		?>
-<input type="button" id="siguiente" value="Siguiente" onclick="historia();"/>
 </div>

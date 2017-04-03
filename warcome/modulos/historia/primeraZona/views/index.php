@@ -1,4 +1,3 @@
-
 <div id="primeraZona">
 	<div id="castillo" onclick="historia();">
 		<p>Me presenté delante del Rey, en su expresión se podía distinguir sorpresa y esperanza.</p>
