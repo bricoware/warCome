@@ -25,9 +25,9 @@ function crearFicha(){
 		// Añado el evento para el "drag and drop".
 		dado.draggable = true;
 		if(dado.addEventListener){
-			dado.addEventListener("dragstart", function(){ drag(event); });
+			dado.addEventListener("dragstart", function(event){ drag(event); });
 		} else {
-			dado.attachEvent("ondragstart", function(){ drag(event); });
+			dado.attachEvent("ondragstart", function(event){ drag(event); });
 		}
 		
 		var textoTirada = document.createElement("p");
@@ -42,11 +42,11 @@ function crearFicha(){
 	var destinos = document.getElementsByClassName("distribucion");
 	for(var i = 0; i < destinos.length; i++){
 		if(destinos[i].addEventListener){
-			destinos[i].addEventListener("drop", function(){ drop(event); });
-			destinos[i].addEventListener("dragover", function(){ allowDrop(event); });
+			destinos[i].addEventListener("drop", function(event){ drop(event); });
+			destinos[i].addEventListener("dragover", function(event){ allowDrop(event); });
 		} else {
-			destinos[i].attachEvent("ondrop", function(){ drop(event); });
-			destinos[i].attachEvent("ondragover", function(){ allowDrop(event); });
+			destinos[i].attachEvent("ondrop", function(event){ drop(event); });
+			destinos[i].attachEvent("ondragover", function(event){ allowDrop(event); });
 		}
 	}
 }
